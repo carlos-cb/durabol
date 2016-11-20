@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}TUANGOU Online{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('bundles/durabol/css/button.css') }}" />
+        <link rel="stylesheet" href="{{ asset('bundles/durabol/css/flat-ui.css') }}" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ asset('bundles/durabol/js/flat-ui.min.js') }}"></script>
+    <script src="{{ asset('bundles/durabol/js/application.js') }}"></script>
+{% endblock %}
+</body>
+</html>

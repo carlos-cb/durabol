@@ -1,0 +1,388 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+    <div class="tab-content">
+
+
+
+
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <div class="container-fluid">
+                <div class="row qianggou">
+                    <div class="col-xs-12">
+                        <img src="{{ asset('bundles/durabol/img/main.jpg') }}" class="mainimg">
+                    </div>
+                    <div class="col-xs-12">
+                        <h3><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;&nbsp;限时抢购
+                            <span class="text-muted">>>查看更多</span>
+                        </h3>
+                        <hr class="featurette-divider">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
+                        <div class="thumbnail">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show1.jpg') }}">
+                            </a>
+                            <div class="caption">
+                                <h6>Plato Llano Redondo Blanco 20uds</h6>
+                                <div class="price _product-price">
+                                    <span class="sale">0.33 €</span> -
+                                    <span class="line-through">0.41 €</span>
+                                    <button class="btn btn-danger">马上抢购</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
+                        <div class="thumbnail">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show2.jpg') }}">
+                            </a>
+                            <div class="caption">
+                                <h6>Vaso Irrompible Blanco 80cc PP 50uds</h6>
+                                <div class="price _product-price">
+                                    <span class="sale">0.39 €</span> -
+                                    <span class="line-through">0.49 €</span>
+                                    <button class="btn btn-danger">马上抢购</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
+                        <div class="thumbnail">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
+                            </a>
+                            <div class="caption">
+                                <h6>Tenedor Negro 10,7cm PS 50uds</h6>
+                                <div class="price _product-price">
+                                    <span class="sale">0.42 €</span> -
+                                    <span class="line-through">0.59 €</span>
+                                    <button class="btn btn-danger">马上抢购</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="tile">
+                            <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <h3 class="tile-title">本月上心</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="tile">
+                            <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <h3 class="tile-title">热卖好货</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="tile">
+                            <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <h3 class="tile-title">团购须知</h3>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="tile">
+                            <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <h3 class="tile-title">分享网站</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row qianggou">
+                    <div class="col-xs-12">
+                        <h3><i class="fa fa-futbol-o" aria-hidden="true"></i>&nbsp;&nbsp;多拉博
+                            <span class="text-muted">>>进入店铺</span>
+                        </h3>
+                        <hr class="featurette-divider">
+                    </div>
+                    <div class="col-xs-2 thumbnail jieshao">
+                        <h5>DURABOL<br><br><span>一家专门针对院校和业余球队的公司</span></h5>
+                    </div>
+                    <div class="col-xs-10 thumbnail">
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/durabol1.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>球类</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/durabol2.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>球衣</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/durabol3.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>奖杯</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/durabol4.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>旗帜</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row qianggou">
+                    <div class="col-xs-12">
+                        <h3><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;MAXI
+                            <span class="text-muted">>>进入店铺</span>
+                        </h3>
+                        <hr class="featurette-divider">
+                    </div>
+                    <div class="col-xs-2 thumbnail jieshao">
+                        <h5>MAXI<br><br><span>一家专门针对院校和业余球队的公司</span></h5>
+                    </div>
+                    <div class="col-xs-10 thumbnail">
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/maxi1.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>塑料餐盒</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show1.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>塑料盘子</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show2.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>塑料杯</h6>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <a id="product_image">
+                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
+                            </a>
+                            <div class="indexcategory">
+                                <h6>塑料餐具</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div role="tabpanel" class="tab-pane" id="stores">
+            <div style="margin-top: 80px;">
+                <div class="">
+                    <a href="{{ path('durabol_category') }}">
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
+                                <img src="{{ asset('uploads/fotos/durabol1.jpg') }}">
+                            </div>
+                            <div class="col-xs-6 categoryinfo">
+                                <br><h3>西班牙 多拉博</h3><br>
+                                <h5>足球, 国旗, 奖杯, 球衣</h5>
+                                <h5>200 €起订, 共计129个商品</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12">
+                    <hr class="featurette-divider">
+                </div>
+                <div>
+                    <a href="">
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
+                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
+                            </div>
+                            <div class="col-xs-6 categoryinfo">
+                                <br><h3>西班牙 MAXI</h3><br>
+                                <h5>塑料餐盘, 餐具, 水杯</h5>
+                                <h5>300 €起订, 共计288个商品</h5>
+                            </div>
+                            <div class="col-xs-2">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div role="tabpanel" class="tab-pane" id="cart">
+            <div class="container-fluid">
+            <section id="main" class="content-main" role="main" style="margin-top: 80px;">
+                <section id="shop-cart-content">
+                    <form action="" method="POST" class="_shopCartForm">
+                        <table class="order-table">
+                            <thead>
+                            <tr class="thead">
+                                <th>产品</th>
+                                <th class="description">说明</th>
+                                <th class="quantity">数量</th>
+                                <th>单位</th>
+                                <th class="price" id="priceHeader">价格</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="shangpin">
+
+                                <tr id="order-item" class="order-item">
+                                    <td class="_detail">
+                                        <a href="" target="_self">
+                                            <img src="{{ asset('uploads/fotos/show3.jpg') }}" width="135px;">
+                                        </a>
+                                    </td>
+                                    <td class="description _detail">
+                                        <a href="" target="_self">
+                                            <span>gggggggggg</span><br><br>Ref.&nbsp;ER2344
+                                        </a>
+                                    </td>
+                                    <td class="quantity">
+                                        <span class="_quantity" id="_quantity">2</span>
+                                        <span id="cartItemId" style="display: none"></span>
+                                        <span id="priceunit" style="display: none"></span>
+                                    <span style="margin-left: 30px;">
+                                        <button class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
+                                        <br>
+                                        <button class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
+                                    </span>
+                                    </td>
+                                    <td><span>20 uds</span></td>
+                                    <td class="price"><span id="heji">187.59</span> EUR</td>
+                                    <td>
+                                        <a class="button button-plain button-border button-box button-inverse" href="" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="6" class="order-items-total" scope="row">Total de productos: <span id="totalprice">187.59</span> EUR</th>
+                            </tr>
+                            <tr>
+                                <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío estimados: 0,00 EUR</th>
+                            </tr>
+                            <tr class="total">
+                                <th colspan="6" scope="row"><strong>Total:</strong> <span id="total">187.59</span> EUR</th>
+                            </tr>
+                            <tr class="order-vat-costs">
+                                <th colspan="6" scope="row">
+                                    <span class="offleft">Impuestos</span>* IVA incluido
+                                </th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        <div>
+                            <p>
+                                Devoluciones y reembolso: Tiene una semana para cancelar o devolver tu pedido.
+                                <br>Antes de todo, póngase en contacto con nosotros.
+                                <br>Lee más sobre nuestra política de devoluciones y reembolso.</p>
+                        </div>
+                        <div class="anniu">
+                            <button class="button-secondary button-big FL _continue-shopping-btn" type="button"><span>SEGUIR COMPRANDO</span></button>
+                            <button class="button-primary button-big FR" type="button"><span>Continuar</span></button>
+                        </div>
+                    </form>
+                </section>
+            </section>
+            </div>
+        </div>
+
+
+
+
+        <div role="tabpanel" class="tab-pane" id="person">
+            <div class="container-fluid perfil" style="margin-top: 100px;">
+                <div class="touxiang">
+                    <br>
+                    <img src="{{ asset('uploads/fotos/user.jpg') }}">
+                    <h3>username</h3>
+                    <h3>username@gmail.com</h3>
+                    <br><br>
+                </div>
+                <div class="leiji">
+                    <br>
+                    <h3>本月累计下单<span style="float:right">360.00 €</span></h3>
+                    <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-segment" style="margin-left: 40%;"></div><div class="ui-slider-segment" style="margin-left: 40%;"></div>
+                        <div class="ui-slider-segment"></div>
+                        <div class="ui-slider-segment"></div>
+                        <div class="ui-slider-segment"></div>
+                        <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 40%;"></div>
+                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 40%;"></a>
+                        <p style="float:right">1000.00 €</p>
+                    </div>
+                    <br>
+                    <h5>本月累计下单满1000.00 €即可参与年终抽奖活动</h5>
+                    <br>
+                </div>
+                <hr class="featurette-divider">
+                <h3><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;本月累计下单<span style="float:right; font-size: 30px; color: #7F8C8D;"> 查看全部 > </span></h3>
+                <br><br>
+                <div class="row orders">
+                    <div class="col-xs-4">
+                        <i class="fa fa-calendar-times-o" aria-hidden="true"></i><br>
+                        <h3>待付款</h3>
+                    </div>
+                    <div class="col-xs-4">
+                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i><br>
+                        <h3>待发货</h3>
+                    </div>
+                    <div class="col-xs-4">
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i><br>
+                        <h3>已完成</h3>
+                    </div>
+                </div>
+                <div class="col-xs-12 usershixiang">
+                    <hr class="featurette-divider">
+                    <h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3>
+                    <hr class="featurette-divider">
+                    <h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3>
+                    <hr class="featurette-divider">
+                    <h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改密码</h3>
+                    <hr class="featurette-divider">
+                    <h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'DurabolBundle:Public:footer.html.twig' %}
+
+{% endblock %}
+
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{ asset('bundles/durabol/js/index.js') }}"></script>
+        {% endblock %}
+

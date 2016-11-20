@@ -1,0 +1,288 @@
+#home .mainimg{
+    margin-top: 100px;
+    width: 100%;
+    max-width: 100%;
+}
+#home .floor-header h3 {
+    font-size: 16px;
+    color: #444;
+    float: left;
+    font-weight: 700;
+}
+#home #product_image img{
+    width: 100%;
+    max-width: 100%;
+}
+#home span.sale{
+    color: #ce0013;
+    font-size: 22px;
+}
+#home span.line-through{
+    text-decoration: line-through;
+    font-size: 18px;
+}
+#home .text-muted {
+    color: #777;
+    font-size: 22px;
+    margin-left: 20px;
+}
+#home .price button{
+    margin-left: 30px;
+}
+
+.tab-content{
+    margin-bottom: 120px;
+}
+#home .qianggou{
+    margin-bottom: 40px;
+}
+#home .indexcategory{
+    text-align: center;
+}
+#home .jieshao{
+    min-height: 240px;
+}
+#home .jieshao h5{
+    color: #000000;
+    margin-top: 35px;
+}
+#home .jieshao span{
+    color: #808080;
+    font-size: 20px;
+}
+
+
+
+
+#stores .categoryinfo h5{
+    color: #000;
+}
+#stores img{
+    width: 100%;
+    max-width: 100%;
+}
+
+
+
+
+#cart section{
+    font-family: 'Helvetica','Arial',Sans-Serif;
+    color: #222;
+    font-size: 30px;
+    line-height: 1.231;
+}
+#cart #main {
+    padding-top: 15px;
+    min-height: 530px;
+}
+
+#cart .content-main {
+    clear: both;
+    margin: 0 auto;
+}
+#cart .offleft {
+    left: -9999px;
+    position: absolute;
+    width: 999px;
+}
+
+#cart .web-standard h2.head {
+    padding: 20px 0;
+    font-size: 30px;
+    line-height: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+#cart #shop-area.shop-cart-page .no-stock-info {
+    background-color: #b90000;
+    color: white;
+}
+#cart #shop-area.shop-cart-page .no-stock-info, #shop-area.shop-cart-page .time-change-info {
+    font-size:30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: .5em 10px .2em 10px;
+}
+#cart .order-table {
+    width: 100%;
+    background: url('../img/dotted-line.png') repeat-x top left;
+    position: relative;
+    margin-bottom: 25px;
+}
+#cart th{
+    border-top: none;
+    border-bottom: none;
+}
+#cart table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+#cart .order-table thead th{
+    width: 26%;
+    padding: 13px 13px 13px 0;
+    background: url('../img/dotted-line.png') repeat-x bottom left;
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+#cart tr{
+    margin: 0;
+}
+#cart caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+#cart #shop-area.shop-cart-page .description a {
+    color: #959595;
+    display: block;
+}
+#cart a:visited {
+    color: black;
+}
+#cart a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+    color: black;
+    cursor: pointer;
+}
+#cart .order-table tbody td {
+    padding: 13px 13px 13px 0;
+    font-size: 30px;
+    background: url('../img/dotted-line.png') repeat-x bottom left;
+}
+
+#cart .order-table tbody .price {
+    text-align: right;
+    white-space: nowrap;
+}
+#cart .order-table tbody td.color {
+    text-align: left;
+    text-transform: uppercase;
+}
+#cart .order-table tbody td.quantity span {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+#cart .order-table tbody td.quantity a {
+    margin-right: 10px;
+    font-size: 30px;
+}
+#cart .order-table tbody td.quantity button {
+    display: block;
+    margin: 1px 0;
+    border: 0;
+    font-weight: bold;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 0;
+}
+#cart .order-table tbody td .fonticon-close {
+    margin: 0 3px;
+    padding: 0;
+    border: 0;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 30px;
+}
+#cart .order-table tfoot td.order-items-total, .order-table tfoot th.order-items-total {
+    padding: 25px 20px 3px 0;
+}
+#cart .order-table tfoot tr.order-vat-costs td, .order-table tfoot tr.order-vat-costs th {
+    padding-bottom: 25px;
+}
+#cart .order-table tfoot td, .order-table tfoot th {
+    text-align: right;
+    background-color: #ebebeb;
+    white-space: nowrap;
+    text-transform: none;
+}
+#cart caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+#cart .button-big {
+    line-height: 40px;
+    margin: 5px 0px 20px 0;
+}
+#cart .button-secondary {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: black;
+    position: relative;
+    border: 1px solid #000;
+    width: 230px;
+}
+#cart .button-primary {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: black;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: white;
+    position: relative;
+    border: 1px solid #000;
+}
+#cart .order-table tfoot tr.total td, .order-table tfoot tr.total th {
+    font-size: 30px;
+    font-weight: bold;
+}
+#cart .web-standard strong {
+    font-weight: 700;
+}
+#cart section td{
+    border-bottom: none;
+}
+#cart .order-table tfoot td, .order-table tfoot th {
+    text-align: right;
+    padding: 3px 20px 3px 0;
+    background-color: #f8f8f8;
+    white-space: nowrap;
+    text-transform: none;
+}
+#cart .anniu{
+    margin-top: 40px;
+}
+#cart .FR {
+    width: 230px;
+    float: right;
+}
+#cart input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+
+
+#person .touxiang{
+    text-align: center;
+    background-color: #BDC3C7;
+}
+#person .touxiang h3{
+    color: #fff;
+    font-family:"Times New Roman",Georgia,Serif;
+}
+#person .orders{
+    text-align: center;
+}
+#person .orders i{
+    font-size: 50px;
+}
+#person .usershixiang{
+    margin-top: 30px;
+}
+
+

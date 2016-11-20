@@ -1,0 +1,10 @@
+.productlist .caption h4{
+    font-weight: bold;
+}
+.productlist .product img{
+    width: 100%;
+    max-width: 100%;
+}
+.productlist .product h5 {
+    float: left;
+}

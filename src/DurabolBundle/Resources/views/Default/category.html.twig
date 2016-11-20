@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/category.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+        <div class="storeinfo">
+
+
+        </div>
+
+    {% include 'DurabolBundle:Public:footer.html.twig' %}
+
+{% endblock %}

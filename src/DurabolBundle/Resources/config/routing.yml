@@ -1,0 +1,11 @@
+durabol_homepage:
+    path:     /
+    defaults: { _controller: DurabolBundle:Default:index }
+
+durabol_category:
+    path:     /category
+    defaults: { _controller: DurabolBundle:Default:category }
+
+durabol_productlist:
+    path:     /productlist
+    defaults: { _controller: DurabolBundle:Default:productlist }
