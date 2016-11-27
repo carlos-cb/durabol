@@ -1,0 +1,63 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li class="active"><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">店铺分类管理</h1>
+    <br>
+    <ul>
+        <li>
+            <a href="{{ path('shop_new') }}" class="button button-rounded button-inverse">创建新店铺</a>
+        </li>
+    </ul>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>店铺名</th>
+                <th>店铺简称</th>
+                <th>描述</th>
+                <th>最低消费</th>
+                <th>代表图片</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for shop in shops %}
+            <tr>
+                <td>{{ shop.id }}</td>
+                <td>{{ shop.name }}</td>
+                <td>{{ shop.nameShort }}</td>
+                <td>{{ shop.description }}</td>
+                <td>{{ shop.minCoste }} €</td>
+                <td><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" height="100px" width="100px"></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('shop_edit', { 'id': shop.id }) }}" class="button button-tiny button-primary">修改</a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="{{ path('category_index', { 'shop': shop.id }) }}" class="button button-tiny button-highlight">管理分类</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

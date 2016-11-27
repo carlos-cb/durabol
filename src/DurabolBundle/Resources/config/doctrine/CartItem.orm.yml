@@ -1,0 +1,28 @@
+DurabolBundle\Entity\CartItem:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\CartItemRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: integer
+        price:
+            type: float
+    manyToOne:
+        cart:
+            targetEntity: Cart
+            inversedBy: cartItems
+            joinColumn:
+                name: cart_id
+                referencedColumnName: id
+        product:
+            targetEntity: Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -4,6 +4,9 @@ parameters:
 #    parameter_name: value
 
 services:
+    durabol.foto_uploader:
+        class: DurabolBundle\FileUploader
+        arguments: ['%fotos_directory%']
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]

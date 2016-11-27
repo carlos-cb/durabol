@@ -1,0 +1,104 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li class="active"><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="col-xs-6">
+        <h2>团购网配货单</h2>
+        <h5>日期： {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</h5>
+        <h4>单号： {{ orderInfo.id }}</h4>
+        <h4>备注： </h4>
+
+    </div>
+    <div class="col-xs-6" style="border:1px dashed #000;margin-top: 20px;">
+        <h4>{{ orderInfo.receiverName }}</h4>
+        <h4>{{ orderInfo.receiverAdress }}</h4>
+        <h4>{{ orderInfo.receiverPostcode }}  {{ orderInfo.receiverCity }}</h4>
+        <h4>{{ orderInfo.receiverProvince }}</h4>
+        <h4>{{ orderInfo.receiverPhone }}</h4>
+
+    </div>
+    <br>
+    <div class="col-xs-6" style="min-height: 500px; margin-top:50px">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>图片</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>小结</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for orderItem in orderItems %}
+                {% if loop.index%2 == 1 %}
+                    <tr>
+                        <td><img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" height="100px" width="100px"></td>
+                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} x {{ orderItem.product.unit }}</td>
+                        <td>{{ orderItem.product.code }}<br><br>{{ orderItem.product.price|number_format(3, '.', ',') }} €</td>
+                        {% set foo = orderItem.product.price * orderItem.quantity %}
+                        <td><br><br>{{ foo|number_format(3, '.', ',') }} €</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-xs-6" style="min-height: 500px; margin-top:50px">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>图片</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>小结</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for orderItem in orderItems %}
+                {% if loop.index%2 == 0 %}
+                    <tr>
+                        <td><img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" height="100px" width="100px"></td>
+                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} x {{ orderItem.product.unit }}</td>
+                        <td>{{ orderItem.product.code }}<br><br>{{ orderItem.price|number_format(3, '.', ',') }} €</td>
+                        {% set foo = orderItem.price * orderItem.quantity %}
+                        <td><br><br>{{ foo|number_format(3, '.', ',') }} €</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <div class="col-xs-12"><hr></div>
+    <div class="col-xs-6">
+        <h4>支付方式: {{ orderInfo.payType }}</h4>
+        <h4>邮寄方式: {{ orderInfo.shipmode }}</h4>
+        <ul>
+            <li>
+                <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回</a>
+                <button class="button button-rounded button-primary" onclick="window.print();"><i class="fa fa-print"></i> 打印</button>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-6">
+        <h4>货品金额: {{ orderInfo.goodsFee|number_format(3, '.', ',') }} €</h4>
+        <h4>运费: {{ orderInfo.shipFee|number_format(3, '.', ',') }} €</h4>
+        <h4>总金额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+    </div>
+
+
+{% endblock %}

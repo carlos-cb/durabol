@@ -1,0 +1,68 @@
+DurabolBundle\Entity\OrderInfo:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\OrderInfoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        orderDate:
+            type: datetime
+        goodsFee:
+            type: float
+        shipFee:
+            type: float
+        totalPrice:
+            type: float
+        payType:
+            type: string
+            length: 255
+        receiverName:
+            type: string
+            length: 255
+        receiverPhone:
+            type: string
+            length: 255
+        receiverAdress:
+            type: string
+            length: 255
+        receiverCity:
+            type: string
+            length: 255
+        receiverProvince:
+            type: string
+            length: 255
+        receiverPostcode:
+            type: string
+            length: 255
+        isPayed:
+            type: boolean
+        isSended:
+            type: boolean
+        isOver:
+            type: boolean
+        state:
+            type: string
+            length: 255
+        envio:
+            type: string
+            length: 255
+            nullable: true
+        shipmode:
+            type: string
+            length: 255
+    oneToMany:
+        orderItems:
+            targetEntity: OrderItem
+            mappedBy: orderInfo
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: orderInfos
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

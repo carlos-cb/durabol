@@ -1,0 +1,44 @@
+orderinfo_index:
+    path:     /
+    defaults: { _controller: "DurabolBundle:OrderInfo:index" }
+    methods:  GET
+
+orderinfo_indexUser:
+    path:     /user/{user}
+    defaults: { _controller: "DurabolBundle:OrderInfo:indexUser" }
+
+orderinfo_show:
+    path:     /{id}/show
+    defaults: { _controller: "DurabolBundle:OrderInfo:show" }
+    methods:  GET
+
+orderinfo_new:
+    path:     /new
+    defaults: { _controller: "DurabolBundle:OrderInfo:new" }
+    methods:  [GET, POST]
+
+orderinfo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DurabolBundle:OrderInfo:edit" }
+    methods:  [GET, POST]
+
+orderinfo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DurabolBundle:OrderInfo:delete" }
+    methods:  DELETE
+
+orderinfo_delivered:
+    path:     /delivered
+    defaults: { _controller: "DurabolBundle:OrderInfo:delivered" }
+
+orderinfo_success:
+    path:     /{id}/success
+    defaults: { _controller: "DurabolBundle:OrderInfo:success" }
+
+orderinfo_cancelled:
+    path:     /{id}/cancelled
+    defaults: { _controller: "DurabolBundle:OrderInfo:cancelled" }
+
+orderinfo_payed:
+    path:     /{id}/payed
+    defaults: { _controller: "DurabolBundle:OrderInfo:payed" }

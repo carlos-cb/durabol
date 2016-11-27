@@ -1,0 +1,24 @@
+shop_index:
+    path:     /
+    defaults: { _controller: "DurabolBundle:Shop:index" }
+    methods:  GET
+
+shop_show:
+    path:     /{id}/show
+    defaults: { _controller: "DurabolBundle:Shop:show" }
+    methods:  GET
+
+shop_new:
+    path:     /new
+    defaults: { _controller: "DurabolBundle:Shop:new" }
+    methods:  [GET, POST]
+
+shop_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DurabolBundle:Shop:edit" }
+    methods:  [GET, POST]
+
+shop_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DurabolBundle:Shop:delete" }
+    methods:  DELETE

@@ -1,0 +1,39 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li class="active"><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>Gestión de Productos</h1>
+    <h4 class="sub-header">Elegir entre las categorías</h4>
+    <br>
+    <div class="row">
+        <div class="col-xs-2" style="text-align: center">
+            <a href="{{ path('product_selectShop') }}">
+                <img src="{{ asset('bundles/durabol/img/back.jpg') }}" style="max-width: 100%; width: 100%">
+            </a>
+            <h4>Atrás</h4>
+        </div>
+        {% for category in categories %}
+            <div class="col-xs-2" style="text-align: center">
+                <a href="{{ path('product_index', {'shop': shop.id, 'category': category.id }) }}">
+                    <img src="{{ asset('uploads/fotos/' ~ category.foto) }}" style="max-width: 100%; width: 100%">
+                </a>
+                <h4>{{ category.name }}</h4>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

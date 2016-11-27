@@ -1,0 +1,11 @@
+select_sale:
+    path:     /
+    defaults: { _controller: "DurabolBundle:Sale:selectSale" }
+
+add_sale:
+    path:     /addsale
+    defaults: { _controller: "DurabolBundle:Sale:addSale" }
+
+delete_sale:
+    path:     /deletesale/{id}
+    defaults: { _controller: "DurabolBundle:Sale:deleteSale" }

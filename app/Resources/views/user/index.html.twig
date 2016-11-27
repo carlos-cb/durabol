@@ -1,0 +1,92 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="active"><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">用户管理</h1>
+    <br>
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}" class="button button-rounded button-inverse">创建新用户</a>
+        </li>
+    </ul>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>用户名</th>
+            <th>邮箱</th>
+            <th>激活</th>
+            <th>最近登录</th>
+            <th>订单</th>
+            <th>消费总额</th>
+            <th>用户专享折扣</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.enabled %}
+                        是 <a class="btn btn-danger" href="{{ path('user_enable', { 'id': user.id }) }}" onclick="return confirm('确定使该账户失效?')">失效</a>
+                    {% else %}
+                        否 <a class="btn btn-warning" href="{{ path('user_enable', { 'id': user.id }) }}" onclick="return confirm('确定激活该账户?')">激活</a>
+                    {% endif %}
+                </td>
+                <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td><a class="btn btn-info" href="">查看</a></td>
+                <td>{{ user.OrderInfoSum|number_format(2, '.', ',') }} €</td>
+                <td>{{ user.discount }} % <a type="button" data-toggle="modal" data-target="#myModal{{ user.id }}" class="btn btn-primary">修改</a></td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">调整用户 {{ user.username }}专享折扣</h4>
+                            <h4 class="modal-title" id="myModalLabel">请输入折扣百分比的整数部分, 如95%只需输入95即可.</h4>
+                        </div>
+                        <form method="post" action="{{ path('user_discount') }}">
+                            <div class="modal-body">
+                                <input name="discount" type="text" class="form-control" required="required" placeholder="{{ user.discount }}">
+                                <input type="hidden" name="userId" value="{{ user.id }}">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary">确认</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock %}

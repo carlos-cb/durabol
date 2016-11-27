@@ -1,0 +1,32 @@
+DurabolBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        foto:
+            type: string
+            length: 255
+    oneToMany:
+        products:
+            targetEntity: Product
+            mappedBy: category
+    manyToOne:
+        shop:
+            targetEntity: Shop
+            inversedBy: categorys
+            joinColumn:
+                name: shop_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

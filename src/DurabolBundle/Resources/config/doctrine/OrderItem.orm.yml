@@ -1,0 +1,30 @@
+DurabolBundle\Entity\OrderItem:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\OrderItemRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: integer
+        productId:
+            type: integer
+        price:
+            type: float
+    manyToOne:
+        orderInfo:
+            targetEntity: OrderInfo
+            inversedBy: orderItems
+            joinColumn:
+                name: orderInfo_id
+                referencedColumnName: id
+        product:
+            targetEntity: Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

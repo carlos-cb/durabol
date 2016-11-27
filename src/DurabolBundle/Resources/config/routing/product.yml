@@ -1,0 +1,32 @@
+product_selectShop:
+    path:     /selectShop
+    defaults: { _controller: "DurabolBundle:Product:selectShop" }
+
+product_selectCategory:
+    path:     /{shop}/selectCategory
+    defaults: { _controller: "DurabolBundle:Product:selectCategory" }
+
+product_index:
+    path:     /{shop}/{category}
+    defaults: { _controller: "DurabolBundle:Product:index" }
+    methods:  GET
+
+product_show:
+    path:     /{id}/show
+    defaults: { _controller: "DurabolBundle:Product:show" }
+    methods:  GET
+
+product_new:
+    path:     /{shop}/{category}/new
+    defaults: { _controller: "DurabolBundle:Product:new" }
+    methods:  [GET, POST]
+
+product_edit:
+    path:     /{shop}/{category}/{id}/edit
+    defaults: { _controller: "DurabolBundle:Product:edit" }
+    methods:  [GET, POST]
+
+product_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DurabolBundle:Product:delete" }
+    methods:  DELETE

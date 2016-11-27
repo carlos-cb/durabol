@@ -1,10 +1,34 @@
+durabol_user:
+    resource: "@DurabolBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
+
+durabol_shop:
+    resource: "@DurabolBundle/Resources/config/routing/shop.yml"
+    prefix:   /admin/shop
+
+durabol_product:
+    resource: "@DurabolBundle/Resources/config/routing/product.yml"
+    prefix:   /admin/product
+
+durabol_orderinfo:
+    resource: "@DurabolBundle/Resources/config/routing/orderinfo.yml"
+    prefix:   /admin/orderinfo
+
+durabol_category:
+    resource: "@DurabolBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
+durabol_sale:
+    resource: "@DurabolBundle/Resources/config/routing/sale.yml"
+    prefix:   /admin/sale
+
 durabol_homepage:
     path:     /
     defaults: { _controller: DurabolBundle:Default:index }
 
-durabol_category:
-    path:     /category
-    defaults: { _controller: DurabolBundle:Default:category }
+durabol_homepage_admin:
+    path:     /admin
+    defaults: { _controller: DurabolBundle:Default:backEnd }
 
 durabol_productlist:
     path:     /productlist

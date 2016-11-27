@@ -1,0 +1,114 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li class="active"><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-header">信息总览</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="panel user">
+                <a href="{{ path('user_index') }}"><span>{{ numUser }} </span>用户数</a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="panel comment">
+                <a href="{{ path('shop_index') }}"><span>2 </span>店铺数</a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="panel page">
+                <a href="{{ path('orderinfo_index') }}"><span>{{ numOrder }} </span>订单数</a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+            <div class="panel post">
+                <a href="{{ path('product_selectShop') }}"><span>{{ numProduct }} </span>总产品量</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <h1 class="sub-header">订单信息图表</h1>
+    <div class="row">
+        <div class="col-md-4 col-lg-4">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="data" style="display: none">
+            {% for day6Order in day6Orders %}
+                <div id="day{{ loop.index }}order">{% if day6Order == null %}0{% else %}{{ day6Order }}{% endif %}</div>
+            {% endfor %}
+        </div>
+        <div class="col-md-6 col-md-offset-1 col-lg-6 col-lg-offset-1">
+            <div class="table-responsive" style="position: relative; top: 25px;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>新订单</th>
+                        <th>用户</th>
+                        <th>消费量</th>
+                        <th>城市</th>
+                        <th>生成时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.user.username }}</td>
+                        <td>{{ order.totalPrice|number_format(2, '.', ',') }} €</td>
+                        <td>{{ order.receiverCity }}</td>
+                        <td>{% if order.orderDate %}{{ order.orderDate|date('Y-m-d H:i') }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h2 class="sub-header">用户信息图表</h2>
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+            <div class="table-responsive" style="position: relative; top: 25px;">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>新注册用户</th>
+                        <th>用户名</th>
+                        <th>邮箱</th>
+                        <th>最后登录时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    </tr>
+                {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-1">
+            <canvas id="myChart1" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <br><br><br>
+{% endblock %}

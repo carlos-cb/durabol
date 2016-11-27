@@ -1,0 +1,157 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-female" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li class="active"><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    {% if user is defined  %}
+        <h1 class="sub-header">{{ user.username }}用户的订单</h1>
+    {% else %}
+        <h1 class="sub-header">订单管理</h1>
+    {% endif %}
+    <br>
+    <div class="btn-group" id="fliter">
+        <button type="button" class="btn btn-default" id="todo">所有订单</button>
+        <button type="button" class="btn btn-default" id="preparando">已付款</button>
+        <button type="button" class="btn btn-default" id="entregando">已发货</button>
+        <button type="button" class="btn btn-default" id="terminado">已完成</button>
+        <button type="button" class="btn btn-default" id="cancelado">已取消</button>
+        <button type="button" class="btn btn-default" id="fallado">未付款</button>
+    </div>
+    <br><br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>订单编号</th>
+            <th>状态</th>
+            <th>客户名</th>
+            <th>订单额</th>
+            <th>付款方式</th>
+            <th>生成时间</th>
+            <th>已付款</th>
+            <th>已发货</th>
+            <th>已完成</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for orderInfo in orderInfos %}
+            <tr>
+                <td>
+                    {{ orderInfo.id }}
+                    {% if "now"|date_modify("-1 day")|date("Y-m-d H:i") <  orderInfo.orderDate|date('Y-m-d H:i') %}
+                        <img src="{{ asset('bundles/durabol/img/new-icon.png') }}" height="40px" width="80px">
+                    {% endif %}
+                </td>
+                <td><button id="estado" class="button button-tiny button-rounded
+                {% if orderInfo.state == '已付款' %}button-highlight{% endif %}
+                {% if orderInfo.state == '已发货' %}button-primary{% endif %}
+                {% if orderInfo.state == '已完成' %}button-action{% endif %}
+                {% if orderInfo.state == '已取消' %}button-caution{% endif %}">{{ orderInfo.state }}</button>
+                </td>
+                <td>{{ orderInfo.receiverName }}</td>
+                <td>{{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</td>
+                <td>{{ orderInfo.payType }}</td>
+                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</td>
+                <td>{% if orderInfo.isPayed %}
+                        <span class="button-wrap">
+                            <button class="button button-circle button-raised button-action">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </span>
+                    {% else %}
+                        <span class="button-wrap">
+                            <a href="{{ path('orderinfo_payed', { 'id': orderInfo.id }) }}" class="button button-circle button-raised button-caution" onclick="return confirm('确定该订单已付款?')">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </span>
+                    {% endif %}</td>
+                <td>
+                    {% if orderInfo.isSended %}
+                        <span class="button-wrap">
+                            <button type="button" class="button button-circle button-raised button-action" data-toggle="tooltip" data-placement="bottom" title="{{ orderInfo.envio }}">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </span>
+                    {% else %}
+                        <span class="button-wrap">
+                        <a type="button" data-toggle="modal" data-target="#myModal{{ orderInfo.id }}" class="button button-circle button-raised button-caution">
+                            <i class="fa fa-close"></i>
+                        </a>
+                        </span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if orderInfo.isOver %}
+                        <span class="button-wrap">
+                            <button class="button button-circle button-raised button-action">
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </span>
+                    {% else %}
+                        <span class="button-wrap">
+                            <a href="{{ path('orderinfo_success', { 'id': orderInfo.id }) }}" class="button button-circle button-raised button-caution" onclick="return confirm('确定该订单已完成?')">
+                                <i class="fa fa-close"></i>
+                            </a>
+                        </span>
+                    {% endif %}
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}" class="button button-tiny button-border button-rounded button-inverse">查看</a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="{{ path('orderinfo_cancelled', { 'id': orderInfo.id }) }}" class="button button-tiny button-border button-rounded button-caution" onclick="return confirm('确定取消该订单?')">取消</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal{{ orderInfo.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">快递信息：</h4>
+                            <h4 class="modal-title" id="myModalLabel">快递公司及快递号</h4>
+                        </div>
+                        <form method="post" action="{{ path('orderinfo_delivered') }}">
+                            <div class="modal-body">
+                                <input name="numeroEnvio" type="text" class="form-control" required="required" placeholder="DHL, YX65800999221">
+                                <input type="hidden" name="orderInfoId" value="{{ orderInfo.id }}">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="submit" class="btn btn-primary">确定</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+{% endblock %}

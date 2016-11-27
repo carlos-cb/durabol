@@ -1,0 +1,30 @@
+DurabolBundle\Entity\Shop:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\ShopRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        foto:
+            type: string
+            length: 255
+        minCoste:
+            type: float
+        nameShort:
+            type: string
+            length: 255
+    oneToMany:
+        categorys:
+            targetEntity: Category
+            mappedBy: shop
+    lifecycleCallbacks: {  }
