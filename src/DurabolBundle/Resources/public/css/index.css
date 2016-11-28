@@ -50,6 +50,9 @@
     color: #808080;
     font-size: 20px;
 }
+#home .caption h6{
+    min-height: 52px;
+}
 
 
 

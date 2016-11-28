@@ -212,6 +212,36 @@ class Shop
         return $this->categorys;
     }
 
+    public function getCategory($id)
+    {
+        $categories = $this->getCategorys();
+        return $categories[$id] ? $categories[$id] : $categories[0];
+    }
+
+    public function getCategoryNames()
+    {
+        $categories = $this->getCategorys();
+        $i = 0;
+        $categoryNames = Array();
+        foreach ($categories as $category)
+        {
+            $categoryNames[$i] = $category->getName();
+            $i++;
+        }
+        return $categoryNames;
+    }
+
+    public function getProductNum()
+    {
+        $categories = $this->getCategorys();
+        $productNum = 0;
+        foreach ($categories as $category)
+        {
+            $productNum += $category->getProducts()->count();
+        }
+        return $productNum;
+    }
+
     public function __toString() {
         return strval($this->id);
     }

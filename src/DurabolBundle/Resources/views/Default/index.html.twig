@@ -20,168 +20,103 @@
                         </h3>
                         <hr class="featurette-divider">
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
-                        <div class="thumbnail">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show1.jpg') }}">
-                            </a>
-                            <div class="caption">
-                                <h6>Plato Llano Redondo Blanco 20uds</h6>
-                                <div class="price _product-price">
-                                    <span class="sale">0.33 €</span> -
-                                    <span class="line-through">0.41 €</span>
-                                    <button class="btn btn-danger">马上抢购</button>
+                    {% for productSale in productSales %}
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
+                            <div class="thumbnail">
+                                <a id="product_image">
+                                    <img src="{{ asset('uploads/fotos/' ~ productSale.foto) }}">
+                                </a>
+                                <div class="caption">
+                                    <h6>{{ productSale.name }}</h6>
+                                    <div class="price _product-price">
+                                        <span class="sale">{{ productSale.discountPrice }} €</span> -
+                                        <span class="line-through">{{ productSale.price }} €</span>
+                                        <button class="btn btn-danger">马上抢购</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
-                        <div class="thumbnail">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show2.jpg') }}">
-                            </a>
-                            <div class="caption">
-                                <h6>Vaso Irrompible Blanco 80cc PP 50uds</h6>
-                                <div class="price _product-price">
-                                    <span class="sale">0.39 €</span> -
-                                    <span class="line-through">0.49 €</span>
-                                    <button class="btn btn-danger">马上抢购</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
-                        <div class="thumbnail">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
-                            </a>
-                            <div class="caption">
-                                <h6>Tenedor Negro 10,7cm PS 50uds</h6>
-                                <div class="price _product-price">
-                                    <span class="sale">0.42 €</span> -
-                                    <span class="line-through">0.59 €</span>
-                                    <button class="btn btn-danger">马上抢购</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="row">
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
-                            <h3 class="tile-title">本月上心</h3>
+                            <h3 class="tile-title">本月上新</h3>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">热卖好货</h3>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">团购须知</h3>
                         </div>
                     </div>
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">分享网站</h3>
                         </div>
                     </div>
                 </div>
-                <div class="row qianggou">
-                    <div class="col-xs-12">
-                        <h3><i class="fa fa-futbol-o" aria-hidden="true"></i>&nbsp;&nbsp;多拉博
-                            <span class="text-muted">>>进入店铺</span>
-                        </h3>
-                        <hr class="featurette-divider">
-                    </div>
-                    <div class="col-xs-2 thumbnail jieshao">
-                        <h5>DURABOL<br><br><span>一家专门针对院校和业余球队的公司</span></h5>
-                    </div>
-                    <div class="col-xs-10 thumbnail">
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/durabol1.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>球类</h6>
-                            </div>
+                {% for shop in shops %}
+                    <div class="row qianggou">
+                        <div class="col-xs-12">
+                            <h3>
+                                {% if shop.id == 1 %}
+                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                                {% else %}
+                                    <i class="fa fa-industry" aria-hidden="true"></i>
+                                {% endif %}
+                                &nbsp;&nbsp;{{ shop.name }}
+                                <span class="text-muted">>>进入店铺</span>
+                            </h3>
+                            <hr class="featurette-divider">
                         </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/durabol2.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>球衣</h6>
-                            </div>
+                        <div class="col-xs-2 thumbnail jieshao">
+                            <h5>{{ shop.nameShort|upper }}<br><br><span>{{ shop.description }}</span></h5>
                         </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/durabol3.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>奖杯</h6>
+                        <div class="col-xs-10 thumbnail">
+                            <div class="col-xs-3">
+                                <a id="product_image">
+                                    <img src="{{ asset('uploads/fotos/' ~ shop.category(0).foto) }}">
+                                </a>
+                                <div class="indexcategory">
+                                    <h6>{{ shop.category(0).name }}</h6>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/durabol4.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>旗帜</h6>
+                            <div class="col-xs-3">
+                                <a id="product_image">
+                                    <img src="{{ asset('uploads/fotos/' ~ shop.category(1).foto) }}">
+                                </a>
+                                <div class="indexcategory">
+                                    <h6>{{ shop.category(1).name }}</h6>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row qianggou">
-                    <div class="col-xs-12">
-                        <h3><i class="fa fa-industry" aria-hidden="true"></i>&nbsp;&nbsp;MAXI
-                            <span class="text-muted">>>进入店铺</span>
-                        </h3>
-                        <hr class="featurette-divider">
-                    </div>
-                    <div class="col-xs-2 thumbnail jieshao">
-                        <h5>MAXI<br><br><span>一家专门针对院校和业余球队的公司</span></h5>
-                    </div>
-                    <div class="col-xs-10 thumbnail">
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/maxi1.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>塑料餐盒</h6>
+                            <div class="col-xs-3">
+                                <a id="product_image">
+                                    <img src="{{ asset('uploads/fotos/' ~ shop.category(2).foto) }}">
+                                </a>
+                                <div class="indexcategory">
+                                    <h6>{{ shop.category(2).name }}</h6>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show1.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>塑料盘子</h6>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show2.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>塑料杯</h6>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <a id="product_image">
-                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
-                            </a>
-                            <div class="indexcategory">
-                                <h6>塑料餐具</h6>
+                            <div class="col-xs-3">
+                                <a id="product_image">
+                                    <img src="{{ asset('uploads/fotos/' ~ shop.category(3).foto) }}">
+                                </a>
+                                <div class="indexcategory">
+                                    <h6>{{ shop.category(3).name }}</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -190,16 +125,17 @@
 
         <div role="tabpanel" class="tab-pane" id="stores">
             <div style="margin-top: 80px;">
+                {% for shop in shops %}
                 <div class="">
                     <a href="">
                         <div class="col-xs-12">
                             <div class="col-xs-4">
-                                <img src="{{ asset('uploads/fotos/durabol1.jpg') }}">
+                                <img src="{{ asset('uploads/fotos/' ~ shop.foto) }}">
                             </div>
                             <div class="col-xs-6 categoryinfo">
-                                <br><h3>西班牙 多拉博</h3><br>
-                                <h5>足球, 国旗, 奖杯, 球衣</h5>
-                                <h5>200 €起订, 共计129个商品</h5>
+                                <br><h3>{{ shop.name }}</h3><br>
+                                <h5>{% for categoryName in shop.categoryNames %}{% if loop.index <= 5 %}{{ categoryName }}, {% endif %}{% endfor %}等</h5>
+                                <h5>{{ shop.minCoste }} €起订, 共计{{ shop.productNum }}个商品</h5>
                             </div>
                             <div class="col-xs-2">
                                 <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
@@ -210,23 +146,7 @@
                 <div class="col-xs-12">
                     <hr class="featurette-divider">
                 </div>
-                <div>
-                    <a href="">
-                        <div class="col-xs-12">
-                            <div class="col-xs-4">
-                                <img src="{{ asset('uploads/fotos/show3.jpg') }}">
-                            </div>
-                            <div class="col-xs-6 categoryinfo">
-                                <br><h3>西班牙 MAXI</h3><br>
-                                <h5>塑料餐盘, 餐具, 水杯</h5>
-                                <h5>300 €起订, 共计288个商品</h5>
-                            </div>
-                            <div class="col-xs-2">
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                {% endfor %}
             </div>
         </div>
 
@@ -322,21 +242,17 @@
                 <div class="touxiang">
                     <br>
                     <img src="{{ asset('uploads/fotos/user.jpg') }}">
-                    <h3>username</h3>
-                    <h3>username@gmail.com</h3>
+                    <h3>{{ user.username }}</h3>
+                    <h3>{{ user.email }}</h3>
                     <br><br>
                 </div>
                 <div class="leiji">
                     <br>
                     <h3>本月累计下单<span style="float:right">360.00 €</span></h3>
-                    <div id="slider" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-segment" style="margin-left: 40%;"></div><div class="ui-slider-segment" style="margin-left: 40%;"></div>
-                        <div class="ui-slider-segment"></div>
-                        <div class="ui-slider-segment"></div>
-                        <div class="ui-slider-segment"></div>
-                        <div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 40%;"></div>
-                        <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 40%;"></a>
-                        <p style="float:right">1000.00 €</p>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 36%;"></div>
                     </div>
+                    <p style="float:right">1000.00 €</p>
                     <br>
                     <h5>本月累计下单满1000.00 €即可参与年终抽奖活动</h5>
                     <br>
@@ -360,16 +276,15 @@
                 </div>
                 <div class="col-xs-12 usershixiang">
                     <hr class="featurette-divider">
-                    <h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3>
+                    <a href=""><h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3></a>
                     <hr class="featurette-divider">
-                    <h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3>
+                    <a href=""><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
                     <hr class="featurette-divider">
-                    <h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改密码</h3>
+                    <a href="{{ path('fos_user_change_password') }}"><h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改密码</h3></a>
                     <hr class="featurette-divider">
-                    <h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3>
+                    <a href="{{ path('fos_user_security_logout') }}"><h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3></a>
                 </div>
             </div>
-
         </div>
     </div>
 

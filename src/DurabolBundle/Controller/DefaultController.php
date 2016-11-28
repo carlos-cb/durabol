@@ -8,7 +8,18 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('DurabolBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->getUser();
+
+        $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
+        $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
+        
+        return $this->render('DurabolBundle:Default:index.html.twig', array(
+            'productSales' => $productSales,
+            'shops' => $shops,
+            'user' => $user,
+        ));
     }
 
     public function backEndAction()
