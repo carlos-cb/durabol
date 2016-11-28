@@ -16,12 +16,17 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">Gestión de Productos</h1>
+    <h1>Gestión de Productos</h1>
+    {% if shop is defined %}
+        <h4 class="sub-header">{{ shop.name }} -> {{ category.name }}</h4>
+    {% endif %}
     <br>
     <ul>
         <li>
-            <a href="{{ path('product_new', { 'shop': shop.id, 'category': category.id }) }}" class="button button-rounded button-inverse">Crear Nuevo</a>
-            <a href="{{ path('product_selectCategory', { 'shop': shop.id }) }}" class="button button-rounded button-inverse">Volver</a>
+            {% if shop is defined %}
+                <a href="{{ path('product_new', { 'shop': shop.id, 'category': category.id }) }}" class="button button-rounded button-inverse">Crear Nuevo</a>
+                <a href="{{ path('product_selectCategory', { 'shop': shop.id }) }}" class="button button-rounded button-inverse">Volver</a>
+            {% endif %}
         </li>
     </ul>
     <br>
@@ -36,7 +41,11 @@
                 <th>Foto</th>
                 <th>Mostrado</th>
                 <th>Categoría</th>
+                {% if shop is defined %}
                 <th>Operaciones</th>
+                {% else %}
+                <th>Shop</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -49,11 +58,21 @@
                 <td>{{ product.code }}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="100px" width="100px"></td>
                 <td>{% if product.isShow %}Yes{% else %}No{% endif %}</td>
-                <td>{{ product.category.name }}</td>
+                <td>
+                    {% if shop is defined %}
+                        {{ product.category.name }}
+                    {% else %}
+                        <a class="btn btn-primary" href="{{ path('product_index', {'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
+                    {% endif %}
+                </td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-action">Modificar</a>
+                            {% if shop is defined %}
+                                <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-action">Modificar</a>
+                            {% else %}
+                                <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.name }}</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </td>

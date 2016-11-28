@@ -55,6 +55,21 @@ class ProductController extends Controller
     }
 
     /**
+     * Lists all product entities.
+     *
+     */
+    public function indexAllAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $products = $em->getRepository('DurabolBundle:Product')->findAll();
+
+        return $this->render('product/index.html.twig', array(
+            'products' => $products,
+        ));
+    }
+
+    /**
      * Creates a new product entity.
      *
      */

@@ -16,7 +16,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">Modificar Producto</h1>
+    <h1>Modificar Producto</h1>
+    <h4 class="sub-header">{{ shop.name }} -> {{ category.name }}</h4>
     <br>
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}

@@ -20,6 +20,13 @@
     <h4 class="sub-header">Elegir entre las tiendas</h4>
     <br>
     <div class="row">
+        <div class="col-xs-2" style="text-align: center">
+            <a href="{{ path('product_indexAll') }}">
+                <img src="{{ asset('bundles/durabol/img/all.jpg') }}" style="max-width: 100%; width: 100%">
+            </a>
+            <h4>所有产品</h4>
+            <p>Todo</p>
+        </div>
         {% for shop in shops %}
             <div class="col-xs-2" style="text-align: center">
                 <a href="{{ path('product_selectCategory', {'shop': shop.id }) }}">
@@ -29,6 +36,7 @@
                 <p>{{ shop.nameShort }}</p>
             </div>
         {% endfor %}
+
     </div>
 
 {% endblock %}

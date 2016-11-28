@@ -11,6 +11,11 @@ product_index:
     defaults: { _controller: "DurabolBundle:Product:index" }
     methods:  GET
 
+product_indexAll:
+    path:     /all
+    defaults: { _controller: "DurabolBundle:Product:indexAll" }
+    methods:  GET
+
 product_show:
     path:     /{id}/show
     defaults: { _controller: "DurabolBundle:Product:show" }
