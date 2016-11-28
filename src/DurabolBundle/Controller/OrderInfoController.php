@@ -5,6 +5,7 @@ namespace DurabolBundle\Controller;
 use DurabolBundle\Entity\OrderInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use DurabolBundle\Entity\User;
 
 /**
  * Orderinfo controller.
@@ -20,10 +21,26 @@ class OrderInfoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $orderInfos = $em->getRepository('DurabolBundle:OrderInfo')->findAll();
+        $orderInfos = $em->getRepository('DurabolBundle:OrderInfo')->findBy(array(), array('orderDate' => 'DESC'));
 
         return $this->render('orderinfo/index.html.twig', array(
             'orderInfos' => $orderInfos,
+        ));
+    }
+
+    /**
+     * Lists all OrderInfo entities de one user.
+     *
+     */
+    public function indexUserAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $orderInfos = $em->getRepository('DurabolBundle:OrderInfo')->findByUser($user, array('orderDate' => 'DESC'));
+
+        return $this->render('orderinfo/index.html.twig', array(
+            'orderInfos' => $orderInfos,
+            'user' => $user
         ));
     }
 

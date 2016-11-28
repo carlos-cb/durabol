@@ -18,6 +18,7 @@ class DefaultController extends Controller
         $numUser = $em->getRepository('DurabolBundle:User')->createQueryBuilder('a')->select('COUNT(a.id)')->getQuery()->getSingleScalarResult();
         $numOrder = $em->getRepository('DurabolBundle:OrderInfo')->createQueryBuilder('b')->select('COUNT(b.id)')->getQuery()->getSingleScalarResult();
         $numProduct = $em->getRepository('DurabolBundle:Product')->createQueryBuilder('c')->select('COUNT(c.id)')->getQuery()->getSingleScalarResult();
+        $numShop = $em->getRepository('DurabolBundle:Shop')->createQueryBuilder('s')->select('COUNT(s.id)')->getQuery()->getSingleScalarResult();
 
         $queryU = $em->createQuery("SELECT p FROM DurabolBundle:User p WHERE 1=1 order by p.id DESC")->setMaxResults(10);
         $users = $queryU->getResult();
@@ -32,6 +33,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('DurabolBundle:BackEnd:overview.html.twig', array(
+            'numShop' => $numShop,
             'numUser' => $numUser,
             'numOrder' => $numOrder,
             'numProduct' => $numProduct,
