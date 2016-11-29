@@ -1,0 +1,28 @@
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/button.css') }}" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+{% endblock %}
+
+{% block body %}
+    <br><br>
+    <div class="container" style="min-height:400px;">
+
+        <div class="box col-md-6 col-lg-6" style="text-align: center;display: inline-block;position: relative; top: 100px;">
+            <img src="{{ asset('bundles/durabol/img/success.png') }}">
+        </div>
+        <div class="box col-md-6 col-lg-6" style="display: inline-block;margin-top: 30px">
+            <h3 class="box"><b>团购网新订单提醒</b></h3>
+            <h4>Entra www.durabol.com/admin para ver el pedido.</h4>
+            <br><br><br>
+            <h4>Nombre de Cliente: {{ orderInfo.receiverName }}</h4>
+            <h4>Número de Pedido: {{ orderInfo.id }}</h4>
+            <h4>Importe Total: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+            <h4>Tiempo de Generación: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
+            <br>
+        </div>
+    </div>
+{% endblock %}

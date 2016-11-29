@@ -9,3 +9,7 @@ cart_cartitem_delete:
 cart_addtocartAjax:
     path:     /addtocartAjax
     defaults: { _controller: DurabolBundle:Default:addtocartAjax }
+
+cart_guestinfo:
+    path:     /guestinfo
+    defaults: { _controller: DurabolBundle:Default:guestinfo }

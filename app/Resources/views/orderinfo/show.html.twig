@@ -48,8 +48,8 @@
                     <tr>
                         <td><img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" height="100px" width="100px"></td>
                         <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} x {{ orderItem.product.unit }}</td>
-                        <td>{{ orderItem.product.code }}<br><br>{{ orderItem.product.price|number_format(3, '.', ',') }} €</td>
-                        {% set foo = orderItem.product.price * orderItem.quantity %}
+                        <td>{{ orderItem.product.code }}<br><br>{{ orderItem.price|number_format(3, '.', ',') }} €</td>
+                        {% set foo = orderItem.price * orderItem.quantity %}
                         <td><br><br>{{ foo|number_format(3, '.', ',') }} €</td>
                     </tr>
                 {% endif %}

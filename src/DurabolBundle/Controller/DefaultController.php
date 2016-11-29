@@ -7,6 +7,7 @@ use DurabolBundle\Entity\Cart;
 use DurabolBundle\Entity\CartItem;
 use DurabolBundle\Entity\Shop;
 use DurabolBundle\Entity\Category;
+use DurabolBundle\Entity\OrderInfo;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -156,5 +157,44 @@ class DefaultController extends Controller
         $em->persist($newCartItem);
         $em->flush();
         return new Response();
+    }
+
+    public function guestinfoAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        return $this->render('DurabolBundle:Default:guestinfo.html.twig', array(
+            'user' => $user,
+        ));
+    }
+
+    public function pedidoAction()
+    {
+        $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $this->getDoctrine()->getRepository('DurabolBundle:OrderInfo');
+        $orderInfos = $repository->findByUser($user, array('orderDate' => 'DESC'));
+
+        return $this->render('DurabolBundle:Default:pedido.html.twig', array(
+            'orderInfos' => $orderInfos,
+            'user' => $user,
+        ));
+    }
+
+    public function productlistclientAction(OrderInfo $orderInfo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+
+        $query = $em->createQuery("SELECT p FROM DurabolBundle:OrderItem p WHERE p.orderInfo=$orderInfo");
+        $orderItems = $query->getResult();
+
+        return $this->render('DurabolBundle:Default:productlistclient.html.twig', array(
+            'orderItems' => $orderItems,
+            'orderInfo' => $orderInfo,
+            'user' => $user,
+        ));
     }
 }

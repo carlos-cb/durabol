@@ -30,6 +30,10 @@ durabol_font:
     resource: "@DurabolBundle/Resources/config/routing/font.yml"
     prefix:   /product
 
+durabol_order:
+    resource: "@DurabolBundle/Resources/config/routing/order.yml"
+    prefix:   /order
+
 durabol_homepage:
     path:     /
     defaults: { _controller: DurabolBundle:Default:index }

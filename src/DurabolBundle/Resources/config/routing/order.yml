@@ -1,0 +1,23 @@
+order_cartToOrderinfo:
+    path:     /cartToOrderinfo
+    defaults: { _controller: DurabolBundle:Order:cartToOrderinfo }
+
+order_orderpay:
+    path:     /orderpay/{orderInfo}
+    defaults: { _controller: DurabolBundle:Order:orderpay }
+
+payment_prepareStripe:
+    path:     /payment/prepareStripe/{orderInfo}
+    defaults: { _controller: DurabolBundle:Payment:prepareStripe }
+
+payment_paymentDone:
+    path:     /payment/done
+    defaults: { _controller: DurabolBundle:Payment:done }
+
+order_pedido:
+    path:     /pedido
+    defaults: { _controller: DurabolBundle:Default:pedido }
+
+order_productlistclient:
+    path:     /pedido/productlistclient/{orderInfo}
+    defaults: { _controller: DurabolBundle:Default:productlistclient }

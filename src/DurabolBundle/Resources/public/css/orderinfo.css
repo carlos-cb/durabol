@@ -1,0 +1,231 @@
+.size1of1 {
+    float: none;
+}
+
+.size1of1 h2 {
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+}  h2 {
+    font-size: 24px;
+    line-height: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.line::after, .lastUnit::after {
+    clear: both;
+    display: block;
+    visibility: hidden;
+    overflow: hidden;
+    height: 0 !important;
+    line-height: 0;
+    font-size: xx-large;
+    content: " ";
+}
+.mod {
+    background: url(../img/dotted-line.png) repeat-x left bottom;
+    margin-bottom: 20px;
+    padding-bottom: 1px;
+}
+.section .titleSection {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 22px;
+    padding-bottom: 0;
+}
+* + h1, h1 + *, * + h2, h2 + *, * + h3, h3 + *, * + h4, h4 + * {
+    margin-top: 0;
+}
+
+.checkbox-custom, .radio-custom {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-custom, .checkbox-custom-label, .radio-custom, .radio-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.checkbox-custom-label, .radio-custom-label {
+    position: relative;
+}
+
+.checkbox-custom + .checkbox-custom-label:before, .radio-custom + .radio-custom-label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    background: rebeccapurple;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+.radio-custom + .radio-custom-label:before {
+    border-radius: 50%;
+}
+
+.radio-custom:checked + .radio-custom-label:before {
+    background: #ccc;
+    box-shadow: inset 0 0 0 4px #fff;
+}
+
+
+.checkbox-custom:focus + .checkbox-custom-label, .radio-custom:focus + .radio-custom-label {
+    outline: 1px solid #ddd; /* focus style */
+}
+
+.radioGroup {
+    margin: 10px 0 20px;
+}
+
+.actions {
+    margin: 8px 0 28px;
+}
+.fLeft {
+    float: left;
+}
+.actions .butWhite {
+    background-color: #fff;
+}
+.actions .button {
+    cursor: pointer;
+    overflow: visible;
+    height: 37px;
+    padding: 0 17px;
+    text-transform: uppercase;
+    margin: 5px 6px 5px 3px;
+    border: 1px solid #000;
+}
+.actions .butWhite .icon-arrow-left {
+    display: inline;
+    float: left;
+    margin: 14px -6px;
+}
+.icon-arrow-left {
+    background-position: -26px -12px;
+    height: 8px;
+    width: 7px;
+    margin: 0 3px;
+}
+.actions .button span {
+    display: block;
+    white-space: nowrap;
+    font-size: 21px;
+    font-weight: normal;
+    text-align: center;
+    min-width: 165px;
+    line-height: 37px;
+}
+.actions .button {
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.fRight {
+    float: right;
+}
+.actions .butBlack {
+    background-color: #000;
+}
+.actions .button {
+    cursor: pointer;
+    overflow: visible;
+    height: 37px;
+    padding: 0 17px;
+    text-transform: uppercase;
+    margin: 5px 6px 5px 3px;
+    border: 1px solid #000;
+}
+.actions .butBlack span {
+    color: #fff;
+}
+.actions .button span {
+    display: block;
+    white-space: nowrap;
+    font-size: 21px;
+    font-weight: normal;
+    text-align: center;
+    min-width: 165px;
+    line-height: 37px;
+    position: relative;
+    bottom: 10px;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+}
+
+div.radioGroup input.form-control{
+    -webkit-box-sizing: content-box!important;
+    box-sizing: content-box!important;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.steps {
+    margin-bottom: 20px;
+}
+
+.steps li.act {
+    color: #000;
+}
+.steps li {
+    text-transform: uppercase;
+    color: #6d6e71;
+    font-size: 30px;
+    display: inline-block;
+    margin-right: 15px;
+}
+li {
+    list-style: none;
+}
+.steps ul{
+    padding: 0;
+}
+
+.section .titleSection {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 22px;
+    padding-bottom: 0;
+}
+.address {
+    margin: 5px 0 15px 0;
+    font-size: 22px;
+}
+.size1of2 {
+    width: 50%;
+}
+.firstUnit {
+    float: left;
+}
+.web-standard strong {
+    font-weight: 700;
+}
+.address .contact {
+    color: #959595;
+    margin-top: 3px;
+    display: block;
+    font-size: 21px;
+}
+.lastUnit {
+    display: table-cell;
+    float: none;
+    width: auto;
+}
+.form-group label, .form-group p, .radioGroup label, .form-group input{
+    font-size: 28px;
+}

@@ -1,0 +1,20 @@
+div#container{
+    min-height:400px;
+}
+.centerlogo img{
+    text-align:center;
+    display:block;
+    margin: auto;
+}
+div.box{
+    margin-top: 6%;
+}
+.capturelogo{
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 70px;
+}
+.payment-errors{
+    color: #ff0000;
+}

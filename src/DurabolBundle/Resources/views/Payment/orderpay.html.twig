@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container" style="margin-top: 100px;">
+        <div class="line mod">
+            <div class="unit size1of1">
+                <h2>Tramita pedido</h2>
+                <p>Si necesitas ayuda puedes llamar a nuestro teléfono gratuito de atención al cliente: 900 814 900</p>
+            </div>
+        </div>
+        <div class="line mod">
+            <div class="unit size1of1">
+                <div class="steps">
+                    <ul class="listH">
+                        <li>1. ENVÍO</li>
+                        <li class="act">2. PAGO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="" name="orderinfo">
+            <div class="">
+                <div class="">
+                    <h2>Método de Pago</h2>
+                    <br>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="line">
+            <div class="unit size1of1" style="width: 90%;">
+                <div class="section">
+                    <h3 class="titleSection">DETALLES DE TU PEDIDO</h3>
+                    <div class="line">
+                        <div class="unit size1of2 firstUnit">
+                            <label>Dirección de facturación</label>
+                            <div class="address">
+                                <br>
+                                <div><strong class="userName">{{ orderInfo.receiverName }}</strong></div>
+                                <div class="userCountry">España</div>
+                                <div class="contact">
+                                    Móvil: <span class="userPhone">+34 {{ orderInfo.receiverPhone }}</span>
+                                </div>
+                                <input type="hidden" value="" class="billAddrZipCode">
+                            </div>
+                        </div>
+                        <div class="unit size1of2 lastUnit">
+                            <label>Dirección de envío</label>
+                            <div class="address">
+                                <div class="userAddress">{{ orderInfo.receiverAdress }}&nbsp;</div>
+                                <div class="userZip">
+                                    <span>{{ orderInfo.receiverPostcode }}</span>&nbsp;
+                                    <span class="userCity">{{ orderInfo.receiverCity }}</span></div>
+                                <div class="userState">{{ orderInfo.receiverProvince }}</div>
+                                <div class="userCountry">España</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="line">
+            <table class="order-table">
+                <thead>
+                <tr class="thead"><th>PRODUCTO</th>
+                    <th class="description">DESCRIPCIÓN</th>
+                    <th class="description">DESCRIPCIÓN</th>
+                    <th class="quantity">CANTIDAD</th>
+                    <th class="quantity">UNIDADES</th>
+                    <th class="price" id="priceHeader">IMPORTE</th>
+                </tr>
+                </thead>
+                <tbody id="shangpin">
+                {% for orderItem in orderInfo.orderItems %}
+                    <tr id="order-item" class="order-item">
+                        <td class="_detail">
+                                <img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" width="100px;">
+                        </td>
+                        <td class="description _detail">
+                                <span>{{ orderItem.product.name }}</span>
+                        </td>
+                        <td class="description _detail">
+                            <span>Ref.&nbsp;{{ orderItem.product.code }}</span>
+
+                        </td>
+                        <td class="quantity">
+                            <span class="_quantity" id="_quantity">{{ orderItem.quantity }}</span>
+                            <span id="cartItemId" style="display: none">{{ orderItem.id }}</span>
+                            <span id="priceunit" style="display: none">{{ orderItem.price }}</span>
+                        </td>
+                        <td class="quantity">
+                            <span class="_quantity" id="_quantity">{{ orderItem.product.unit }}</span>
+                        </td>
+                        <td class="price"><span id="heji">{{ orderItem.price * orderItem.quantity|number_format(3, '.', ',') }}</span> EUR</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="6" class="order-items-total" scope="row">Total de productos:</th>
+                    <td class="order-items-total" headers="priceHeader"><span id="totalprice">{{ orderInfo.goodsFee|number_format(3, '.', ',') }}</span> EUR</td>
+                </tr>
+                <tr>
+                    <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío:</th>
+                    <td class="order-delivery-costs" headers="priceHeader">{{ orderInfo.shipFee|number_format(3, '.', ',') }} EUR</td>
+                </tr>
+                <tr class="total">
+                    <th colspan="6" scope="row"><strong>Total:</strong></th>
+                    <td class="order-total" headers="priceHeader"><span id="total">{{ orderInfo.totalPrice|number_format(3, '.', ',') }}</span> EUR</td>
+                </tr>
+                <tr class="order-vat-costs">
+                    <th colspan="6" scope="row">
+                        <span class="offleft">Impuestos</span>
+                    </th>
+                    <td headers="priceHeader"><em>* IVA incluido</em></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,221 @@
+section{
+    font-family: 'Helvetica','Arial',Sans-Serif;
+    color: #222;
+    font-size: 13px;
+    line-height: 1.231;
+}
+.content-main#main {
+
+}
+#main {
+    padding-top: 15px;
+    min-height: 530px;
+}
+
+.content-main {
+    min-width: 580px;
+    clear: both;
+    margin: 0 auto;
+}
+.offleft {
+    left: -9999px;
+    position: absolute;
+    width: 999px;
+}
+
+.web-standard h2.head {
+    padding: 20px 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+#shop-area.shop-cart-page .no-stock-info {
+    background-color: #b90000;
+    color: white;
+}
+#shop-area.shop-cart-page .no-stock-info, #shop-area.shop-cart-page .time-change-info {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: .5em 10px .2em 10px;
+}
+.order-table {
+    width: 100%;
+    background: url('../img/dotted-line.png') repeat-x top left;
+    position: relative;
+    margin-bottom: 25px;
+}
+th{
+    border-top: none;
+    border-bottom: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.order-table thead th, .order-table .thead th {
+    padding: 13px 13px 13px 0;
+    background: url('../img/dotted-line.png') repeat-x bottom left;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+#shop-area.shop-cart-page .description {
+    width: 30%;
+}
+tr{
+    margin: 0;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+#shop-area.shop-cart-page .description a {
+    color: #959595;
+    display: block;
+}
+a:visited {
+    color: black;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+    cursor: inherit;
+    color: black;
+    cursor: pointer;
+}
+#shop-area.shop-cart-page .delete {
+    text-align: right;
+    padding-right: 20px;
+}
+.order-table thead th.delete, .order-table .thead th.delete {
+    width: 65px;
+    text-align: right;
+}
+.order-table tbody td {
+    width: 15%;
+    padding: 13px 13px 13px 0;
+    font-size: 22px;
+    background: url('../img/dotted-line.png') repeat-x bottom left;
+}
+
+.order-table tbody .price {
+    text-align: right;
+    white-space: nowrap;
+    width: 1%;
+}
+#shop-area.shop-cart-page .delete {
+    text-align: right;
+    padding-right: 20px;
+}
+.order-table tbody td.color {
+    text-align: left;
+    text-transform: uppercase;
+}
+.order-table tbody td.quantity span {
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+.order-table tbody td.quantity a {
+    margin-right: 10px;
+    font-size: 25px;
+}
+.order-table tbody td.quantity button {
+    background-color: white;
+    display: block;
+    margin: 1px 0;
+    border: 0;
+    color: #000;
+    font-weight: bold;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 0;
+}
+.order-table tbody td .fonticon-close {
+    margin: 0 3px;
+    padding: 0;
+    border: 0;
+    background-color: white;
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 25px;
+}
+.order-table tfoot td.order-items-total, .order-table tfoot th.order-items-total {
+    padding: 25px 20px 3px 0;
+}
+.order-table tfoot tr.order-vat-costs td, .order-table tfoot tr.order-vat-costs th {
+    padding-bottom: 25px;
+}
+.order-table tfoot td, .order-table tfoot th {
+    text-align: right;
+    background-color: #ebebeb;
+    white-space: nowrap;
+    text-transform: none;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+.button-big {
+    line-height: 40px;
+    margin: 5px 0px 20px 0;
+}
+.button-secondary {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    font-size: 21px;
+    text-transform: uppercase;
+    color: black;
+    position: relative;
+    border: 1px solid #000;
+    width: 230px;
+}
+.button-primary {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: black;
+    font-size: 21px;
+    text-transform: uppercase;
+    color: white;
+    position: relative;
+    border: 1px solid #000;
+}
+.order-table tfoot tr.total td, .order-table tfoot tr.total th {
+    font-size: 26px;
+    font-weight: bold;
+}
+.web-standard strong {
+    font-weight: 700;
+}
+section td{
+    border-bottom: none;
+}
+.order-table tfoot td, .order-table tfoot th {
+    text-align: right;
+    padding: 3px 20px 3px 0;
+    background-color: #f8f8f8;
+    white-space: nowrap;
+    text-transform: none;
+}
+.anniu{
+    margin-top: 40px;
+}
+.FR {
+    width: 230px;
+    float: right;
+}
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}

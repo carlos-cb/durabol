@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new DurabolBundle\DurabolBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

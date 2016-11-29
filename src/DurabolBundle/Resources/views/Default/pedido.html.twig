@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container-fluid" style="margin-top: 100px;">
+    <section id="main" class="content-main" role="main" style="font-size: 28px!important;">
+        <h2>我的所有订单</h2>
+        <br>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead"><th>订单号</th>
+                        <th class="description">日期</th>
+                        <th>状态</th>
+                        <th>金额</th>
+                        <th>快递状态</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderInfo in orderInfos %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail" style="height: 50px">{{ orderInfo.id }}</td>
+                            <td class="description _detail">{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d') }}{% endif %}</td>
+                            <td class="color">
+                                {{ orderInfo.state }}
+                                {% if orderInfo.state == 'pagando' %} &nbsp;&nbsp;&nbsp;<a href="{{ path('order_orderpay', { 'orderInfo': orderInfo.id }) }}" class="button button-tiny button-inverse button-rounded">Pagar</a>{% endif %}
+                            </td>
+                            <td>{{ orderInfo.totalPrice }} EUR</td>
+                            <td>{% if orderInfo.envio %}{{ orderInfo.envio }}{% endif %}</td>
+                            <td>
+                                <a href="{{ path('order_productlistclient', { 'orderInfo': orderInfo.id }) }}">查看货品</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+            <div class="anniu">
+                <button class="button-secondary button-big FL _continue-shopping-btn"  style="width: 200px;" onclick="window.location.href='{{ path('durabol_homepage') }}'" type="button"><span>返回</span></button>
+            </div>
+        </section>
+    </section>
+    </div>
+{% endblock %}

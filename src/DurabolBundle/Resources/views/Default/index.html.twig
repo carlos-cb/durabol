@@ -224,7 +224,7 @@
                                 <br>Lee más sobre nuestra política de devoluciones y reembolso.</p>
                         </div>
                         <div class="anniu">
-                            <button class="button-primary button-big FR" type="button"><span>Continuar</span></button>
+                            <button class="button-primary button-big FR" onclick="window.location.href='{{ path('cart_guestinfo') }}'" type="button"><span>Continuar</span></button>
                         </div>
                 </section>
             </section>
@@ -255,7 +255,7 @@
                     <br>
                 </div>
                 <hr class="featurette-divider">
-                <h3><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;我的订单<span style="float:right; font-size: 30px; color: #7F8C8D;"> 查看全部 > </span></h3>
+                <h3><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;我的订单<span style="float:right; font-size: 30px; color: #7F8C8D;"><a href="{{ path('order_pedido') }}">查看全部 > </a></span></h3>
                 <br><br>
                 <div class="row orders">
                     <div class="col-xs-4">

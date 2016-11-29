@@ -1,0 +1,4 @@
+DurabolBundle\Entity\PaymentToken:
+    type: entity
+    table: null
+    lifecycleCallbacks: {  }

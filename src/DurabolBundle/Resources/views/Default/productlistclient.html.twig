@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container-fluid" style="margin-top: 100px;">
+    <section id="main" class="content-main" role="main">
+        <h2>货品列表</h2>
+        <br>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead">
+                        <th>图片</th>
+                        <th class="description">名称</th>
+                        <th class="description">货号</th>
+                        <th class="quantity">单位</th>
+                        <th class="quantity">数量</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderItem in orderItems %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail">
+                                <img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" width="135px;">
+                            </td>
+                            <td class="description _detail">
+                                <span>{{ orderItem.product.name }}</span>
+                            </td>
+                            <td class="description _detail">
+                                <span>{{ orderItem.product.code }}</span>
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.product.unit }} uds</span>
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.quantity }} </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="anniu">
+                    <button class="button-secondary button-big FL _continue-shopping-btn"  style="width: 200px;" onclick="window.location.href='{{ path('order_pedido') }}'" type="button"><span>返回</span></button>
+                </div>
+            </form>
+        </section>
+    </section>
+    </div>
+{% endblock %}

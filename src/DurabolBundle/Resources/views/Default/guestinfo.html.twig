@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container" style="margin-top: 100px;">
+        <div class="line mod">
+            <div class="unit size1of1">
+                <h1>Tramita pedido</h1>
+            </div>
+        </div>
+        <div class="line mod">
+            <div class="unit size1of1">
+                <div class="steps">
+                    <ul class="listH">
+                        <li class="act">1. ENVÍO</li>
+                        <li>2. PAGO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('order_cartToOrderinfo') }}" name="orderinfo">
+            <div class="line mod">
+                <div class="radioGroup">
+                    <h2>Método de envío</h2>
+                    <div>
+                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1">
+                        <label for="radio-1" class="radio-custom-label">在线银行卡付款，享95折。</label>
+                    </div>
+                    <div>
+                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2" checked>
+                        <label for="radio-2" class="radio-custom-label">银行转账</label>
+                    </div>
+                    <div style="display: none">
+                        <input id="radio-3" class="radio-custom" name="radio-group" type="radio" value="3">
+                        <label for="radio-3" class="radio-custom-label">Express: En 24-48 horas (días laborables). 5,95 EUR</label>
+                    </div>
+                </div>
+            </div>
+            <div class="line mod">
+                <div class="radioGroup">
+                    <h2>DATOS DE CONTACTO</h2>
+                    <div class="form-group">
+                        <label for="inputtel" class="col-sm-2 control-label">电话</label>
+                        <div class="col-sm-8">
+                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required">
+                        </div>
+                    </div>
+                    <h2>DATOS DE ENVÍO</h2>
+                    <div class="form-group">
+                        <label for="inputname" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" class="form-control" id="inputname" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputaddress" class="col-sm-2 control-label">地址</label>
+                        <div class="col-sm-8">
+                            <input name="address" type="text" class="form-control" id="inputaddress" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputpost" class="col-sm-2 control-label">邮编</label>
+                        <div class="col-sm-8">
+                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputlocal" class="col-sm-2 control-label">城市</label>
+                        <div class="col-sm-8">
+                            <input name="city" type="text" class="form-control" id="inputlocal" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputprovince" class="col-sm-2 control-label">省份</label>
+                        <div class="col-sm-8">
+                            <input name="province" type="text" class="form-control" id="inputprovince" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">国家</label>
+                        <div class="col-sm-8">
+                            <p style="margin-top:12px;margin-left:20px;font-weight: bold;">España</p>
+                        </div>
+                    </div>
+                    <div style="position: relative; left: 50px;">
+                        <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;">
+                        个体户客户请勾选此选项，将添加5.3%的税款。
+                    </div>
+                    <br><br>
+                    <div class="">
+                        <div class="unit size1of1">
+                            <div class="actions fLeft">
+                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent"
+                                        onclick="window.location.href='{{ path('durabol_homepage') }}'">
+                                    <span style="bottom: 0;"><i class="fa fa-arrow-left" aria-hidden="true"></i> 返回</span>
+                                </button>
+                            </div>
+                            <div class="actions fRight">
+                                <button id="checkoutPaymentBt" type="submit" value="FINALIZAR PEDIDO"
+                                        class="button butBlack authPayment gaTrack gaViewEvent">
+                                    <span style="bottom: 0">下一步</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

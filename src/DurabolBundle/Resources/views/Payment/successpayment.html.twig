@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/payment.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <br><br><br>
+    <div class="container" id="container">
+        <div class="box col-md-6 col-lg-6" style="text-align: center;display: inline-block;position: relative; top: 100px;">
+            <img src="{{ asset('bundles/durabol/img/success.png') }}">
+        </div>
+        <div class="box col-md-6 col-lg-6" style="display: inline-block;">
+            <h3 class="box"><b>Su pago ha sido procesado con éxito.</b></h3>
+            <h4>Muchas gracias.</h4>
+            <br><br><br>
+            <h4>Nombre de Cliente: {{ orderInfo.receiverName }}</h4>
+            <h4>Número de Pedido: {{ orderInfo.id }}</h4>
+            <h4>Importe Total: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+            <h4>Tiempo de Generación: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
+            <br>
+            <a href="" class="button button-rounded button-inverse">Ver mis pedidos</a>
+        </div>
+
+    </div>
+
+{% endblock %}
