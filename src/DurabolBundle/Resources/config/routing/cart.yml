@@ -1,0 +1,11 @@
+cart_update:
+    path:     /updateNum
+    defaults: { _controller: DurabolBundle:Default:ajaxUpdate }
+
+cart_cartitem_delete:
+    path:     /{id}/cartdelete
+    defaults: { _controller: DurabolBundle:Default:cartdelete }
+
+cart_addtocartAjax:
+    path:     /addtocartAjax
+    defaults: { _controller: DurabolBundle:Default:addtocartAjax }

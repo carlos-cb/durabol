@@ -2,6 +2,10 @@ durabol_user:
     resource: "@DurabolBundle/Resources/config/routing/user.yml"
     prefix:   /admin/user
 
+durabol_cart:
+    resource: "@DurabolBundle/Resources/config/routing/cart.yml"
+    prefix:   /cart
+
 durabol_shop:
     resource: "@DurabolBundle/Resources/config/routing/shop.yml"
     prefix:   /admin/shop
@@ -22,6 +26,10 @@ durabol_sale:
     resource: "@DurabolBundle/Resources/config/routing/sale.yml"
     prefix:   /admin/sale
 
+durabol_font:
+    resource: "@DurabolBundle/Resources/config/routing/font.yml"
+    prefix:   /product
+
 durabol_homepage:
     path:     /
     defaults: { _controller: DurabolBundle:Default:index }
@@ -29,7 +37,3 @@ durabol_homepage:
 durabol_homepage_admin:
     path:     /admin
     defaults: { _controller: DurabolBundle:Default:backEnd }
-
-durabol_productlist:
-    path:     /productlist
-    defaults: { _controller: DurabolBundle:Default:productlist }

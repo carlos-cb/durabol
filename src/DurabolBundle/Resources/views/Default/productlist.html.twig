@@ -3,101 +3,79 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('bundles/durabol/css/productlist.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/jquery.fancybox.css') }}">
 {% endblock %}
 
 {% block body %}
     {% include 'DurabolBundle:Public:header.html.twig' %}
 
-        <div class="productlist" style="margin-top: 100px;">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="productid">
+        <div class="productlist" style="margin-top: 100px;" id="product">
+            {% for product in products %}
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="product{{ product.id }}">
                 <div class="thumbnail">
-                    <a id="product_image" href="">
-                        <img src="{{ asset('uploads/fotos/zuqiu1.jpg') }}" data-src="">
+                    <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
+                        <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}">
                     </a>
                     <div class="caption">
-                        <h5>Plato Llano Redondo Blanco</h5>
+                        <h5 style="min-width: 80%">{{ product.name }} ({{ product.code }})</h5>
                         <div class="row">
                             <div class="col-xs-7">
-                                <h5>12 u/c<br>6.50 €<br></h5>
+                                <h5>{{ product.unit }} u/c<br>
+                                    {% if product.isSale == 1 %}
+                                        <span class="sale">{{ (product.discountPrice * user.discount/100)|number_format(3, '.', ',') }} €</span> -
+                                        <span class="line-through">{{ (product.price * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                    {% else %}
+                                        <span>{{ (product.price * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                    {% endif %}
+                                    <br>
+                                </h5>
                             </div>
+                            <p class="productId" style="display: none">{{ product.id }}</p>
                             <div class="col-xs-5">
-                            <span class="button-wrap nocart">
-                                <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </span>
+                                <span class="button-wrap nocart">
+                                    <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect{{ product.id }}">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </span>
+                                <span class="button-wrap yescart" style="display: none;">
+                                    <a class="button button-circle button-action button-raised button-giant" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="productid">
-                <div class="thumbnail">
-                    <a id="product_image" href="">
-                        <img src="{{ asset('uploads/fotos/zuqiu2.jpg') }}" data-src="">
-                    </a>
-                    <div class="caption">
-                        <h5>Plato Llano Redondo Blanco</h5>
-                        <div class="row">
-                            <div class="col-xs-7">
-                                <h5>12 u/c<br>6.50 €<br></h5>
-                            </div>
-                            <div class="col-xs-5">
-                            <span class="button-wrap nocart">
-                                <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="numselect" id="numselect{{ product.id }}" style="display: none; text-align: center; min-width: 500px;min-height: 500px;">
+                    <br><br>
+                    <p class="productIdHidden" style="display: none">{{ product.id }}</p>
+                    <button class="min button button-inverse button-box button-giant button-3d" style="margin-right: 60px"><i class="fa fa-minus"></i></button>
+                    <button class="add button button-inverse button-box button-giant button-3d"><i class="fa fa-plus"></i></button>
+                    <br><br><br><br>
+                    <h4 class="heji">
+                        小计：<span id="num">1</span>
+                        x <span id="unit">{{ product.unit }}</span>
+                        x <span id="price">{{ product.price }}</span> €
+                        = <span id="heji"></span> €
+                    </h4>
+                    <br><br>
+                    <button class="button button-circle button-raised button-primary numcheck button-giant button-3d" data-path="{{ path('cart_addtocartAjax') }}">
+                        <i class="fa fa-check"></i>
+                    </button>
+                    <br><br>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="productid">
-                <div class="thumbnail">
-                    <a id="product_image" href="">
-                        <img src="{{ asset('uploads/fotos/zuqiu3.jpg') }}" data-src="">
-                    </a>
-                    <div class="caption">
-                        <h5>Plato Llano Redondo Blanco</h5>
-                        <div class="row">
-                            <div class="col-xs-7">
-                                <h5>12 u/c<br>6.50 €<br></h5>
-                            </div>
-                            <div class="col-xs-5">
-                            <span class="button-wrap nocart">
-                                <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="productid">
-                <div class="thumbnail">
-                    <a id="product_image" href="">
-                        <img src="{{ asset('uploads/fotos/zuqiu4.jpg') }}" data-src="">
-                    </a>
-                    <div class="caption">
-                        <h5>Plato Llano Redondo Blanco</h5>
-                        <div class="row">
-                            <div class="col-xs-7">
-                                <h5>12 u/c<br>6.50 €<br></h5>
-                            </div>
-                            <div class="col-xs-5">
-                            <span class="button-wrap nocart">
-                                <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect">
-                                    <i class="fa fa-plus"></i>
-                                </a>
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
+            <ul class="cartItems" style="display: none">
+                {% for cartItem in cartItems %}
+                    <li class="cartItemId">{{ cartItem.product }}</li>
+                {% endfor %}
+            </ul>
         </div>
 
 {% endblock %}
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('bundles/durabol/js/jquery.fancybox.pack.js') }}"></script>
+        <script src="{{ asset('bundles/durabol/js/productlist.js') }}"></script>
+    {% endblock %}

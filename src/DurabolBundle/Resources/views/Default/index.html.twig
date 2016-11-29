@@ -23,15 +23,15 @@
                     {% for productSale in productSales %}
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
                             <div class="thumbnail">
-                                <a id="product_image">
+                                <a id="product_image" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">
                                     <img src="{{ asset('uploads/fotos/' ~ productSale.foto) }}">
                                 </a>
                                 <div class="caption">
                                     <h6>{{ productSale.name }}</h6>
                                     <div class="price _product-price">
-                                        <span class="sale">{{ productSale.discountPrice }} €</span> -
-                                        <span class="line-through">{{ productSale.price }} €</span>
-                                        <button class="btn btn-danger">马上抢购</button>
+                                        <span class="sale">{{ (productSale.discountPrice * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                        <span class="line-through">{{ (productSale.price * user.discount/100)|number_format(2, '.', ',') }} €</span>
+                                        <a class="btn btn-danger" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">马上抢购</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                                     <i class="fa fa-industry" aria-hidden="true"></i>
                                 {% endif %}
                                 &nbsp;&nbsp;{{ shop.name }}
-                                <span class="text-muted">>>进入店铺</span>
+                                <span class="text-muted"><a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">>>进入店铺</a></span>
                             </h3>
                             <hr class="featurette-divider">
                         </div>
@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-xs-10 thumbnail">
                             <div class="col-xs-3">
-                                <a id="product_image">
+                                <a id="product_image" href="{{ path('font_productList', { 'category': shop.category(0).id }) }}">
                                     <img src="{{ asset('uploads/fotos/' ~ shop.category(0).foto) }}">
                                 </a>
                                 <div class="indexcategory">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-3">
-                                <a id="product_image">
+                                <a id="product_image" href="{{ path('font_productList', { 'category': shop.category(1).id }) }}">
                                     <img src="{{ asset('uploads/fotos/' ~ shop.category(1).foto) }}">
                                 </a>
                                 <div class="indexcategory">
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-3">
-                                <a id="product_image">
+                                <a id="product_image" href="{{ path('font_productList', { 'category': shop.category(2).id }) }}">
                                     <img src="{{ asset('uploads/fotos/' ~ shop.category(2).foto) }}">
                                 </a>
                                 <div class="indexcategory">
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-3">
-                                <a id="product_image">
+                                <a id="product_image" href="{{ path('font_productList', { 'category': shop.category(3).id }) }}">
                                     <img src="{{ asset('uploads/fotos/' ~ shop.category(3).foto) }}">
                                 </a>
                                 <div class="indexcategory">
@@ -127,18 +127,18 @@
             <div style="margin-top: 80px;">
                 {% for shop in shops %}
                 <div class="">
-                    <a href="">
+                    <a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">
                         <div class="col-xs-12">
-                            <div class="col-xs-4">
+                            <div class="col-xs-4 col-lg-2">
                                 <img src="{{ asset('uploads/fotos/' ~ shop.foto) }}">
                             </div>
-                            <div class="col-xs-6 categoryinfo">
+                            <div class="col-xs-6 col-lg-8 categoryinfo">
                                 <br><h3>{{ shop.name }}</h3><br>
                                 <h5>{% for categoryName in shop.categoryNames %}{% if loop.index <= 5 %}{{ categoryName }}, {% endif %}{% endfor %}等</h5>
                                 <h5>{{ shop.minCoste }} €起订, 共计{{ shop.productNum }}个商品</h5>
                             </div>
                             <div class="col-xs-2">
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                <i class="fa fa-chevron-right" aria-hidden="true" style="line-height: 250px;font-size: 26px;font-weight: 600;"></i>
                             </div>
                         </div>
                     </a>
@@ -158,7 +158,6 @@
             <div class="container-fluid">
             <section id="main" class="content-main" role="main" style="margin-top: 80px;">
                 <section id="shop-cart-content">
-                    <form action="" method="POST" class="_shopCartForm">
                         <table class="order-table">
                             <thead>
                             <tr class="thead">
@@ -171,45 +170,45 @@
                             </tr>
                             </thead>
                             <tbody id="shangpin">
-
+                            {% for cartItem in cartItems %}
                                 <tr id="order-item" class="order-item">
                                     <td class="_detail">
                                         <a href="" target="_self">
-                                            <img src="{{ asset('uploads/fotos/show3.jpg') }}" width="135px;">
+                                            <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
                                         </a>
                                     </td>
                                     <td class="description _detail">
                                         <a href="" target="_self">
-                                            <span>gggggggggg</span><br><br>Ref.&nbsp;ER2344
+                                            <span>{{ cartItem.product.name }}</span><br><br>{{ cartItem.product.code }}
                                         </a>
                                     </td>
                                     <td class="quantity">
-                                        <span class="_quantity" id="_quantity">2</span>
-                                        <span id="cartItemId" style="display: none"></span>
-                                        <span id="priceunit" style="display: none"></span>
+                                        <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
+                                        <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
+                                        <span id="priceunit" style="display: none">{{ cartItem.price }}</span>
                                     <span style="margin-left: 30px;">
-                                        <button class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
+                                        <button name="{{ path('cart_update') }}" class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
                                         <br>
-                                        <button class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
+                                        <button name="{{ path('cart_update') }}" class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
                                     </span>
                                     </td>
-                                    <td><span>20 uds</span></td>
-                                    <td class="price"><span id="heji">187.59</span> EUR</td>
+                                    <td><span>{{ cartItem.product.unit }} uds</span></td>
+                                    <td class="price"><span id="heji"></span> EUR</td>
                                     <td>
-                                        <a class="button button-plain button-border button-box button-inverse" href="" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
+                                        <a class="button button-plain button-border button-box button-inverse" href="{{ path('cart_cartitem_delete', { 'id': cartItem.id }) }}" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
-
+                            {% endfor %}
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th colspan="6" class="order-items-total" scope="row">Total de productos: <span id="totalprice">187.59</span> EUR</th>
+                                <th colspan="6" class="order-items-total" scope="row">Total de productos: <span id="totalprice"></span> EUR</th>
                             </tr>
                             <tr>
                                 <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío estimados: 0,00 EUR</th>
                             </tr>
                             <tr class="total">
-                                <th colspan="6" scope="row"><strong>Total:</strong> <span id="total">187.59</span> EUR</th>
+                                <th colspan="6" scope="row"><strong>Total:</strong> <span id="total"></span> EUR</th>
                             </tr>
                             <tr class="order-vat-costs">
                                 <th colspan="6" scope="row">
@@ -225,10 +224,8 @@
                                 <br>Lee más sobre nuestra política de devoluciones y reembolso.</p>
                         </div>
                         <div class="anniu">
-                            <button class="button-secondary button-big FL _continue-shopping-btn" type="button"><span>SEGUIR COMPRANDO</span></button>
                             <button class="button-primary button-big FR" type="button"><span>Continuar</span></button>
                         </div>
-                    </form>
                 </section>
             </section>
             </div>
@@ -258,7 +255,7 @@
                     <br>
                 </div>
                 <hr class="featurette-divider">
-                <h3><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;本月累计下单<span style="float:right; font-size: 30px; color: #7F8C8D;"> 查看全部 > </span></h3>
+                <h3><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;我的订单<span style="float:right; font-size: 30px; color: #7F8C8D;"> 查看全部 > </span></h3>
                 <br><br>
                 <div class="row orders">
                     <div class="col-xs-4">
@@ -295,5 +292,6 @@
         {% block javascripts %}
             {{ parent() }}
             <script src="{{ asset('bundles/durabol/js/index.js') }}"></script>
+            <script src="{{ asset('bundles/durabol/js/cart.js') }}"></script>
         {% endblock %}
 

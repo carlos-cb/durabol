@@ -278,4 +278,8 @@ class Product
     {
         return $this->category;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

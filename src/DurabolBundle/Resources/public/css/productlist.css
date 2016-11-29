@@ -8,3 +8,9 @@
 .productlist .product h5 {
     float: left;
 }
+span.sale{
+    color: #ce0013;
+}
+span.line-through{
+    text-decoration: line-through;
+}
