@@ -13,9 +13,9 @@ DurabolBundle\Entity\OrderInfo:
             type: datetime
         goodsFee:
             type: float
-        shipFee:
-            type: float
         totalPrice:
+            type: float
+        discount:
             type: float
         payType:
             type: string
@@ -38,6 +38,9 @@ DurabolBundle\Entity\OrderInfo:
         receiverPostcode:
             type: string
             length: 255
+        receiverShuihao:
+            type: string
+            length: 255
         isPayed:
             type: boolean
         isSended:
@@ -51,9 +54,6 @@ DurabolBundle\Entity\OrderInfo:
             type: string
             length: 255
             nullable: true
-        shipmode:
-            type: string
-            length: 255
     oneToMany:
         orderItems:
             targetEntity: OrderItem

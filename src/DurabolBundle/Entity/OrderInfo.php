@@ -605,4 +605,60 @@ class OrderInfo
     {
         return $this->receiverPhone;
     }
+    /**
+     * @var float
+     */
+    private $discount;
+
+
+    /**
+     * Set discount
+     *
+     * @param float $discount
+     * @return OrderInfo
+     */
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    /**
+     * Get discount
+     *
+     * @return float 
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+    /**
+     * @var string
+     */
+    private $receiverShuihao;
+
+
+    /**
+     * Set receiverShuihao
+     *
+     * @param string $receiverShuihao
+     * @return OrderInfo
+     */
+    public function setReceiverShuihao($receiverShuihao)
+    {
+        $this->receiverShuihao = $receiverShuihao;
+
+        return $this;
+    }
+
+    /**
+     * Get receiverShuihao
+     *
+     * @return string 
+     */
+    public function getReceiverShuihao()
+    {
+        return $this->receiverShuihao;
+    }
 }

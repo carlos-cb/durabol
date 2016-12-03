@@ -30,11 +30,11 @@
                 <div class="radioGroup">
                     <h2>Método de envío</h2>
                     <div>
-                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1">
-                        <label for="radio-1" class="radio-custom-label">在线银行卡付款，享95折。</label>
+                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1" checked>
+                        <label for="radio-1" class="radio-custom-label">银行卡在线付款</label>
                     </div>
                     <div>
-                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2" checked>
+                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2">
                         <label for="radio-2" class="radio-custom-label">银行转账</label>
                     </div>
                     <div style="display: none">
@@ -52,13 +52,19 @@
                             <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required">
                         </div>
                     </div>
-                    <h2>DATOS DE ENVÍO</h2>
                     <div class="form-group">
-                        <label for="inputname" class="col-sm-2 control-label">姓名</label>
+                        <label for="inputname" class="col-sm-2 control-label">公司名</label>
                         <div class="col-sm-8">
                             <input name="name" type="text" class="form-control" id="inputname" required="required">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="inputshuihao" class="col-sm-2 control-label">税号</label>
+                        <div class="col-sm-8">
+                            <input name="shuihao" type="text" class="form-control" id="inputshuihao" required="required">
+                        </div>
+                    </div>
+                    <h2>DATOS DE ENVÍO</h2>
                     <div class="form-group">
                         <label for="inputaddress" class="col-sm-2 control-label">地址</label>
                         <div class="col-sm-8">

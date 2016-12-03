@@ -20,7 +20,7 @@
         <h2>团购网配货单</h2>
         <h5>日期： {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</h5>
         <h4>单号： {{ orderInfo.id }}</h4>
-        <h4>备注： </h4>
+        <h4>公司税号：{{ orderInfo.receiverShuihao }}</h4>
 
     </div>
     <div class="col-xs-6" style="border:1px dashed #000;margin-top: 20px;">
@@ -86,7 +86,7 @@
     <div class="col-xs-12"><hr></div>
     <div class="col-xs-6">
         <h4>支付方式: {{ orderInfo.payType }}</h4>
-        <h4>邮寄方式: {{ orderInfo.shipmode }}</h4>
+        <h4>大客户折扣: {{ orderInfo.discount * 100 }} %</h4>
         <ul>
             <li>
                 <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回</a>
