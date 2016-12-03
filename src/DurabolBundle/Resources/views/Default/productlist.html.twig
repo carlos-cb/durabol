@@ -22,10 +22,10 @@
                             <div class="col-xs-7">
                                 <h5>{{ product.unit }} u/c<br>
                                     {% if product.isSale == 1 %}
-                                        <span class="sale">{{ (product.discountPrice * user.discount/100)|number_format(3, '.', ',') }} €</span> -
-                                        <span class="line-through">{{ (product.price * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                        <span class="sale">{{ product.discountPrice|number_format(2, '.', ',') }} €</span> -
+                                        <span class="line-through">{{ product.price|number_format(2, '.', ',') }} €</span>
                                     {% else %}
-                                        <span>{{ (product.price * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                        <span>{{ product.price|number_format(2, '.', ',') }} €</span>
                                     {% endif %}
                                     <br>
                                 </h5>

@@ -1,3 +1,12 @@
+@media (min-width: 992px){
+    .container-fluid{
+        width: 970px;
+    }
+    .container-fluid{
+        width: 1170px;
+    }
+}
+
 section{
     font-family: 'Helvetica','Arial',Sans-Serif;
     color: #222;
@@ -93,6 +102,9 @@ a {
 .order-table thead th.delete, .order-table .thead th.delete {
     width: 65px;
     text-align: right;
+}
+.order-table .description{
+    min-width: 200px;
 }
 .order-table tbody td {
     width: 15%;

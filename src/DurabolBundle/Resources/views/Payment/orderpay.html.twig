@@ -10,11 +10,11 @@
 
     {% include 'DurabolBundle:Public:header.html.twig' %}
 
-    <div class="container" style="margin-top: 100px;">
+    <div class="container-fluid" style="margin-top: 100px;">
         <div class="line mod">
             <div class="unit size1of1">
                 <h2>Tramita pedido</h2>
-                <p>Si necesitas ayuda puedes llamar a nuestro teléfono gratuito de atención al cliente: 900 814 900</p>
+                <p>若需帮助 请联系客服电话:  688 099 098</p>
             </div>
         </div>
         <div class="line mod">
@@ -29,15 +29,9 @@
         </div>
         <form class="form-horizontal" method="post" enctype="multipart/form-data" action="" name="orderinfo">
             <div class="">
-                <div class="">
-                    <h2>Método de Pago</h2>
-                    <br>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
-                    </div>
-                </div>
+                <h2>Método de Pago</h2>
+                <h6 style="font-weight: bold">请点击图标选择支付方式</h6>
+                <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
             </div>
         </form>
 
@@ -76,9 +70,10 @@
         <div class="line">
             <table class="order-table">
                 <thead>
-                <tr class="thead"><th>PRODUCTO</th>
+                <tr class="thead">
+                    <th>PRODUCTO</th>
                     <th class="description">DESCRIPCIÓN</th>
-                    <th class="description">DESCRIPCIÓN</th>
+                    <th class="">CÓDIGO</th>
                     <th class="quantity">CANTIDAD</th>
                     <th class="quantity">UNIDADES</th>
                     <th class="price" id="priceHeader">IMPORTE</th>
@@ -93,7 +88,7 @@
                         <td class="description _detail">
                                 <span>{{ orderItem.product.name }}</span>
                         </td>
-                        <td class="description _detail">
+                        <td class=" _detail">
                             <span>Ref.&nbsp;{{ orderItem.product.code }}</span>
 
                         </td>
@@ -105,25 +100,25 @@
                         <td class="quantity">
                             <span class="_quantity" id="_quantity">{{ orderItem.product.unit }}</span>
                         </td>
-                        <td class="price"><span id="heji">{{ orderItem.price * orderItem.quantity|number_format(3, '.', ',') }}</span> EUR</td>
+                        <td class="price"><span id="heji">{{ (orderItem.price * orderItem.quantity * orderItem.product.unit)|number_format(2, '.', ',') }}</span> EUR</td>
                     </tr>
                 {% endfor %}
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="6" class="order-items-total" scope="row">Total de productos:</th>
-                    <td class="order-items-total" headers="priceHeader"><span id="totalprice">{{ orderInfo.goodsFee|number_format(3, '.', ',') }}</span> EUR</td>
+                    <th colspan="5" class="order-items-total" scope="row">Total de productos:</th>
+                    <td class="order-items-total" headers="priceHeader"><span id="totalprice">{{ orderInfo.goodsFee|number_format(2, '.', ',') }}</span> EUR</td>
                 </tr>
                 <tr>
-                    <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío:</th>
-                    <td class="order-delivery-costs" headers="priceHeader">{{ orderInfo.shipFee|number_format(3, '.', ',') }} EUR</td>
+                    <th class="order-delivery-costs" colspan="5" scope="row">Descuento:</th>
+                    <td class="order-delivery-costs" headers="priceHeader">{{ (orderInfo.goodsFee-orderInfo.totalPrice)|number_format(2, '.', ',') }} EUR</td>
                 </tr>
                 <tr class="total">
-                    <th colspan="6" scope="row"><strong>Total:</strong></th>
-                    <td class="order-total" headers="priceHeader"><span id="total">{{ orderInfo.totalPrice|number_format(3, '.', ',') }}</span> EUR</td>
+                    <th colspan="5" scope="row"><strong>Total:</strong></th>
+                    <td class="order-total" headers="priceHeader"><span id="total">{{ orderInfo.totalPrice|number_format(2, '.', ',') }}</span> EUR</td>
                 </tr>
                 <tr class="order-vat-costs">
-                    <th colspan="6" scope="row">
+                    <th colspan="5" scope="row">
                         <span class="offleft">Impuestos</span>
                     </th>
                     <td headers="priceHeader"><em>* IVA incluido</em></td>

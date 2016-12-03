@@ -51,7 +51,8 @@ $(document).ready(function() {
         var t = $(this).parent().find('span#num');
         t.text(parseInt(t.text())+1);
         var s =
-             parseInt($(this).parent().find("span#num").text())
+            parseInt($(this).parent().find("span#unit").text())
+            * parseInt($(this).parent().find("span#num").text())
             * parseFloat($(this).parent().find("span#price").text());
         $(this).parent().find("span#heji").html(s.toFixed(2));
     });

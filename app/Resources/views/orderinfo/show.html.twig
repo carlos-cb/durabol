@@ -47,10 +47,10 @@
                 {% if loop.index%2 == 1 %}
                     <tr>
                         <td><img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" height="100px" width="100px"></td>
-                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} x {{ orderItem.product.unit }}</td>
+                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} 包 x {{ orderItem.product.unit }}</td>
                         <td>{{ orderItem.product.code }}<br><br>{{ orderItem.price|number_format(3, '.', ',') }} €</td>
-                        {% set foo = orderItem.price * orderItem.quantity %}
-                        <td><br><br>{{ foo|number_format(3, '.', ',') }} €</td>
+                        {% set foo = orderItem.price * orderItem.quantity * orderItem.product.unit %}
+                        <td><br><br>{{ foo|number_format(2, '.', ',') }} €</td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -72,10 +72,10 @@
                 {% if loop.index%2 == 0 %}
                     <tr>
                         <td><img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" height="100px" width="100px"></td>
-                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} x {{ orderItem.product.unit }}</td>
+                        <td>{{ orderItem.product.name }}<br><br>{{ orderItem.quantity }} 包 x {{ orderItem.product.unit }}</td>
                         <td>{{ orderItem.product.code }}<br><br>{{ orderItem.price|number_format(3, '.', ',') }} €</td>
-                        {% set foo = orderItem.price * orderItem.quantity %}
-                        <td><br><br>{{ foo|number_format(3, '.', ',') }} €</td>
+                        {% set foo = orderItem.price * orderItem.quantity * orderItem.product.unit %}
+                        <td><br><br>{{ foo|number_format(2, '.', ',') }} €</td>
                     </tr>
                 {% endif %}
             {% endfor %}
@@ -95,8 +95,8 @@
         </ul>
     </div>
     <div class="col-xs-6">
-        <h4>货品金额: {{ orderInfo.goodsFee|number_format(3, '.', ',') }} €</h4>
-        <h4>运费: {{ orderInfo.shipFee|number_format(3, '.', ',') }} €</h4>
+        <h4>货品金额: {{ orderInfo.goodsFee|number_format(2, '.', ',') }} €</h4>
+        <h4>大客户折扣: {{ (orderInfo.goodsFee - orderInfo.totalPrice)|number_format(2, '.', ',') }} €</h4>
         <h4>总金额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
     </div>
 

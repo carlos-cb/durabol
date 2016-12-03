@@ -42,7 +42,7 @@ $(function(){
     function setHeji(){
         var ff = $('#shangpin').find('tr#order-item');
         for(var j=0; j<ff.length; j++){
-            var s = parseInt($(ff[j]).find("#_quantity").text())*parseFloat($(ff[j]).find("#priceunit").text());
+            var s = parseInt($(ff[j]).find("#_quantity").text())*parseFloat($(ff[j]).find("#priceunit").text())*parseInt($(ff[j]).find("#unit").text());
             $(ff[j]).find("#heji").html(s.toFixed(2));
         }
     }
@@ -53,7 +53,9 @@ $(function(){
             totalprice += parseFloat($(tt[i]).find('#heji').text());
         }
         var total = totalprice;
-        $("#totalprice").html(totalprice.toFixed(2));
+        var discount = $('#userdiscount').text();
+        $("#totalprice").html((totalprice*100/discount).toFixed(2));
+        $("#discount").html((totalprice*100/discount-total).toFixed(2));
         $("#total").html(total.toFixed(2));
     }
     setHeji();

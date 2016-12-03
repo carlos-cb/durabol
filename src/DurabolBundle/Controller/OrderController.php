@@ -12,12 +12,12 @@ class OrderController extends Controller
     public function cartToOrderinfoAction(Request $request)
     {
         $priceAll = $this->countAll();
-        $priceIni = $priceAll;
-        $yunfei = 3.95;
+        $priceIni = $priceAll / $this->getUser()->getDiscount() * 100;
+        $yunfei = 0;
         $shipmode = "Express";
         if($request->get('radio-group') == '1')
         {
-            $priceAll= $priceAll + $yunfei;
+
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceIni!=0) ){
@@ -25,10 +25,10 @@ class OrderController extends Controller
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
-                ->setGoodsFee(round($priceIni, 3))
+                ->setGoodsFee(round($priceIni, 2))
                 ->setShipFee($yunfei)
                 ->setPayType('online')
-                ->setTotalPrice(round($priceAll, 3))
+                ->setTotalPrice(round($priceAll, 2))
                 ->setReceiverName($request->get('name'))
                 ->setReceiverPhone($request->get('phonenumber'))
                 ->setReceiverAdress($request->get('address'))
@@ -106,7 +106,7 @@ class OrderController extends Controller
 
         foreach($cartItems as $cartItem)
         {
-            $priceall += ($cartItem->getQuantity() * $cartItem->getPrice());
+            $priceall += ($cartItem->getQuantity() * $cartItem->getPrice() * $cartItem->getProduct()->getUnit());
         }
         return $priceall;
     }

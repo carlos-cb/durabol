@@ -29,8 +29,8 @@
                                 <div class="caption">
                                     <h6>{{ productSale.name }}</h6>
                                     <div class="price _product-price">
-                                        <span class="sale">{{ (productSale.discountPrice * user.discount/100)|number_format(2, '.', ',') }} €</span>
-                                        <span class="line-through">{{ (productSale.price * user.discount/100)|number_format(2, '.', ',') }} €</span>
+                                        <span class="sale">{{ productSale.discountPrice|number_format(2, '.', ',') }}</span>
+                                        <span class="line-through">{{ productSale.price|number_format(2, '.', ',') }} €</span>
                                         <a class="btn btn-danger" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">马上抢购</a>
                                     </div>
                                 </div>
@@ -178,6 +178,7 @@
                                         <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
                                         <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
                                         <span id="priceunit" style="display: none">{{ cartItem.price }}</span>
+                                        <span id="unit" style="display: none">{{ cartItem.product.unit }}</span>
                                     <span style="margin-left: 30px;">
                                         <button name="{{ path('cart_update') }}" class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
                                         <br>
@@ -194,13 +195,13 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th colspan="6" class="order-items-total" scope="row">Total de productos: <span id="totalprice"></span> EUR</th>
+                                <th colspan="6" class="order-items-total" scope="row">商品价格: <span id="totalprice"></span> EUR</th>
                             </tr>
                             <tr>
-                                <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío estimados: 0,00 EUR</th>
+                                <th class="order-delivery-costs" colspan="6" scope="row">大客户折扣: <span id="discount"></span> EUR</th>
                             </tr>
                             <tr class="total">
-                                <th colspan="6" scope="row"><strong>Total:</strong> <span id="total"></span> EUR</th>
+                                <th colspan="6" scope="row"><strong>总价:</strong> <span id="total"></span> EUR</th>
                             </tr>
                             <tr class="order-vat-costs">
                                 <th colspan="6" scope="row">
@@ -209,14 +210,14 @@
                             </tr>
                             </tfoot>
                         </table>
+                        <span id="userdiscount" style="display: none">{{ user.discount }}</span>
                         <div>
                             <p>
-                                Devoluciones y reembolso: Tiene una semana para cancelar o devolver tu pedido.
-                                <br>Antes de todo, póngase en contacto con nosotros.
-                                <br>Lee más sobre nuestra política de devoluciones y reembolso.</p>
+                                请购物满各家店铺的最低消费.
+                                <br>大客户可享专有折扣,更多信息请联系客服.</p>
                         </div>
                         <div class="anniu">
-                            <button class="button-primary button-big FR" onclick="window.location.href='{{ path('cart_guestinfo') }}'" type="button"><span>Continuar</span></button>
+                            <button class="button-primary button-big FR" onclick="window.location.href='{{ path('cart_guestinfo') }}'" type="button"><span>下一步</span></button>
                         </div>
                 </section>
             </section>
