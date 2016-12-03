@@ -1,3 +1,15 @@
+@media (min-width: 992px){
+    .container-fluid{
+        width: 970px;
+    }
+    .container-fluid{
+        width: 1170px;
+    }
+}
+
+
+
+
 #home .mainimg{
     margin-top: 100px;
     width: 100%;
@@ -21,7 +33,12 @@
     text-decoration: line-through;
     font-size: 18px;
 }
+#home .gongneng{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
 #home .text-muted {
+
     color: #777;
     font-size: 22px;
     margin-left: 20px;
@@ -67,207 +84,439 @@
 
 
 
+@media (max-width: 991px){
+    #stores div.categoryinfo h3{
+        margin-top:50px;
+        margin-bottom:50px;
+    }
 
-#cart section{
-    font-family: 'Helvetica','Arial',Sans-Serif;
-    color: #222;
-    font-size: 30px;
-    line-height: 1.231;
-}
-#cart #main {
-    padding-top: 15px;
-    min-height: 530px;
+
+    #cart section{
+        font-family: 'Helvetica','Arial',Sans-Serif;
+        color: #222;
+        font-size: 30px;
+        line-height: 1.231;
+    }
+    #cart #main {
+        padding-top: 15px;
+        min-height: 530px;
+    }
+
+    #cart .content-main {
+        clear: both;
+        margin: 0 auto;
+    }
+    #cart .offleft {
+        left: -9999px;
+        position: absolute;
+        width: 999px;
+    }
+
+    #cart .web-standard h2.head {
+        padding: 20px 0;
+        font-size: 30px;
+        line-height: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    #cart #shop-area.shop-cart-page .no-stock-info {
+        background-color: #b90000;
+        color: white;
+    }
+    #cart #shop-area.shop-cart-page .no-stock-info, #shop-area.shop-cart-page .time-change-info {
+        font-size:30px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding: .5em 10px .2em 10px;
+    }
+    #cart .order-table {
+        width: 100%;
+        background: url('../img/dotted-line.png') repeat-x top left;
+        position: relative;
+        margin-bottom: 25px;
+    }
+    #cart th{
+        border-top: none;
+        border-bottom: none;
+    }
+    #cart table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    #cart .order-table thead th{
+        width: 26%;
+        padding: 13px 13px 13px 0;
+        background: url('../img/dotted-line.png') repeat-x bottom left;
+        font-weight: bold;
+        font-size: 30px;
+        text-transform: uppercase;
+    }
+    #cart tr{
+        margin: 0;
+    }
+    #cart caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        vertical-align: middle;
+    }
+    #cart #shop-area.shop-cart-page .description a {
+        color: #959595;
+        display: block;
+    }
+    #cart a:visited {
+        color: black;
+    }
+    #cart a {
+        color: inherit;
+        text-decoration: inherit;
+        cursor: inherit;
+        color: black;
+        cursor: pointer;
+    }
+    #cart .order-table tbody td {
+        padding: 13px 13px 13px 0;
+        font-size: 30px;
+        background: url('../img/dotted-line.png') repeat-x bottom left;
+    }
+
+    #cart .order-table tbody .price {
+        text-align: right;
+        white-space: nowrap;
+    }
+    #cart .order-table tbody td.color {
+        text-align: left;
+        text-transform: uppercase;
+    }
+    #cart .order-table tbody td.quantity span {
+        display: inline-block;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+    #cart .order-table tbody td.quantity a {
+        margin-right: 10px;
+        font-size: 30px;
+    }
+    #cart .order-table tbody td.quantity button {
+        display: block;
+        margin: 1px 0;
+        border: 0;
+        font-weight: bold;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 0;
+    }
+    #cart .order-table tbody td .fonticon-close {
+        margin: 0 3px;
+        padding: 0;
+        border: 0;
+        background-color: white;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 30px;
+    }
+    #cart .order-table tfoot td.order-items-total, .order-table tfoot th.order-items-total {
+        padding: 25px 20px 3px 0;
+    }
+    #cart .order-table tfoot tr.order-vat-costs td, .order-table tfoot tr.order-vat-costs th {
+        padding-bottom: 25px;
+    }
+    #cart .order-table tfoot td, .order-table tfoot th {
+        text-align: right;
+        background-color: #ebebeb;
+        white-space: nowrap;
+        text-transform: none;
+    }
+    #cart caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        vertical-align: middle;
+    }
+    #cart .button-big {
+        line-height: 40px;
+        margin: 5px 0px 20px 0;
+    }
+    #cart .button-secondary {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: white;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: black;
+        position: relative;
+        border: 1px solid #000;
+        width: 230px;
+    }
+    #cart .button-primary {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: black;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: white;
+        position: relative;
+        border: 1px solid #000;
+    }
+    #cart .order-table tfoot tr.total td, .order-table tfoot tr.total th {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    #cart .web-standard strong {
+        font-weight: 700;
+    }
+    #cart section td{
+        border-bottom: none;
+    }
+    #cart .order-table tfoot td, .order-table tfoot th {
+        text-align: right;
+        padding: 3px 20px 3px 0;
+        background-color: #f8f8f8;
+        white-space: nowrap;
+        text-transform: none;
+    }
+    #cart .anniu{
+        margin-top: 40px;
+    }
+    #cart .FR {
+        width: 230px;
+        float: right;
+    }
+    #cart input, textarea, keygen, select, button, meter, progress {
+        -webkit-writing-mode: horizontal-tb;
+    }
 }
 
-#cart .content-main {
-    clear: both;
-    margin: 0 auto;
-}
-#cart .offleft {
-    left: -9999px;
-    position: absolute;
-    width: 999px;
-}
+@media (min-width: 992px){
+    section{
+        font-family: 'Helvetica','Arial',Sans-Serif;
+        color: #222;
+        font-size: 13px;
+        line-height: 1.231;
+    }
+    #main {
+        padding-top: 15px;
+        min-height: 530px;
+    }
 
-#cart .web-standard h2.head {
-    padding: 20px 0;
-    font-size: 30px;
-    line-height: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-#cart #shop-area.shop-cart-page .no-stock-info {
-    background-color: #b90000;
-    color: white;
-}
-#cart #shop-area.shop-cart-page .no-stock-info, #shop-area.shop-cart-page .time-change-info {
-    font-size:30px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding: .5em 10px .2em 10px;
-}
-#cart .order-table {
-    width: 100%;
-    background: url('../img/dotted-line.png') repeat-x top left;
-    position: relative;
-    margin-bottom: 25px;
-}
-#cart th{
-    border-top: none;
-    border-bottom: none;
-}
-#cart table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-#cart .order-table thead th{
-    width: 26%;
-    padding: 13px 13px 13px 0;
-    background: url('../img/dotted-line.png') repeat-x bottom left;
-    font-weight: bold;
-    font-size: 30px;
-    text-transform: uppercase;
-}
-#cart tr{
-    margin: 0;
-}
-#cart caption, th, td {
-    text-align: left;
-    font-weight: normal;
-    vertical-align: middle;
-}
-#cart #shop-area.shop-cart-page .description a {
-    color: #959595;
-    display: block;
-}
-#cart a:visited {
-    color: black;
-}
-#cart a {
-    color: inherit;
-    text-decoration: inherit;
-    cursor: inherit;
-    color: black;
-    cursor: pointer;
-}
-#cart .order-table tbody td {
-    padding: 13px 13px 13px 0;
-    font-size: 30px;
-    background: url('../img/dotted-line.png') repeat-x bottom left;
-}
+    .content-main {
+        min-width: 580px;
+        clear: both;
+        margin: 0 auto;
+    }
+    .offleft {
+        left: -9999px;
+        position: absolute;
+        width: 999px;
+    }
 
-#cart .order-table tbody .price {
-    text-align: right;
-    white-space: nowrap;
-}
-#cart .order-table tbody td.color {
-    text-align: left;
-    text-transform: uppercase;
-}
-#cart .order-table tbody td.quantity span {
-    display: inline-block;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-#cart .order-table tbody td.quantity a {
-    margin-right: 10px;
-    font-size: 30px;
-}
-#cart .order-table tbody td.quantity button {
-    display: block;
-    margin: 1px 0;
-    border: 0;
-    font-weight: bold;
-    font-size: 30px;
-    cursor: pointer;
-    padding: 0;
-}
-#cart .order-table tbody td .fonticon-close {
-    margin: 0 3px;
-    padding: 0;
-    border: 0;
-    background-color: white;
-    color: #000;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 30px;
-}
-#cart .order-table tfoot td.order-items-total, .order-table tfoot th.order-items-total {
-    padding: 25px 20px 3px 0;
-}
-#cart .order-table tfoot tr.order-vat-costs td, .order-table tfoot tr.order-vat-costs th {
-    padding-bottom: 25px;
-}
-#cart .order-table tfoot td, .order-table tfoot th {
-    text-align: right;
-    background-color: #ebebeb;
-    white-space: nowrap;
-    text-transform: none;
-}
-#cart caption, th, td {
-    text-align: left;
-    font-weight: normal;
-    vertical-align: middle;
-}
-#cart .button-big {
-    line-height: 40px;
-    margin: 5px 0px 20px 0;
-}
-#cart .button-secondary {
-    display: inline-block;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    background-color: white;
-    font-size: 18px;
-    text-transform: uppercase;
-    color: black;
-    position: relative;
-    border: 1px solid #000;
-    width: 230px;
-}
-#cart .button-primary {
-    display: inline-block;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    background-color: black;
-    font-size: 18px;
-    text-transform: uppercase;
-    color: white;
-    position: relative;
-    border: 1px solid #000;
-}
-#cart .order-table tfoot tr.total td, .order-table tfoot tr.total th {
-    font-size: 30px;
-    font-weight: bold;
-}
-#cart .web-standard strong {
-    font-weight: 700;
-}
-#cart section td{
-    border-bottom: none;
-}
-#cart .order-table tfoot td, .order-table tfoot th {
-    text-align: right;
-    padding: 3px 20px 3px 0;
-    background-color: #f8f8f8;
-    white-space: nowrap;
-    text-transform: none;
-}
-#cart .anniu{
-    margin-top: 40px;
-}
-#cart .FR {
-    width: 230px;
-    float: right;
-}
-#cart input, textarea, keygen, select, button, meter, progress {
-    -webkit-writing-mode: horizontal-tb;
-}
+    .web-standard h2.head {
+        padding: 20px 0;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+    #shop-area.shop-cart-page .no-stock-info {
+        background-color: #b90000;
+        color: white;
+    }
+    #shop-area.shop-cart-page .no-stock-info, #shop-area.shop-cart-page .time-change-info {
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        padding: .5em 10px .2em 10px;
+    }
+    .order-table {
+        width: 100%;
+        background: url('../img/dotted-line.png') repeat-x top left;
+        position: relative;
+        margin-bottom: 25px;
+    }
+    th{
+        border-top: none;
+        border-bottom: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    .order-table thead th, .order-table .thead th {
+        padding: 13px 13px 13px 0;
+        background: url('../img/dotted-line.png') repeat-x bottom left;
+        font-weight: bold;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+    #shop-area.shop-cart-page .description {
+        width: 30%;
+    }
+    tr{
+        margin: 0;
+    }
+    caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        vertical-align: middle;
+    }
+    #shop-area.shop-cart-page .description a {
+        color: #959595;
+        display: block;
+    }
+    #shop-area.shop-cart-page .delete {
+        text-align: right;
+        padding-right: 20px;
+    }
+    .order-table thead th.delete, .order-table .thead th.delete {
+        width: 65px;
+        text-align: right;
+    }
+    .order-table tbody td {
+        width: 15%;
+        padding: 13px 13px 13px 0;
+        font-size: 12px;
+        background: url('../img/dotted-line.png') repeat-x bottom left;
+    }
 
+    .order-table tbody .price {
+        text-align: right;
+        white-space: nowrap;
+        width: 1%;
+    }
+    #shop-area.shop-cart-page .delete {
+        text-align: right;
+        padding-right: 20px;
+    }
+    .order-table tbody td.color {
+        text-align: left;
+        text-transform: uppercase;
+    }
+    .order-table tbody td.quantity span {
+        display: inline-block;
+        margin-left: 5px;
+        vertical-align: middle;
+    }
+    .order-table tbody td.quantity a {
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    .order-table tbody td.quantity button {
+        display: block;
+        margin: 1px 0;
+        border: 0;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 0;
+    }
+    .order-table tbody td .fonticon-close {
+        margin: 0 3px;
+        padding: 0;
+        border: 0;
+        background-color: white;
+        color: #000;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .order-table tfoot td.order-items-total, .order-table tfoot th.order-items-total {
+        padding: 25px 20px 3px 0;
+    }
+    .order-table tfoot tr.order-vat-costs td, .order-table tfoot tr.order-vat-costs th {
+        padding-bottom: 25px;
+    }
+    .order-table tfoot td, .order-table tfoot th {
+        text-align: right;
+        background-color: #ebebeb;
+        white-space: nowrap;
+        text-transform: none;
+    }
+    caption, th, td {
+        text-align: left;
+        font-weight: normal;
+        vertical-align: middle;
+    }
+    .button-big {
+        line-height: 40px;
+        margin: 5px 0px 20px 0;
+    }
+    .button-secondary {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: white;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: black;
+        position: relative;
+        border: 1px solid #000;
+        width: 230px;
+    }
+    .button-primary {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: black;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: white;
+        position: relative;
+        border: 1px solid #000;
+    }
+    .order-table tfoot tr.total td, .order-table tfoot tr.total th {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .web-standard strong {
+        font-weight: 700;
+    }
+    section td{
+        border-bottom: none;
+    }
+    .order-table tfoot td, .order-table tfoot th {
+        text-align: right;
+        padding: 3px 20px 3px 0;
+        background-color: #f8f8f8;
+        white-space: nowrap;
+        text-transform: none;
+    }
+    .anniu{
+        margin-top: 40px;
+    }
+    .FR {
+        width: 230px;
+        float: right;
+    }
+    input, textarea, keygen, select, button, meter, progress {
+        -webkit-writing-mode: horizontal-tb;
+    }
+
+    #person .touxiang img{
+        height: 120px;
+        width: 120px;
+    }
+    #person h3{
+        font-size: 24px;
+    }
+    #person h5{
+        font-size: 18px;
+    }
+    #person p{
+        font-size: 15px;
+    }
+    #person h3 a{
+        font-size: 18px;
+    }
+}
 
 
 #person .touxiang{

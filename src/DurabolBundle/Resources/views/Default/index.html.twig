@@ -21,15 +21,15 @@
                         <hr class="featurette-divider">
                     </div>
                     {% for productSale in productSales %}
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 product">
-                            <div class="thumbnail">
+                        <div class="col-lg-3 col-xs-4 product">
+                            <div class="">
                                 <a id="product_image" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">
                                     <img src="{{ asset('uploads/fotos/' ~ productSale.foto) }}">
                                 </a>
                                 <div class="caption">
                                     <h6>{{ productSale.name }}</h6>
                                     <div class="price _product-price">
-                                        <span class="sale">{{ (productSale.discountPrice * user.discount/100)|number_format(3, '.', ',') }} €</span>
+                                        <span class="sale">{{ (productSale.discountPrice * user.discount/100)|number_format(2, '.', ',') }} €</span>
                                         <span class="line-through">{{ (productSale.price * user.discount/100)|number_format(2, '.', ',') }} €</span>
                                         <a class="btn btn-danger" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">马上抢购</a>
                                     </div>
@@ -38,26 +38,26 @@
                         </div>
                     {% endfor %}
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
+                <div class="row gongneng">
+                    <div class="col-xs-3">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">本月上新</h3>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-3">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">热卖好货</h3>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-3">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">团购须知</h3>
                         </div>
                     </div>
-                    <div class="col-xs-6">
+                    <div class="col-xs-3">
                         <div class="tile">
                             <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
                             <h3 class="tile-title">分享网站</h3>
@@ -65,23 +65,18 @@
                     </div>
                 </div>
                 {% for shop in shops %}
-                    <div class="row qianggou">
-                        <div class="col-xs-12">
-                            <h3>
+                    <div class="row">
+                        <div class="col-xs-2 jieshao">
+                            <h5>
                                 {% if shop.id == 1 %}
                                     <i class="fa fa-futbol-o" aria-hidden="true"></i>
                                 {% else %}
                                     <i class="fa fa-industry" aria-hidden="true"></i>
                                 {% endif %}
-                                &nbsp;&nbsp;{{ shop.name }}
-                                <span class="text-muted"><a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">>>进入店铺</a></span>
-                            </h3>
-                            <hr class="featurette-divider">
+                                {{ shop.name|upper }}<br><br><span id="description">{{ shop.description }}</span></h5>
+                            <span class="text-muted"><a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">>>进入店铺</a></span>
                         </div>
-                        <div class="col-xs-2 thumbnail jieshao">
-                            <h5>{{ shop.nameShort|upper }}<br><br><span>{{ shop.description }}</span></h5>
-                        </div>
-                        <div class="col-xs-10 thumbnail">
+                        <div class="col-xs-10 jieshaoimg">
                             <div class="col-xs-3">
                                 <a id="product_image" href="{{ path('font_productList', { 'category': shop.category(0).id }) }}">
                                     <img src="{{ asset('uploads/fotos/' ~ shop.category(0).foto) }}">
@@ -116,6 +111,7 @@
                             </div>
                         </div>
                     </div>
+                    <hr class="featurette-divider">
                 {% endfor %}
             </div>
         </div>
@@ -124,21 +120,21 @@
 
 
         <div role="tabpanel" class="tab-pane" id="stores">
-            <div style="margin-top: 80px;">
+            <div class="container-fluid" style="margin-top: 80px;">
                 {% for shop in shops %}
                 <div class="">
                     <a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">
                         <div class="col-xs-12">
-                            <div class="col-xs-4 col-lg-2">
+                            <div class="col-xs-4 col-lg-2 categoryimg">
                                 <img src="{{ asset('uploads/fotos/' ~ shop.foto) }}">
                             </div>
                             <div class="col-xs-6 col-lg-8 categoryinfo">
-                                <br><h3>{{ shop.name }}</h3><br>
+                                <h3>{{ shop.name }}</h3>
                                 <h5>{% for categoryName in shop.categoryNames %}{% if loop.index <= 5 %}{{ categoryName }}, {% endif %}{% endfor %}等</h5>
                                 <h5>{{ shop.minCoste }} €起订, 共计{{ shop.productNum }}个商品</h5>
                             </div>
                             <div class="col-xs-2">
-                                <i class="fa fa-chevron-right" aria-hidden="true" style="line-height: 250px;font-size: 26px;font-weight: 600;"></i>
+                                <i class="fa fa-chevron-right" aria-hidden="true" style="line-height: 200px;font-size: 26px;font-weight: 600;"></i>
                             </div>
                         </div>
                     </a>
@@ -173,14 +169,10 @@
                             {% for cartItem in cartItems %}
                                 <tr id="order-item" class="order-item">
                                     <td class="_detail">
-                                        <a href="" target="_self">
-                                            <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
-                                        </a>
+                                        <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
                                     </td>
                                     <td class="description _detail">
-                                        <a href="" target="_self">
-                                            <span>{{ cartItem.product.name }}</span><br><br>{{ cartItem.product.code }}
-                                        </a>
+                                        <span>{{ cartItem.product.name }}</span><br><br>{{ cartItem.product.code }}
                                     </td>
                                     <td class="quantity">
                                         <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
