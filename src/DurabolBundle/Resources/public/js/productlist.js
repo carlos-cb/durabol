@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    if($(window).width()>992){
+        $('a.nocart').removeClass('button-giant').addClass('button-large');
+        $('a.yecart').removeClass('button-giant').addClass('button-large');
+    }
     $("a#product_image").fancybox({
         closeClick: true,
         helpers : {
@@ -32,8 +36,8 @@ $(document).ready(function() {
     for(var y=0; y<ppy.length; y++){
         for(var n=0; n<ppn.length; n++){
             if(parseInt($(ppy[y]).text()) == parseInt($(ppn[n]).text())){
-                $(ppn[n]).parent().find("span.nocart").toggle();
-                $(ppn[n]).parent().find("span.yescart").toggle();
+                $(ppn[n]).parent().parent().find("span.nocart").toggle();
+                $(ppn[n]).parent().parent().find("span.yescart").toggle();
             }
         }
     }

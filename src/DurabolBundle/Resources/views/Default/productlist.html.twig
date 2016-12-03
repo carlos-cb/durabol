@@ -9,40 +9,42 @@
 {% block body %}
     {% include 'DurabolBundle:Public:header.html.twig' %}
 
-        <div class="productlist" style="margin-top: 100px;" id="product">
+        <div class="productlist" style="margin-top: 80px;" id="product">
             {% for product in products %}
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 product" id="product{{ product.id }}">
+            <div class="col-lg-3 col-md-4 col-xs-6 product" id="product{{ product.id }}">
                 <div class="thumbnail">
-                    <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
-                        <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}">
-                    </a>
+                    <div id="productimg">
+                        <a id="product_image" href="{{ asset('uploads/fotos/' ~ product.foto) }}">
+                            <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" data-src="{{ asset('uploads/fotos/' ~ product.foto) }}">
+                        </a>
+                    </div>
                     <div class="caption">
-                        <h5 style="min-width: 80%">{{ product.name }} ({{ product.code }})</h5>
-                        <div class="row">
-                            <div class="col-xs-7">
-                                <h5>{{ product.unit }} u/c<br>
-                                    {% if product.isSale == 1 %}
-                                        <span class="sale">{{ product.discountPrice|number_format(2, '.', ',') }} €</span> -
-                                        <span class="line-through">{{ product.price|number_format(2, '.', ',') }} €</span>
-                                    {% else %}
-                                        <span>{{ product.price|number_format(2, '.', ',') }} €</span>
-                                    {% endif %}
-                                    <br>
-                                </h5>
-                            </div>
+                        <div id="productname">
+                            <p>{{ product.name }}</p>
+                        </div>
+                        <div class="col-xs-6 col-xs-offset-2 col-md-6 col-md-offset-1">
+                            <p id="productinfo">{{ product.code }}<br>{{ product.unit }} u/c<br>
+                                {% if product.isSale == 1 %}
+                                    <span class="sale">{{ product.discountPrice|number_format(2, '.', ',') }}</span>
+                                    <span class="line-through">{{ product.price|number_format(2, '.', ',') }} €</span>
+                                {% else %}
+                                    <span>{{ product.price|number_format(2, '.', ',') }} €</span>
+                                {% endif %}
+                                <br>
+                            </p>
                             <p class="productId" style="display: none">{{ product.id }}</p>
-                            <div class="col-xs-5">
-                                <span class="button-wrap nocart">
-                                    <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect{{ product.id }}">
-                                        <i class="fa fa-plus"></i>
-                                    </a>
-                                </span>
-                                <span class="button-wrap yescart" style="display: none;">
-                                    <a class="button button-circle button-action button-raised button-giant" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
-                                        <i class="fa fa-check"></i>
-                                    </a>
-                                </span>
-                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-3 col-md-offset-1">
+                            <span class="button-wrap nocart">
+                                <a class="button button-circle button-raised button-highlight nocart button-giant" href="#numselect{{ product.id }}">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </span>
+                            <span class="button-wrap yescart" style="display: none;">
+                                <a class="button button-circle button-action button-raised button-giant yecart" onclick="alert('该商品已经在购物车中，请至购物车确认商品数量。')">
+                                    <i class="fa fa-check"></i>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
