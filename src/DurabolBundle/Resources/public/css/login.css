@@ -1,4 +1,169 @@
+@media (min-width: 992px){
+    body{
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    a {
+        text-decoration: none;
+    }
 
+    .registro .form-group{
+        float: left;
+        width: 100%;
+        height: auto;
+        margin-top: 5px;
+        margin-bottom: 1em;
+    }
+    .registro input[type=submit]{
+        min-width: 200px;
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        margin: 5px 0 20px 0;
+        padding: 0 1.5em 0;
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        background-color: black;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: white;
+        position: relative;
+        border: 1px solid #000;
+    }
+
+
+
+    .content-main {
+        min-width: 480px;
+        clear: both;
+        margin: 0 auto;
+        color: #000;
+    }
+
+    .logon-page h1.head {
+        padding: 20px 0;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: bold;
+        background: url(../img/dotted-line.png) repeat-x left bottom;
+    }
+    .logon-page #sign-in {
+        margin-right: 4%;
+    }
+    .logon-page #sign-in, .logon-page #sign-up, .logon-page #persistent, .logon-page #guest-access {
+        width: 48%;
+        display: inline-block;
+        float: left;
+    }
+    .logon-page h2 {
+        margin-bottom: 12px;
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .web-standard strong {
+        font-weight: 700;
+    }
+    .logon-page #sign-in p, .logon-page #sign-up p, .logon-page #persistent p, .logon-page #guest-access p {
+        margin-bottom: 1em;
+    }
+    #sign-in-form .form-container {
+        margin-bottom: 10px;
+        display: block;
+    }
+    #sign-in-form .form-control {
+        float: left;
+        width: 100%;
+        height: auto;
+        margin-top: 5px;
+        margin-bottom: 1em;
+    }
+    #sign-in-form label.label-up {
+        float: none;
+        width: auto;
+    }
+    #sign-in-form label {
+        display: block;
+        margin-top: 5px;
+        font-weight: bold;
+        margin-right: 5px;
+        margin-bottom: 0.5em;
+    }
+    form#sign-in-form input[type="text"], form#sign-in-form input[type="password"], form#sign-in-form input[type="email"] {
+        width: 179px;
+        height: 26px;
+        padding: 0 2px;
+        border: 0;
+        margin-right: 10px;
+        vertical-align: middle;
+        font-size: 12px;
+        line-height: 26px;
+        font-weight: bold;
+        color: #444;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    div#sign-in-form input[type="text"], div#sign-in-form input[type="password"], div#sign-in-form input[type="email"]{
+        width: 200px!important;
+        height: 26px;
+        padding: 0 2px;
+        margin-right: 10px;
+        vertical-align: middle;
+        font-size: 12px;
+        line-height: 26px;
+        font-weight: bold;
+        color: #444;
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+    em {
+        font-style: italic;
+    }
+    .logon-page #forget-password-link {
+        text-decoration: underline;
+        color: #595959;
+        clear: both;
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    a:visited {
+        color: black;
+    }
+    .button-big {
+        min-width: 200px;
+        width: auto;
+        height: 40px;
+        line-height: 40px;
+        margin: 5px 0px 20px 0;
+        padding: 0 1.5em 0;
+    }
+    .button-primary {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        -webkit-border-radius: '.5em';
+        -moz-border-radius: '.5em';
+        border-radius: '.5em';
+        border: none;
+        background-color: black;
+        font-size: 11px;
+        text-transform: uppercase;
+        color: white;
+        position: relative;
+        border: 1px solid #000;
+    }
+
+}
+
+@media (max-width: 991px){
 a {
     text-decoration: none;
 }
@@ -23,7 +188,7 @@ a {
     text-align: center;
     text-decoration: none;
     background-color: black;
-    font-size: 24px;
+    font-size: 34px;
     text-transform: uppercase;
     color: white;
     position: relative;
@@ -41,7 +206,7 @@ a {
 
 .logon-page h1.head {
     padding: 20px 0;
-    font-size: 26px;
+    font-size: 36px;
     line-height: 22px;
     font-weight: bold;
     background: url(../img/dotted-line.png) repeat-x left bottom;
@@ -54,7 +219,7 @@ a {
 }
 .logon-page h2 {
     margin-bottom: 12px;
-    font-size: 26px;
+    font-size: 36px;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -71,13 +236,13 @@ a {
 }
 #sign-in-form .form-control {
     float: left;
-    width: 100%;
+    width: 52%;
     height: auto;
     margin-top: 5px;
     margin-bottom: 1em;
 }
 #sign-in-form label.label-up {
-    font-size: 28px;
+    font-size: 38px;
     float: none;
     width: auto;
 }
@@ -90,13 +255,13 @@ a {
 }
 form#sign-in-form input[type="text"], form#sign-in-form input[type="password"], form#sign-in-form input[type="email"] {
     width: 179px;
-    height: 26px;
+    height: 36px;
     padding: 0 2px;
     border: 0;
     margin-right: 10px;
     vertical-align: middle;
-    font-size: 24px;
-    line-height: 26px;
+    font-size: 34px;
+    line-height: 36px;
     font-weight: bold;
     color: #444;
     -webkit-appearance: none;
@@ -104,12 +269,12 @@ form#sign-in-form input[type="text"], form#sign-in-form input[type="password"], 
 }
 div#sign-in-form input[type="text"], div#sign-in-form input[type="password"], div#sign-in-form input[type="email"]{
     width: 200px!important;
-    height: 26px;
+    height: 36px;
     padding: 0 2px;
     margin-right: 10px;
     vertical-align: middle;
     font-size: 24px;
-    line-height: 26px;
+    line-height: 36px;
     font-weight: bold;
     color: #444;
     -webkit-appearance: none;
@@ -153,4 +318,5 @@ a:visited {
     color: white;
     position: relative;
     border: 1px solid #000;
+}
 }

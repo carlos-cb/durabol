@@ -14,9 +14,10 @@ class OrderController extends Controller
         $priceAll = $this->countAll();
         $userDiscount = $this->getUser()->getDiscount() / 100;
         $priceIni = $priceAll / $userDiscount;
-        if($request->get('radio-group') == '1')
+        $payType = '在线支付';
+        if($request->get('radio-group') == '2')
         {
-
+            $payType = '银行转账';
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceIni!=0) ){
@@ -26,7 +27,7 @@ class OrderController extends Controller
                 ->setDiscount($userDiscount)
                 ->setOrderDate(new \DateTime('now'))
                 ->setGoodsFee(round($priceIni, 2))
-                ->setPayType('online')
+                ->setPayType($payType)
                 ->setTotalPrice(round($priceAll, 2))
                 ->setReceiverName($request->get('name'))
                 ->setReceiverShuihao($request->get('shuihao'))
