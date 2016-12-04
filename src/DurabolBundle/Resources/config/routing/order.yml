@@ -18,6 +18,10 @@ order_pedido:
     path:     /pedido
     defaults: { _controller: DurabolBundle:Default:pedido }
 
+order_pedidoOther:
+    path:     /pedido/{state}
+    defaults: { _controller: DurabolBundle:Default:pedidoOther }
+
 order_productlistclient:
     path:     /pedido/productlistclient/{orderInfo}
     defaults: { _controller: DurabolBundle:Default:productlistclient }

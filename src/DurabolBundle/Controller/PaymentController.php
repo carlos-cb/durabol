@@ -77,7 +77,7 @@ class PaymentController extends Controller
             $messageBackend = \Swift_Message::newInstance()
                 ->setSubject('团购网新订单提示')
                 ->setFrom(array('info@groupon100.com' => '团购网'))
-                ->setTo('365331320@qq.com')
+                ->setTo('1878118@qq.com')
                 ->setContentType('text/html')
                 ->setBody(
                     $this->renderView(

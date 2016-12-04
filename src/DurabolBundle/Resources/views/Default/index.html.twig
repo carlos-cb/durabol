@@ -259,13 +259,13 @@
                 </div>
                 <div class="leiji">
                     <br>
-                    <h3>本月累计下单<span style="float:right">360.00 €</span></h3>
+                    <h3>累计下单<span style="float:right">{{ user.OrderInfoSum|number_format(2, '.', ',') }} €</span></h3>
                     <div class="progress">
-                        <div class="progress-bar" style="width: 36%;"></div>
+                        <div class="progress-bar" style="width: {% if user.OrderInfoSum <= 1000 %}{{ user.OrderInfoSum/10 }}{% else %}100{% endif %}%;"></div>
                     </div>
                     <p style="float:right">1000.00 €</p>
                     <br>
-                    <h5>本月累计下单满1000.00 €即可参与年终抽奖活动</h5>
+                    <h5>累计下单满1000.00 €即可享受大客户折扣</h5>
                     <br>
                 </div>
                 <hr class="featurette-divider">
@@ -273,16 +273,22 @@
                 <br><br>
                 <div class="row orders">
                     <div class="col-xs-4">
-                        <i class="fa fa-calendar-times-o" aria-hidden="true"></i><br>
-                        <h3>待付款</h3>
+                        <a href="{{ path('order_pedidoOther', { 'state': 1 }) }}">
+                            <i class="fa fa-calendar-times-o" aria-hidden="true"></i><br>
+                            <h3>待付款</h3>
+                        </a>
                     </div>
                     <div class="col-xs-4">
-                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i><br>
-                        <h3>待发货</h3>
+                        <a href="{{ path('order_pedidoOther', { 'state': 2 }) }}">
+                            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i><br>
+                            <h3>待发货</h3>
+                        </a>
                     </div>
                     <div class="col-xs-4">
-                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i><br>
-                        <h3>已完成</h3>
+                        <a href="{{ path('order_pedidoOther', { 'state': 3 }) }}">
+                            <i class="fa fa-calendar-check-o" aria-hidden="true"></i><br>
+                            <h3>已完成</h3>
+                        </a>
                     </div>
                 </div>
                 <div class="col-xs-12 usershixiang">

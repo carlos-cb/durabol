@@ -554,5 +554,8 @@
 #person .usershixiang{
     margin-top: 30px;
 }
+#person .orders a, #person .usershixiang a{
+    color: #34495e;
+}
 
 

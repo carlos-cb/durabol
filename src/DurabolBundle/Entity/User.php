@@ -44,7 +44,10 @@ class User extends BaseUser
         $sum = 0;
         foreach($orderInfos as $orderInfo)
         {
-            $sum += $orderInfo->getTotalPrice();
+            if(($orderInfo->getState() != "未付款") && ($orderInfo->getState() != "已取消") && $orderInfo->getParent())
+            {
+                $sum += $orderInfo->getTotalPrice();
+            }
         }
 
         return $sum;

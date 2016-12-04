@@ -192,6 +192,30 @@ class DefaultController extends Controller
         ));
     }
 
+    public function pedidoOtherAction($state)
+    {
+        $user = $this->getUser();
+        if($state == 1)
+        {
+            $orderState = "未付款";
+        }elseif($state == 2){
+            $orderState = "已付款";
+        }else{
+            $orderState = "已完成";
+        }
+        $repository = $this->getDoctrine()->getRepository('DurabolBundle:OrderInfo');
+        $orderInfos = $repository->findBy(
+            array('user' => $user, 'state' => $orderState),
+            array('orderDate' => 'DESC')
+        );
+
+        return $this->render('DurabolBundle:Default:pedido.html.twig', array(
+            'orderInfos' => $orderInfos,
+            'user' => $user,
+            'orderState' => $orderState,
+        ));
+    }
+
     public function productlistclientAction(OrderInfo $orderInfo)
     {
         $em = $this->getDoctrine()->getManager();

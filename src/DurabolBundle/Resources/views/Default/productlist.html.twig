@@ -58,7 +58,7 @@
                     <h4 class="heji">
                         小计：<span id="num">1</span>
                         x <span id="unit">{{ product.unit }}</span>
-                        x <span id="price">{{ product.price }}</span> €
+                        x <span id="price">{% if product.isSale %}{{ product.discountPrice }}{% else %}{{ product.price }}{% endif %}</span> €
                         = <span id="heji"></span> €
                     </h4>
                     <br><br>

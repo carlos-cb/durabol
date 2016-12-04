@@ -13,8 +13,13 @@ div.box{
     text-align: center;
     display: inline-block;
     position: relative;
-    top: 70px;
 }
 .payment-errors{
     color: #ff0000;
+}
+
+@media (min-width: 1201px){
+    .capturelogo{
+        top: 100px;
+    }
 }
