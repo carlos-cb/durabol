@@ -155,42 +155,49 @@
             <section id="main" class="content-main" role="main" style="margin-top: 80px;">
                 <section id="shop-cart-content">
                         <table class="order-table">
+                            {% for cartShop in cartShops %}
                             <thead>
                             <tr class="thead">
-                                <th>产品</th>
+                                <th>店铺: {{ cartShop.name }}</th>
                                 <th class="description">说明</th>
                                 <th class="quantity">数量</th>
                                 <th>单位</th>
                                 <th class="price" id="priceHeader">价格</th>
-                                <th></th>
+                                <th><span id="cartShopId" style="display: none">{{ cartShop.id }}</span></th>
                             </tr>
                             </thead>
-                            <tbody id="shangpin">
-                            {% for cartItem in cartItems %}
-                                <tr id="order-item" class="order-item">
-                                    <td class="_detail">
-                                        <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
-                                    </td>
-                                    <td class="description _detail">
-                                        <span>{{ cartItem.product.name }}</span><br><br>{{ cartItem.product.code }}
-                                    </td>
-                                    <td class="quantity">
-                                        <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
-                                        <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
-                                        <span id="priceunit" style="display: none">{{ cartItem.price }}</span>
-                                        <span id="unit" style="display: none">{{ cartItem.product.unit }}</span>
+                            <tbody id="shangpin{{ cartShop.id }}">
+                                {% for cartItem in cartItems if cartItem.product.category.shop.id == cartShop.id %}
+                                    <tr id="order-item" class="order-item">
+                                        <td class="_detail">
+                                            <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
+                                        </td>
+                                        <td class="description _detail">
+                                            <span>{{ cartItem.product.name }}</span><br><br>{{ cartItem.product.code }}
+                                        </td>
+                                        <td class="quantity">
+                                            <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
+                                            <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
+                                            <span id="priceunit" style="display: none">{{ cartItem.price }}</span>
+                                            <span id="unit" style="display: none">{{ cartItem.product.unit }}</span>
                                     <span style="margin-left: 30px;">
                                         <button name="{{ path('cart_update') }}" class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
                                         <br>
                                         <button name="{{ path('cart_update') }}" class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
                                     </span>
-                                    </td>
-                                    <td><span>{{ cartItem.product.unit }} uds</span></td>
-                                    <td class="price"><span id="heji"></span> EUR</td>
-                                    <td>
-                                        <a class="button button-plain button-border button-box button-inverse" href="{{ path('cart_cartitem_delete', { 'id': cartItem.id }) }}" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td><span>{{ cartItem.product.unit }} uds</span></td>
+                                        <td class="price"><span id="heji"></span> EUR</td>
+                                        <td>
+                                            <a class="button button-plain button-border button-box button-inverse" href="{{ path('cart_cartitem_delete', { 'id': cartItem.id }) }}" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                    <tr>
+                                        <td colspan="2" class="minCoste">店铺最低消费: <span id="minCoste">{{ cartShop.minCoste }}</span></td>
+                                        <td></td><td></td>
+                                        <td colspan="2">小计： <span id="totalshop"></span></td>
+                                    </tr>
                             {% endfor %}
                             </tbody>
                             <tfoot>
@@ -217,7 +224,8 @@
                                 <br>大客户可享专有折扣,更多信息请联系客服.</p>
                         </div>
                         <div class="anniu">
-                            <button class="button-primary button-big FR" onclick="window.location.href='{{ path('cart_guestinfo') }}'" type="button"><span>下一步</span></button>
+                            <button class="button-primary button-big FR yes" onclick="window.location.href='{{ path('cart_guestinfo') }}'" type="button" style="display: none;"><span>下一步</span></button>
+                            <button class="button button-caution no">未达到每家店铺最低消费要求，无法继续购买流程</button>
                         </div>
                 </section>
             </section>

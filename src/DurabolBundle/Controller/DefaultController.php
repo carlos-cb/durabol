@@ -38,12 +38,22 @@ class DefaultController extends Controller
 
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
+
+        $cartShops = array();
+        $i = 0;
+        foreach($cartItems as $cartItem)
+        {
+            $cartShops[$i] = $cartItem->getProduct()->getCategory()->getShop();
+            $i ++;  
+            $cartShops = array_unique($cartShops);
+        }
         
         return $this->render('DurabolBundle:Default:index.html.twig', array(
             'productSales' => $productSales,
             'shops' => $shops,
             'user' => $user,
             'cartItems' => $cartItems,
+            'cartShops' => $cartShops,
         ));
     }
 
