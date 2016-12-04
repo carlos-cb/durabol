@@ -17,7 +17,7 @@
 
 {% block content %}
     <div class="col-xs-6">
-        <h2>团购网配货单</h2>
+        <h2>团购网({{ orderInfo.shopName }})配货单</h2>
         <h5>日期： {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</h5>
         <h4>单号： {{ orderInfo.id }}</h4>
         <h4>公司税号：{{ orderInfo.receiverShuihao }}</h4>
@@ -96,8 +96,13 @@
     </div>
     <div class="col-xs-6">
         <h4>货品金额: {{ orderInfo.goodsFee|number_format(2, '.', ',') }} €</h4>
-        <h4>大客户折扣: {{ (orderInfo.goodsFee - orderInfo.totalPrice)|number_format(2, '.', ',') }} €</h4>
-        <h4>总金额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+        <h4>大客户折扣:
+            {% if orderInfo.gerenshui %}
+                {{ (orderInfo.goodsFee-orderInfo.totalPrice/1.052)|number_format(2, '.', ',') }}
+            {% else %}
+                {{ (orderInfo.goodsFee-orderInfo.totalPrice)|number_format(2, '.', ',') }}
+            {% endif %} €</h4>
+        <h4>总金额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €{% if orderInfo.gerenshui %} (包含个体税5.2%){% endif %}</h4>
     </div>
 
 

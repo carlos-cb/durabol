@@ -731,4 +731,40 @@ class OrderInfo
     public function __clone() {
         $this->id = null;
     }
+    
+    public function getShopName()
+    {
+        $orderItems = $this->orderItems;
+        $orderItemShop = $orderItems[0];
+        $shopName = $orderItemShop->getProduct()->getCategory()->getShop()->getNameShort();
+        return $shopName;
+    }
+    /**
+     * @var boolean
+     */
+    private $gerenshui;
+
+
+    /**
+     * Set gerenshui
+     *
+     * @param boolean $gerenshui
+     * @return OrderInfo
+     */
+    public function setGerenshui($gerenshui)
+    {
+        $this->gerenshui = $gerenshui;
+
+        return $this;
+    }
+
+    /**
+     * Get gerenshui
+     *
+     * @return boolean 
+     */
+    public function getGerenshui()
+    {
+        return $this->gerenshui;
+    }
 }

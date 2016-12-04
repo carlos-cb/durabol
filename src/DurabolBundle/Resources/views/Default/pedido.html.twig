@@ -26,15 +26,15 @@
                     </tr>
                     </thead>
                     <tbody id="shangpin">
-                    {% for orderInfo in orderInfos %}
+                    {% for orderInfo in orderInfos if orderInfo.parent %}
                         <tr id="order-item" class="order-item  _order-item-919231977">
                             <td class="_detail" style="height: 50px">{{ orderInfo.id }}</td>
                             <td class="description _detail">{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d') }}{% endif %}</td>
                             <td class="color">
                                 {{ orderInfo.state }}
-                                {% if orderInfo.state == '未付款' %} &nbsp;&nbsp;&nbsp;<a href="{{ path('order_orderpay', { 'orderInfo': orderInfo.id }) }}" class="button button-tiny button-inverse button-rounded">付款</a>{% endif %}
+                                {% if orderInfo.state == '未付款' %} &nbsp;<a href="{{ path('order_orderpay', { 'orderInfo': orderInfo.parent.id }) }}" class="button button-tiny button-inverse button-rounded">付款</a>{% endif %}
                             </td>
-                            <td>{{ orderInfo.totalPrice }} EUR</td>
+                            <td>{{ orderInfo.totalPrice|number_format(2, '.', ',') }} EUR</td>
                             <td>{% if orderInfo.envio %}{{ orderInfo.envio }}{% endif %}</td>
                             <td>
                                 <a class="button button-highlight button-tiny" href="{{ path('order_productlistclient', { 'orderInfo': orderInfo.id }) }}">查看货品</a>

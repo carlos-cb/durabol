@@ -16,12 +16,13 @@
         </div>
         <div class="box col-xs-12 col-lg-6" style="display: inline-block;margin-top: 30px">
             <h3 class="box"><b>团购网新订单提醒</b></h3>
-            <h4>Entra www.durabol.com/admin para ver el pedido.</h4>
+            <h4>请进入网站后台 www.groupon100.com/admin 进行查看.</h4>
             <br><br><br>
-            <h4>Nombre de Cliente: {{ orderInfo.receiverName }}</h4>
-            <h4>Número de Pedido: {{ orderInfo.id }}</h4>
-            <h4>Importe Total: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
-            <h4>Tiempo de Generación: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
+            <h4>客户名/公司名: {{ orderInfo.receiverName }}</h4>
+            <h4>总订单: {{ orderInfo.id }}</h4>
+            <h4>子订单: {% for childOrderInfo in childOrderInfos %}{{ childOrderInfo.id }} {% endfor %}</h4>
+            <h4>订单总额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+            <h4>下单时间: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
             <br>
         </div>
     </div>

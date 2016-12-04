@@ -36,6 +36,7 @@
                 {% else %}
                     <h6 style="font-weight: bold">请将货款通过银行转账方式转到账户：ES07 8888 8888 8888.</h6>
                     <img src="{{ asset('bundles/durabol/img/logotrans.jpg') }}">
+                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
                 {% endif %}
             </div>
         </form>
@@ -116,7 +117,12 @@
                 </tr>
                 <tr>
                     <th class="order-delivery-costs" colspan="5" scope="row">Descuento:</th>
-                    <td class="order-delivery-costs" headers="priceHeader">{{ (orderInfo.goodsFee-orderInfo.totalPrice)|number_format(2, '.', ',') }} EUR</td>
+                    <td class="order-delivery-costs" headers="priceHeader">
+                        {% if orderInfo.gerenshui %}
+                            {{ (orderInfo.goodsFee-orderInfo.totalPrice/1.052)|number_format(2, '.', ',') }}
+                        {% else %}
+                            {{ (orderInfo.goodsFee-orderInfo.totalPrice)|number_format(2, '.', ',') }}
+                        {% endif %}EUR</td>
                 </tr>
                 <tr class="total">
                     <th colspan="5" scope="row"><strong>Total:</strong></th>

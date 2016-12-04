@@ -13,6 +13,8 @@ DurabolBundle\Entity\OrderInfo:
             type: datetime
         goodsFee:
             type: float
+        gerenshui:
+            type: boolean
         totalPrice:
             type: float
         discount:

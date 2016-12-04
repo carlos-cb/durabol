@@ -11,7 +11,8 @@
 
     <div class="container-fluid" style="margin-top: 100px;">
     <section id="main" class="content-main" role="main">
-        <h2>货品列表</h2>
+        <h2>{{ orderInfo.shopName }}订单货品列表</h2>
+        <h4>金额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} EUR{% if orderInfo.gerenshui %}(包含个体税5.2%){% endif %}</h4>
         <br>
         <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
             <form action="" method="POST" class="_shopCartForm">
@@ -23,6 +24,7 @@
                         <th class="description">货号</th>
                         <th class="quantity">单位</th>
                         <th class="quantity">数量</th>
+                        <th class="quantity">单价</th>
                     </tr>
                     </thead>
                     <tbody id="shangpin">
@@ -43,12 +45,16 @@
                             <td class="quantity">
                                 <span class="_quantity" id="_unit">{{ orderItem.quantity }} </span>
                             </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.price|number_format(2, '.', ',') }} </span>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
                 <div class="anniu">
                     <button class="button-secondary button-big FL _continue-shopping-btn"  style="width: 200px;" onclick="window.location.href='{{ path('order_pedido') }}'" type="button"><span>返回</span></button>
+                    <button class="button-secondary button-big FL _continue-shopping-btn button-primary" onclick="window.print();"><i class="fa fa-print"></i> 打印</button>
                 </div>
             </form>
         </section>

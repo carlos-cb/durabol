@@ -182,7 +182,6 @@ class DefaultController extends Controller
     public function pedidoAction()
     {
         $user = $this->getUser();
-        $em = $this->getDoctrine()->getManager();
 
         $repository = $this->getDoctrine()->getRepository('DurabolBundle:OrderInfo');
         $orderInfos = $repository->findByUser($user, array('orderDate' => 'DESC'));

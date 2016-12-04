@@ -66,6 +66,7 @@ class PaymentController extends Controller
                     $this->renderView(
                         'DurabolBundle:Payment:successpaymentEmail.html.twig', array(
                         'status' => $status->getValue(),
+                        'childOrderInfos' => $childOrderInfos,
                         'orderInfo' => $orderInfo,
                         'userNow' => $user,
                     )),
@@ -83,6 +84,7 @@ class PaymentController extends Controller
                         'DurabolBundle:Payment:successpaymentEmailBackend.html.twig', array(
                         'status' => $status->getValue(),
                         'orderInfo' => $orderInfo,
+                        'childOrderInfos' => $childOrderInfos,
                         'userNow' => $user,
                     )),
                     'text/html'
@@ -102,11 +104,13 @@ class PaymentController extends Controller
             return $this->render('DurabolBundle:Payment:successpayment.html.twig', array(
                 'status' => $status->getValue(),
                 'orderInfo' => $orderInfo,
+                'childOrderInfos' => $childOrderInfos,
                 'userNow' => $user,
             ));
         } else {
             return $this->render('DurabolBundle:Payment:errorpayment.html.twig', array(
                 'orderInfo' => $orderInfo,
+                'childOrderInfos' => $childOrderInfos,
             ));
         }
     }
