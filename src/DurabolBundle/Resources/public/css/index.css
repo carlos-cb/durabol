@@ -7,9 +7,22 @@
     }
 }
 
+@media (min-width: 1201px){
+    #home #productimg{
+        height: 240px;
+    }
+}
+@media (max-width: 1200px){
+    #home #productimg{
+        height: 280px;
+    }
+}
 
 
-
+#home #productimg img {
+    max-width: 100%;
+    height: 100%;
+}
 #home .mainimg{
     margin-top: 100px;
     width: 100%;

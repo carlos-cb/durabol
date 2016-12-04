@@ -23,9 +23,11 @@
                     {% for productSale in productSales %}
                         <div class="col-lg-3 col-xs-4 product">
                             <div class="">
-                                <a id="product_image" href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">
-                                    <img src="{{ asset('uploads/fotos/' ~ productSale.foto) }}">
-                                </a>
+                                <div id="productimg">
+                                    <a href="{{ path('font_productList', { 'category': productSale.category.id }) }}#product{{ productSale.id }}">
+                                        <img src="{{ asset('uploads/fotos/' ~ productSale.foto) }}">
+                                    </a>
+                                </div>
                                 <div class="caption">
                                     <h6>{{ productSale.name }}</h6>
                                     <div class="price _product-price">
