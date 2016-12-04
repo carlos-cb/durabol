@@ -206,4 +206,9 @@ class DefaultController extends Controller
             'user' => $user,
         ));
     }
+
+    public function infoAction()
+    {
+        return $this->render('DurabolBundle:Info:info.html.twig');
+    }
 }

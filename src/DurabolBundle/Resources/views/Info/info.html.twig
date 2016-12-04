@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/info.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container-fluid info" style="margin-top: 100px;">
+        <div id="erweima">
+            <h3>扫描二维码直接进入网站</h3>
+            <h4>您可以保存该图片并转发</h4>
+            <img src="{{ asset('bundles/durabol/img/erweima.jpg') }}">
+        </div>
+        <hr class="featurette-divider"><br>
+        <div id="lianxi">
+            <h2>联系团购网</h2><br><br>
+            <h4>客服电话： +34 688 099 098</h4>
+            <h4>客服微信： durabol</h4>
+            <h4>联络邮箱： 365331320@qq.com</h4>
+            <h4>微信公众平台： durabol-es</h4>
+        </div>
+        <hr class="featurette-divider"><br><br>
+        <div id="tiaokuan">
+            <h2>团购须知</h2><br>
+            <img src="{{ asset('bundles/durabol/img/num1.png') }}">
+            <h3>退货担保</h3>
+            <br><br>
+            <h4>以下原因可100%无条件退换货: <br>
+                ·货品质量问题<br>
+                ·运输造成破损<br>
+            </h4><br>
+            <img src="{{ asset('bundles/durabol/img/num2.png') }}">
+            <h3>一对一服务 </h3>
+            <br><br>
+            <h4>在使用本叫货软件遇到任何关于商品或者技术的问题都可以咨询电话: 688 099 098.
+                下单后，我们会与您电话确认订单, 帮您处理好一切和订单有关的事务.
+            </h4><br>
+            <img src="{{ asset('bundles/durabol/img/num3.png') }}">
+            <h3>大额包邮，高效配送</h3>
+            <br><br>
+            <h4>货物通常会在5个工作日内送达(通常会在2-3天左右), 如在运输过程中有商品破损的, 可无条件退换货.</h4><br>
+            <img src="{{ asset('bundles/durabol/img/num4.png') }}">
+            <h3>发票正规，价格含税</h3>
+            <br><br>
+            <h4>在此叫货平台上所有的价格都已经包含21%的增值税. 个体户百元店需自己支付5.2%的个体户附加税。
+            </h4>
+        </div>
+        <br><br><br>
+    </div>
+{% endblock %}

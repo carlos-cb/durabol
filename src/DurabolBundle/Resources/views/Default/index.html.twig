@@ -43,25 +43,33 @@
                 <div class="row gongneng">
                     <div class="col-xs-3">
                         <div class="tile">
-                            <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <a href="">
+                                <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            </a>
                             <h3 class="tile-title">本月上新</h3>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="tile">
-                            <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <a href="">
+                                 <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            </a>
                             <h3 class="tile-title">热卖好货</h3>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="tile">
-                            <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <a href="{{ path('font_info') }}#tiaokuan">
+                                 <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            </a>
                             <h3 class="tile-title">团购须知</h3>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="tile">
-                            <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            <a href="{{ path('font_info') }}#erweima">
+                                 <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
+                            </a>
                             <h3 class="tile-title">分享网站</h3>
                         </div>
                     </div>
@@ -278,9 +286,9 @@
                     <hr class="featurette-divider">
                     <a href=""><h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3></a>
                     <hr class="featurette-divider">
-                    <a href=""><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
+                    <a href="{{ path('font_info') }}#lianxi"><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
                     <hr class="featurette-divider">
-                    <a href="{{ path('fos_user_change_password') }}"><h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改密码</h3></a>
+                    <a href="{{ path('font_info') }}#erweima"><h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享网站</h3></a>
                     <hr class="featurette-divider">
                     <a href="{{ path('fos_user_security_logout') }}"><h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3></a>
                 </div>

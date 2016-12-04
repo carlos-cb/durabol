@@ -1,0 +1,21 @@
+@media (min-width: 992px){
+    .container-fluid{
+        width: 970px;
+    }
+    .container-fluid{
+        width: 1170px;
+    }
+}
+@media (max-width: 991px){
+    div.info h3{
+        font-size: 50px;
+    }
+    div.info h4{
+        font-size: 40px;
+    }
+}
+
+div.info{
+    color: black;
+    text-align: center;
+}
