@@ -661,4 +661,74 @@ class OrderInfo
     {
         return $this->receiverShuihao;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $children;
+
+    /**
+     * @var \DurabolBundle\Entity\OrderInfo
+     */
+    private $parent;
+
+
+    /**
+     * Add children
+     *
+     * @param \DurabolBundle\Entity\OrderInfo $children
+     * @return OrderInfo
+     */
+    public function addChild(\DurabolBundle\Entity\OrderInfo $children)
+    {
+        $this->children[] = $children;
+
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \DurabolBundle\Entity\OrderInfo $children
+     */
+    public function removeChild(\DurabolBundle\Entity\OrderInfo $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Get children
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * Set parent
+     *
+     * @param \DurabolBundle\Entity\OrderInfo $parent
+     * @return OrderInfo
+     */
+    public function setParent(\DurabolBundle\Entity\OrderInfo $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \DurabolBundle\Entity\OrderInfo 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+    
+    public function __clone() {
+        $this->id = null;
+    }
 }

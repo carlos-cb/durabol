@@ -66,7 +66,7 @@ $(function(){
                 ssss.find('.minCoste').css("color", "black");
             }
         }
-        if(tongji == 1){
+        if(tongji == 1 ){
             $('button.yes').show();
             $('button.no').hide();
         }else{

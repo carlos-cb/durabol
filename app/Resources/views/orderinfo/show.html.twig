@@ -86,7 +86,7 @@
     <div class="col-xs-12"><hr></div>
     <div class="col-xs-6">
         <h4>支付方式: {{ orderInfo.payType }}</h4>
-        <h4>大客户折扣: {{ orderInfo.discount * 100 }} %</h4>
+        <h4>大客户折扣: {{ 100 - orderInfo.discount * 100 }} %</h4>
         <ul>
             <li>
                 <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回</a>

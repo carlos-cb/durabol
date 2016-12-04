@@ -47,13 +47,14 @@
         </tr>
         </thead>
         <tbody>
-        {% for orderInfo in orderInfos %}
+        {% for orderInfo in orderInfos if orderInfo.parent %}
             <tr>
                 <td>
                     {{ orderInfo.id }}
                     {% if "now"|date_modify("-1 day")|date("Y-m-d H:i") <  orderInfo.orderDate|date('Y-m-d H:i') %}
                         <img src="{{ asset('bundles/durabol/img/new-icon.png') }}" height="40px" width="80px">
-                    {% endif %}
+                    {% endif %}<br>
+                    (所属大订单 {{ orderInfo.parent.id }})
                 </td>
                 <td><button id="estado" class="button button-tiny button-rounded
                 {% if orderInfo.state == '已付款' %}button-highlight{% endif %}

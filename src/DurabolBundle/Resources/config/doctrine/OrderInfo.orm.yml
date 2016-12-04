@@ -58,6 +58,9 @@ DurabolBundle\Entity\OrderInfo:
         orderItems:
             targetEntity: OrderItem
             mappedBy: orderInfo
+        children:
+          targetEntity: OrderInfo
+          mappedBy: parent
     manyToOne:
         user:
             targetEntity: User
@@ -65,4 +68,7 @@ DurabolBundle\Entity\OrderInfo:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+        parent:
+          targetEntity: OrderInfo
+          inversedBy: children
     lifecycleCallbacks: {  }

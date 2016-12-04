@@ -53,6 +53,7 @@ class PaymentController extends Controller
         $user = $this->getUser();
         $orderInfoId = $payment->getNumber();
         $orderInfo = $em->getRepository('DurabolBundle:OrderInfo')->findOneById($orderInfoId);
+        $childOrderInfos = $orderInfo->getChildren();
 
         if ($paymentStatus === true)
         {
@@ -89,8 +90,12 @@ class PaymentController extends Controller
             $this->get('mailer')->send($messageBackend);
 
             //修改订单状态
-
             $orderInfo->setIsPayed(true)->setState('已付款');
+            foreach ($childOrderInfos as $childOrderInfo)
+            {
+                $childOrderInfo->setIsPayed(true)->setState('已付款');
+                $em->persist($childOrderInfo);
+            }
             $em->persist($orderInfo);
             $em->flush();
 

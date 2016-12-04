@@ -2,6 +2,7 @@
 
 namespace DurabolBundle\Controller;
 
+use Stripe\Order;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use DurabolBundle\Entity\OrderInfo;
@@ -12,6 +13,7 @@ class OrderController extends Controller
     public function cartToOrderinfoAction(Request $request)
     {
         $priceAll = $this->countAll();
+        $cartShops = $this->getCartShops();
         $userDiscount = $this->getUser()->getDiscount() / 100;
         $priceIni = $priceAll / $userDiscount;
         $payType = '在线支付';
@@ -23,23 +25,10 @@ class OrderController extends Controller
         if($request->getMethod() == 'POST' && ($priceIni!=0) ){
             //订单信息录入
             $orderInfo = new OrderInfo();
-            $orderInfo->setUser($this->getUser())
-                ->setDiscount($userDiscount)
-                ->setOrderDate(new \DateTime('now'))
-                ->setGoodsFee(round($priceIni, 2))
-                ->setPayType($payType)
-                ->setTotalPrice(round($priceAll, 2))
-                ->setReceiverName($request->get('name'))
-                ->setReceiverShuihao($request->get('shuihao'))
-                ->setReceiverPhone($request->get('phonenumber'))
-                ->setReceiverAdress($request->get('address'))
-                ->setReceiverCity($request->get('city'))
-                ->setReceiverProvince($request->get('province'))
-                ->setReceiverPostcode($request->get('postcode'))
-                ->setIsPayed(false)
-                ->setIsSended(false)
-                ->setIsOver(false)
-                ->setState("未付款");
+            $orderInfo->setUser($this->getUser())->setDiscount($userDiscount)->setOrderDate(new \DateTime('now'))->setGoodsFee(round($priceIni, 2))->setPayType($payType)
+                ->setTotalPrice(round($priceAll, 2))->setReceiverName($request->get('name'))->setReceiverShuihao($request->get('shuihao'))->setReceiverPhone($request->get('phonenumber'))
+                ->setReceiverAdress($request->get('address'))->setReceiverCity($request->get('city'))->setReceiverProvince($request->get('province'))
+                ->setReceiverPostcode($request->get('postcode'))->setIsPayed(false)->setIsSended(false)->setIsOver(false)->setState("未付款");
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);
@@ -47,6 +36,9 @@ class OrderController extends Controller
 
             //将购物车商品全部导入订单中
             $cleanCart = $this->itemToOrder($orderInfo);
+
+            //根据不同的店铺生成子订单
+            $this->setChildOrder($cartShops, $orderInfo);
 
             //清空购物车的所有商品并且状态改为已生成订单
             $this->clearCarrito();
@@ -109,6 +101,53 @@ class OrderController extends Controller
             $priceall += ($cartItem->getQuantity() * $cartItem->getPrice() * $cartItem->getProduct()->getUnit());
         }
         return $priceall;
+    }
+
+    private function getCartShops()
+    {
+        $user = $this->getUser();
+        $cartItems = $user->getCart()->getCartItems();
+        $cartShops = array();
+        $i = 0;
+
+        foreach($cartItems as $cartItem)
+        {
+            $cartShops[$i] = $cartItem->getProduct()->getCategory()->getShop();
+            $i ++;
+            $cartShops = array_unique($cartShops);
+        }
+        return $cartShops;
+    }
+
+    private function setChildOrder($cartShops, OrderInfo $orderInfo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        foreach ($cartShops as $cartShop)
+        {
+            $childOrderInfo = clone $orderInfo;
+            $childOrderInfo->setParent($orderInfo);
+            $em->persist($childOrderInfo);
+            $orderItems = $orderInfo->getOrderItems();
+            $total = 0;
+            foreach ($orderItems as $orderItem)
+            {
+                $orderItemShop = $orderItem->getProduct()->getCategory()->getShop();
+                if($cartShop == $orderItemShop)
+                {
+                    $orderItem->setOrderInfo($childOrderInfo);
+                    $childOrderInfo->addOrderItem($orderItem);
+                    $price = $orderItem->getPrice();
+                    $quantity = $orderItem->getQuantity();
+                    $unit = $orderItem->getProduct()->getUnit();
+                    $total += ($price * $quantity * $unit);
+                }
+            }
+            $userDiscount = $this->getUser()->getDiscount() / 100;
+            $totalIni = $total / $userDiscount;
+            $childOrderInfo->setTotalPrice($total)->setGoodsFee($totalIni);
+            $em->persist($childOrderInfo);
+            $em->flush();
+        }
     }
 
     public function orderpayAction(OrderInfo $orderInfo)
