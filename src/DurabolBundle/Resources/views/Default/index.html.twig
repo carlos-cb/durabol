@@ -43,18 +43,18 @@
                 <div class="row gongneng">
                     <div class="col-xs-3">
                         <div class="tile">
-                            <a href="">
+                            <a onClick="document.getElementById('store').click();">
                                 <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
                             </a>
-                            <h3 class="tile-title">本月上新</h3>
+                            <h3 class="tile-title">搜索店铺</h3>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="tile">
-                            <a href="">
+                            <a href="{{ path('order_pedido') }}">
                                  <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
                             </a>
-                            <h3 class="tile-title">热卖好货</h3>
+                            <h3 class="tile-title">我的订单</h3>
                         </div>
                     </div>
                     <div class="col-xs-3">
@@ -131,15 +131,18 @@
 
         <div role="tabpanel" class="tab-pane" id="stores">
             <div class="container-fluid" style="margin-top: 80px;">
+                <form class="navbar-form">
+                    <input type="text" class="form-control" id="search" placeholder="查找店铺...">
+                </form>
                 {% for shop in shops %}
-                <div class="">
+                <div class="shops">
                     <a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">
                         <div class="col-xs-12">
                             <div class="col-xs-4 col-lg-2 categoryimg">
                                 <img src="{{ asset('uploads/fotos/' ~ shop.foto) }}">
                             </div>
                             <div class="col-xs-6 col-lg-8 categoryinfo">
-                                <h3>{{ shop.name }}</h3>
+                                <h3><span>{{ shop.name }}</span> (<span>{{ shop.nameShort }}</span>)</h3>
                                 <h5>{% for categoryName in shop.categoryNames %}{% if loop.index <= 5 %}{{ categoryName }}, {% endif %}{% endfor %}等</h5>
                                 <h5>{{ shop.minCoste }} €起订, 共计{{ shop.productNum }}个商品</h5>
                             </div>
