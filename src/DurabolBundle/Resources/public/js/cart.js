@@ -63,7 +63,6 @@ $(function(){
                 tongji = 0;
                 ssss.find('.minCoste').css("color", "red");
             }else{
-                tongji = 1;
                 ssss.find('.minCoste').css("color", "black");
             }
         }
