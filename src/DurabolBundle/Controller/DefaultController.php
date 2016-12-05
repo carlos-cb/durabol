@@ -171,11 +171,12 @@ class DefaultController extends Controller
 
     public function guestinfoAction()
     {
-        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+        $data = $user->getData();
 
         return $this->render('DurabolBundle:Default:guestinfo.html.twig', array(
             'user' => $user,
+            'data' => $data,
         ));
     }
 

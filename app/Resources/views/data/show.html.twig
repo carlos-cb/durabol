@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Datum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ datum.id }}</td>
+            </tr>
+            <tr>
+                <th>Receivername</th>
+                <td>{{ datum.receivername }}</td>
+            </tr>
+            <tr>
+                <th>Receiverphone</th>
+                <td>{{ datum.receiverphone }}</td>
+            </tr>
+            <tr>
+                <th>Receiveradress</th>
+                <td>{{ datum.receiveradress }}</td>
+            </tr>
+            <tr>
+                <th>Receiverprovince</th>
+                <td>{{ datum.receiverprovince }}</td>
+            </tr>
+            <tr>
+                <th>Receivercity</th>
+                <td>{{ datum.receivercity }}</td>
+            </tr>
+            <tr>
+                <th>Receiverpostcode</th>
+                <td>{{ datum.receiverpostcode }}</td>
+            </tr>
+            <tr>
+                <th>Receivershuihao</th>
+                <td>{{ datum.receivershuihao }}</td>
+            </tr>
+            <tr>
+                <th>Receivergerenshui</th>
+                <td>{% if datum.receivergerenshui %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('data_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('data_edit', { 'id': datum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

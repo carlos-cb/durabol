@@ -1,0 +1,24 @@
+data_index:
+    path:     /
+    defaults: { _controller: "DurabolBundle:Data:index" }
+    methods:  GET
+
+data_show:
+    path:     /{id}/show
+    defaults: { _controller: "DurabolBundle:Data:show" }
+    methods:  GET
+
+data_new:
+    path:     /new
+    defaults: { _controller: "DurabolBundle:Data:new" }
+    methods:  [GET, POST]
+
+data_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DurabolBundle:Data:edit" }
+    methods:  [GET, POST]
+
+data_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DurabolBundle:Data:delete" }
+    methods:  DELETE

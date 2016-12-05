@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+    <div class="container-fluid" id="address" style="margin-top: 100px;">
+        <h2>编辑收货地址</h2>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <br>
+            <input type="submit" class="button button-inverse" value="确定创建" />
+            <button class="button button-inverse"  style="width: 200px;" onclick="window.location.href='{{ path('durabol_homepage') }}'" type="button"><span>返回</span></button>
+        {{ form_end(form) }}
+    </div>
+    <br><br><br><br>
+{% endblock %}

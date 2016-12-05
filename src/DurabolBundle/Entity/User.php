@@ -175,4 +175,32 @@ class User extends BaseUser
     {
         return $this->discount;
     }
+    /**
+     * @var \DurabolBundle\Entity\Data
+     */
+    private $data;
+
+
+    /**
+     * Set data
+     *
+     * @param \DurabolBundle\Entity\Data $data
+     * @return User
+     */
+    public function setData(\DurabolBundle\Entity\Data $data = null)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
+
+    /**
+     * Get data
+     *
+     * @return \DurabolBundle\Entity\Data 
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 }

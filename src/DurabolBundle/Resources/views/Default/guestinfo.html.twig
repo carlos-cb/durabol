@@ -49,44 +49,44 @@
                     <div class="form-group">
                         <label for="inputtel" class="col-sm-2 control-label">电话</label>
                         <div class="col-sm-8">
-                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required">
+                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required" {% if data.receiverphone is defined %}value="{{ data.receiverphone }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputname" class="col-sm-2 control-label">公司名</label>
                         <div class="col-sm-8">
-                            <input name="name" type="text" class="form-control" id="inputname" required="required">
+                            <input name="name" type="text" class="form-control" id="inputname" required="required"  {% if data.receivername is defined %}value="{{ data.receivername }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputshuihao" class="col-sm-2 control-label">税号</label>
                         <div class="col-sm-8">
-                            <input name="shuihao" type="text" class="form-control" id="inputshuihao" required="required">
+                            <input name="shuihao" type="text" class="form-control" id="inputshuihao" required="required" {% if data.receivershuihao is defined %}value="{{ data.receivershuihao }}"{% endif %}>
                         </div>
                     </div>
                     <h2>DATOS DE ENVÍO</h2>
                     <div class="form-group">
                         <label for="inputaddress" class="col-sm-2 control-label">地址</label>
                         <div class="col-sm-8">
-                            <input name="address" type="text" class="form-control" id="inputaddress" required="required">
+                            <input name="address" type="text" class="form-control" id="inputaddress" required="required" {% if data.receiveradress is defined %}value="{{ data.receiveradress }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputpost" class="col-sm-2 control-label">邮编</label>
                         <div class="col-sm-8">
-                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required">
+                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required" {% if data.receiverpostcode is defined %}value="{{ data.receiverpostcode }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputlocal" class="col-sm-2 control-label">城市</label>
                         <div class="col-sm-8">
-                            <input name="city" type="text" class="form-control" id="inputlocal" required="required">
+                            <input name="city" type="text" class="form-control" id="inputlocal" required="required" {% if data.receivercity is defined %}value="{{ data.receivercity }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputprovince" class="col-sm-2 control-label">省份</label>
                         <div class="col-sm-8">
-                            <input name="province" type="text" class="form-control" id="inputprovince" required="required">
+                            <input name="province" type="text" class="form-control" id="inputprovince" required="required" {% if data.receiverprovince is defined %}value="{{ data.receiverprovince }}"{% endif %}>
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <div style="position: relative; left: 50px;">
-                        <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;">
+                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" checked="{% if data.receivergerenshui is defined %}checked{% endif %}" value="1">
                         个体户客户请勾选此选项，将添加5.3%的税款。
                     </div>
                     <br><br>

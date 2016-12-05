@@ -1,0 +1,42 @@
+DurabolBundle\Entity\Data:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\DataRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        receivername:
+            type: string
+            length: 255
+        receiverphone:
+            type: string
+            length: 255
+        receiveradress:
+            type: string
+            length: 255
+        receiverprovince:
+            type: string
+            length: 255
+        receivercity:
+            type: string
+            length: 255
+        receiverpostcode:
+            type: string
+            length: 255
+        receivershuihao:
+            type: string
+            length: 255
+        receivergerenshui:
+            type: boolean
+    oneToOne:
+        user:
+            targetEntity: User
+            inversedBy: data
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

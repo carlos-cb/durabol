@@ -293,7 +293,7 @@
                 </div>
                 <div class="col-xs-12 usershixiang">
                     <hr class="featurette-divider">
-                    <a href=""><h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3></a>
+                    <a href="{% if user.data.id is defined %}{{ path('data_edit', { 'id': user.data.id }) }}{% else %}{{ path('data_new') }}{% endif %}"><h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3></a>
                     <hr class="featurette-divider">
                     <a href="{{ path('font_info') }}#lianxi"><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
                     <hr class="featurette-divider">

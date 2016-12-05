@@ -559,3 +559,14 @@
 }
 
 
+#address label, #address input, #address button{
+    font-size: 22px;
+}
+#address input#durabolbundle_data_receivergerenshui{
+    -webkit-appearance: checkbox!important;
+    height: 30px;
+    width: 30px;
+    position: relative;
+    right: 20px;
+}
+

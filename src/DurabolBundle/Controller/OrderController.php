@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use DurabolBundle\Entity\OrderInfo;
 use DurabolBundle\Entity\OrderItem;
+use DurabolBundle\Entity\Data;
 
 class OrderController extends Controller
 {
@@ -36,6 +37,34 @@ class OrderController extends Controller
                 ->setReceiverPostcode($request->get('postcode'))->setIsPayed(false)->setIsSended(false)->setIsOver(false)->setState("未付款")->setGerenshui($gerenshui);
 
             $em = $this->getDoctrine()->getManager();
+            $repository = $this->getDoctrine()->getRepository('DurabolBundle:Data');
+            $existeData = $repository->findOneByUser($this->getUser());
+
+            if($existeData){
+                $existeData
+                    ->setReceivername($request->get('name'))
+                    ->setReceiverphone($request->get('phonenumber'))
+                    ->setReceiveradress($request->get('address'))
+                    ->setReceivercity($request->get('city'))
+                    ->setReceiverprovince($request->get('province'))
+                    ->setReceiverpostcode($request->get('postcode'))
+                    ->setReceivershuihao($request->get('shuihao'))
+                    ->setReceivergerenshui($request->get('gerenshui'));
+                $em->persist($existeData);
+            }else{
+                $data = new Data();
+                $data->setUser($this->getUser())
+                    ->setReceivername($request->get('name'))
+                    ->setReceiverphone($request->get('phonenumber'))
+                    ->setReceiveradress($request->get('address'))
+                    ->setReceivercity($request->get('city'))
+                    ->setReceiverprovince($request->get('province'))
+                    ->setReceiverpostcode($request->get('postcode'))
+                    ->setReceivershuihao($request->get('shuihao'))
+                    ->setReceivergerenshui($request->get('gerenshui'));
+                $em->persist($data);
+            }
+
             $em->persist($orderInfo);
             $em->flush();
 

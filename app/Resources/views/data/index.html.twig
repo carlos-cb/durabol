@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Datas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Receivername</th>
+                <th>Receiverphone</th>
+                <th>Receiveradress</th>
+                <th>Receiverprovince</th>
+                <th>Receivercity</th>
+                <th>Receiverpostcode</th>
+                <th>Receivershuihao</th>
+                <th>Receivergerenshui</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for datum in datas %}
+            <tr>
+                <td><a href="{{ path('data_show', { 'id': datum.id }) }}">{{ datum.id }}</a></td>
+                <td>{{ datum.receivername }}</td>
+                <td>{{ datum.receiverphone }}</td>
+                <td>{{ datum.receiveradress }}</td>
+                <td>{{ datum.receiverprovince }}</td>
+                <td>{{ datum.receivercity }}</td>
+                <td>{{ datum.receiverpostcode }}</td>
+                <td>{{ datum.receivershuihao }}</td>
+                <td>{% if datum.receivergerenshui %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('data_show', { 'id': datum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('data_edit', { 'id': datum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('data_new') }}">Create a new datum</a>
+        </li>
+    </ul>
+{% endblock %}
