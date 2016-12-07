@@ -38,7 +38,8 @@ class DefaultController extends Controller
 
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
-
+        $sliders = $em->getRepository('DurabolBundle:Slider')->findAll();
+        
         $cartShops = array();
         $i = 0;
         foreach($cartItems as $cartItem)
@@ -54,6 +55,7 @@ class DefaultController extends Controller
             'user' => $user,
             'cartItems' => $cartItems,
             'cartShops' => $cartShops,
+            'sliders' => $sliders,
         ));
     }
 

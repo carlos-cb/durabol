@@ -7,23 +7,38 @@
         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-        <li class="active"><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
         <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
         <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
         <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
-        <li><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
+        <li class="active"><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
     </ul>
 {% endblock %}
 
-
 {% block content %}
-    <h1 class="sub-header">创建新用户</h1>
-    <br>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <br>
-    <input type="submit" class="button button-inverse" value="确定创建" />
-    <a href="{{ path('user_index') }}" class="button button-inverse">返回列表</a>
-    {{ form_end(form) }}
+    <h1 class="sub-header">首页轮播图片管理</h1>
+    <a href="{{ path('slider_new') }}" class="button button-rounded button-inverse">创建</a>
+    <br><br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>ID(顺序)</th>
+                <th>照片</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slider in sliders %}
+            <tr>
+                <td>{{ slider.id }}</td>
+                <td><img src="{{ asset('uploads/fotos/' ~ slider.foto) }}" height="100px" width="349px"></td>
+                <td>
+                    <a href="{{ path('slider_edit', { 'id': slider.id }) }}" class="button button-tiny button-primary">修改</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

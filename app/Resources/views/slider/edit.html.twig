@@ -7,23 +7,31 @@
         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-        <li class="active"><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
         <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
         <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
         <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
-        <li><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
+        <li class="active"><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
     </ul>
 {% endblock %}
 
-
 {% block content %}
-    <h1 class="sub-header">创建新用户</h1>
+    <h1 class="sub-header">轮播图片修改</h1>
     <br>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <h3>首页轮播图片尺寸统一为： 928 x 266</h3>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
     <br>
-    <input type="submit" class="button button-inverse" value="确定创建" />
-    <a href="{{ path('user_index') }}" class="button button-inverse">返回列表</a>
-    {{ form_end(form) }}
+    <input type="submit" class="button button-inverse" value="修改" />
+    <a href="{{ path('slider_index') }}" class="button button-inverse">返回列表</a>
+    {{ form_end(edit_form) }}
+    <br>
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="button button-glow button-border button-rounded button-caution" onclick="return confirm('确定删除图片?')" type="submit" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
 {% endblock %}

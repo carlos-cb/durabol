@@ -26,6 +26,10 @@ durabol_sale:
     resource: "@DurabolBundle/Resources/config/routing/sale.yml"
     prefix:   /admin/sale
 
+durabol_slider:
+    resource: "@DurabolBundle/Resources/config/routing/slider.yml"
+    prefix:   /admin/slider
+
 durabol_font:
     resource: "@DurabolBundle/Resources/config/routing/font.yml"
     prefix:   /product
