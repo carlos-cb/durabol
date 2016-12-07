@@ -99,12 +99,14 @@ class DefaultController extends Controller
             array('category' => $category, 'isShow' => true),
             array('isTop' => 'DESC')
         );
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
 
         $cart = $this->getUser()->getCart();
         $cartItems = $cart->getCartItems();
 
         return $this->render('DurabolBundle:Default:productlist.html.twig', array(
             'user' => $user,
+            'shops' => $shops,
             'products' => $products,
             'cartItems' => $cartItems,
         ));
@@ -114,9 +116,11 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('DurabolBundle:Category')->findByShop($shop, array('isTop' => 'DESC'));
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         
         return $this->render('DurabolBundle:Default:category.html.twig', array(
             'categories' => $categories,
+            'shops' => $shops,
         ));
     }    
     
@@ -174,30 +178,39 @@ class DefaultController extends Controller
 
     public function guestinfoAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
+
         $user = $this->getUser();
         $data = $user->getData();
 
         return $this->render('DurabolBundle:Default:guestinfo.html.twig', array(
             'user' => $user,
             'data' => $data,
+            'shops' => $shops,
         ));
     }
 
     public function pedidoAction()
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
 
         $repository = $this->getDoctrine()->getRepository('DurabolBundle:OrderInfo');
         $orderInfos = $repository->findByUser($user, array('orderDate' => 'DESC'));
 
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
+
         return $this->render('DurabolBundle:Default:pedido.html.twig', array(
             'orderInfos' => $orderInfos,
             'user' => $user,
+            'shops' => $shops,
         ));
     }
 
     public function pedidoOtherAction($state)
     {
+        $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         if($state == 1)
         {
@@ -212,11 +225,13 @@ class DefaultController extends Controller
             array('user' => $user, 'state' => $orderState),
             array('orderDate' => 'DESC')
         );
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
 
         return $this->render('DurabolBundle:Default:pedido.html.twig', array(
             'orderInfos' => $orderInfos,
             'user' => $user,
             'orderState' => $orderState,
+            'shops' => $shops,
         ));
     }
 
@@ -227,16 +242,23 @@ class DefaultController extends Controller
 
         $query = $em->createQuery("SELECT p FROM DurabolBundle:OrderItem p WHERE p.orderInfo=$orderInfo");
         $orderItems = $query->getResult();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
 
         return $this->render('DurabolBundle:Default:productlistclient.html.twig', array(
             'orderItems' => $orderItems,
             'orderInfo' => $orderInfo,
             'user' => $user,
+            'shops' => $shops,
         ));
     }
 
     public function infoAction()
     {
-        return $this->render('DurabolBundle:Info:info.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
+
+        return $this->render('DurabolBundle:Info:info.html.twig', array(
+            'shops' => $shops,
+        ));
     }
 }

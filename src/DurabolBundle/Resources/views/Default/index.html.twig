@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-xs-3">
                         <div class="tile">
-                            <a href="{{ path('font_info') }}#erweima">
+                            <a href="{{ path('font_info') }}">
                                  <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
                             </a>
                             <h3 class="tile-title">分享网站</h3>
@@ -314,9 +314,9 @@
                     <hr class="featurette-divider">
                     <a href="{% if user.data.id is defined %}{{ path('data_edit', { 'id': user.data.id }) }}{% else %}{{ path('data_new') }}{% endif %}"><h3>&nbsp;<i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;收货地址</h3></a>
                     <hr class="featurette-divider">
-                    <a href="{{ path('font_info') }}#lianxi"><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
+                    <a href="{{ path('font_info') }}"><h3>&nbsp;<i class="fa fa-volume-control-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;联系我们</h3></a>
                     <hr class="featurette-divider">
-                    <a href="{{ path('font_info') }}#erweima"><h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享网站</h3></a>
+                    <a href="{{ path('font_info') }}"><h3>&nbsp;<i class="fa fa-key" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分享网站</h3></a>
                     <hr class="featurette-divider">
                     <a href="{{ path('fos_user_security_logout') }}"><h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3></a>
                 </div>

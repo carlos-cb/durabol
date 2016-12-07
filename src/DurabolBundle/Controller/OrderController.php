@@ -190,6 +190,8 @@ class OrderController extends Controller
 
     public function orderpayAction(OrderInfo $orderInfo)
     {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $user = $this->getUser();
 
         $cart = $this->getUser()->getCart();
@@ -201,6 +203,7 @@ class OrderController extends Controller
             'cartItems' => $cartItems,
             'user' => $user,
             'childOrderInfos' => $childOrderInfos,
+            'shops' => $shops,
         ));
     }
 }

@@ -1,8 +1,10 @@
-.navbar ul.nav li a{
-    font-size: 26px;
-}
-a.navbar-brand{
-    font-size: 32px;
+@media (max-width: 991px){
+    .navbar ul.nav li a{
+        font-size: 26px;
+    }
+    a.navbar-brand{
+        font-size: 32px;
+    }
 }
 .topxiayi{
     margin-top: 15px;

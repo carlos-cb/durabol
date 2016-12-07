@@ -33,6 +33,8 @@ class DataController extends Controller
      */
     public function newAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $datum = new Data();
         $form = $this->createForm('DurabolBundle\Form\DataType', $datum);
         $form->handleRequest($request);
@@ -46,6 +48,7 @@ class DataController extends Controller
         }
 
         return $this->render('data/new.html.twig', array(
+            'shops' => $shops,
             'datum' => $datum,
             'form' => $form->createView(),
         ));
@@ -71,6 +74,8 @@ class DataController extends Controller
      */
     public function editAction(Request $request, Data $datum)
     {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $deleteForm = $this->createDeleteForm($datum);
         $editForm = $this->createForm('DurabolBundle\Form\DataType', $datum);
         $editForm->handleRequest($request);
@@ -82,6 +87,7 @@ class DataController extends Controller
         }
 
         return $this->render('data/edit.html.twig', array(
+            'shops' => $shops,
             'datum' => $datum,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),

@@ -50,6 +50,7 @@ class PaymentController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $user = $this->getUser();
         $orderInfoId = $payment->getNumber();
         $orderInfo = $em->getRepository('DurabolBundle:OrderInfo')->findOneById($orderInfoId);
@@ -58,8 +59,8 @@ class PaymentController extends Controller
         if ($paymentStatus === true)
         {
             $messageClient = \Swift_Message::newInstance()
-                ->setSubject('您在团购网的新订单已完成')
-                ->setFrom(array('info@groupon100.com' => '团购网'))
+                ->setSubject('您在百团网的新订单已完成')
+                ->setFrom(array('info@groupon100.com' => '百团网'))
                 ->setTo($user->getEmail())
                 ->setContentType('text/html')
                 ->setBody(
@@ -69,14 +70,15 @@ class PaymentController extends Controller
                         'childOrderInfos' => $childOrderInfos,
                         'orderInfo' => $orderInfo,
                         'userNow' => $user,
+                        'shops' => $shops,
                     )),
                     'text/html'
                 );
             $this->get('mailer')->send($messageClient);
 
             $messageBackend = \Swift_Message::newInstance()
-                ->setSubject('团购网新订单提示')
-                ->setFrom(array('info@groupon100.com' => '团购网'))
+                ->setSubject('百团网新订单提示')
+                ->setFrom(array('info@groupon100.com' => '百团网'))
                 ->setTo('1878118@qq.com')
                 ->setContentType('text/html')
                 ->setBody(
@@ -86,6 +88,7 @@ class PaymentController extends Controller
                         'orderInfo' => $orderInfo,
                         'childOrderInfos' => $childOrderInfos,
                         'userNow' => $user,
+                        'shops' => $shops,
                     )),
                     'text/html'
                 );
@@ -106,11 +109,13 @@ class PaymentController extends Controller
                 'orderInfo' => $orderInfo,
                 'childOrderInfos' => $childOrderInfos,
                 'userNow' => $user,
+                'shops' => $shops,
             ));
         } else {
             return $this->render('DurabolBundle:Payment:errorpayment.html.twig', array(
                 'orderInfo' => $orderInfo,
                 'childOrderInfos' => $childOrderInfos,
+                'shops' => $shops,
             ));
         }
     }
