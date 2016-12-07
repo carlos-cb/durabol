@@ -245,4 +245,32 @@ class Shop
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var boolean
+     */
+    private $isTop;
+
+
+    /**
+     * Set isTop
+     *
+     * @param boolean $isTop
+     * @return Shop
+     */
+    public function setIsTop($isTop)
+    {
+        $this->isTop = $isTop;
+
+        return $this;
+    }
+
+    /**
+     * Get isTop
+     *
+     * @return boolean 
+     */
+    public function getIsTop()
+    {
+        return $this->isTop;
+    }
 }

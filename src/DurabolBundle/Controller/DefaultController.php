@@ -37,7 +37,7 @@ class DefaultController extends Controller
         $cartItems = $cart->getCartItems();
 
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
-        $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
 
         $cartShops = array();
         $i = 0;
@@ -94,7 +94,8 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $products = $em->getRepository('DurabolBundle:Product')->findBy(
-            array('category' => $category, 'isShow' => true)
+            array('category' => $category, 'isShow' => true),
+            array('isTop' => 'DESC')
         );
 
         $cart = $this->getUser()->getCart();
@@ -110,7 +111,7 @@ class DefaultController extends Controller
     public function categoryListAction(Shop $shop)
     {
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('DurabolBundle:Category')->findByShop($shop);
+        $categories = $em->getRepository('DurabolBundle:Category')->findByShop($shop, array('isTop' => 'DESC'));
         
         return $this->render('DurabolBundle:Default:category.html.twig', array(
             'categories' => $categories,

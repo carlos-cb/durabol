@@ -143,4 +143,14 @@ class ShopController extends Controller
             ->getForm()
         ;
     }
+
+    public function isTopAction(Shop $shop)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $shop->setIsTop(!$shop->getIsTop());
+        $em->persist($shop);
+        $em->flush();
+
+        return $this->redirectToRoute('shop_index');
+    }
 }

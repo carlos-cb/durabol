@@ -18,6 +18,8 @@ DurabolBundle\Entity\Category:
         foto:
             type: string
             length: 255
+        isTop:
+            type: boolean
     oneToMany:
         products:
             targetEntity: Product

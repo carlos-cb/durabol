@@ -194,4 +194,14 @@ class ProductController extends Controller
             ->getForm()
         ;
     }
+
+    public function isTopAction(Shop $shop, Category $category, Product $product)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product->setIsTop(!$product->getIsTop());
+        $em->persist($product);
+        $em->flush();
+
+        return $this->redirectToRoute('product_index', array('shop' => $shop->getId(), 'category' => $category->getId()));
+    }
 }

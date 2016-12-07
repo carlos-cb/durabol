@@ -22,3 +22,7 @@ shop_delete:
     path:     /{id}/delete
     defaults: { _controller: "DurabolBundle:Shop:delete" }
     methods:  DELETE
+
+shop_isTop:
+    path:     /{id}/isTop
+    defaults: { _controller: "DurabolBundle:Shop:isTop" }

@@ -42,6 +42,9 @@
                 <th>Mostrado</th>
                 <th>Categoría</th>
                 {% if shop is defined %}
+                <th>Top</th>
+                {% endif %}
+                {% if shop is defined %}
                 <th>Operaciones</th>
                 {% else %}
                 <th>Shop</th>
@@ -62,14 +65,23 @@
                     {% if shop is defined %}
                         {{ product.category.name }}
                     {% else %}
-                        <a class="btn btn-primary" href="{{ path('product_index', {'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
+                        <a class="btn btn-primary" href="{{ path('product_index', { 'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
                     {% endif %}
                 </td>
+                {% if shop is defined %}
+                <td>
+                    {% if product.isTop %}
+                        Sí<br><a class="button button-tiny button-caution" href="{{ path('product_isTop', { 'shop': product.category.shop.id, 'category': product.category.id, 'product': product.id }) }}">Cancelar</a>
+                    {% else %}
+                        No<br><a class="button button-tiny button-action" href="{{ path('product_isTop', { 'shop': product.category.shop.id, 'category': product.category.id, 'product': product.id }) }}">Set Top</a>
+                    {% endif %}
+                </td>
+                {% endif %}
                 <td>
                     <ul>
                         <li>
                             {% if shop is defined %}
-                                <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-action">Modificar</a>
+                                <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-primary">Modificar</a>
                             {% else %}
                                 <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.name }}</a>
                             {% endif %}

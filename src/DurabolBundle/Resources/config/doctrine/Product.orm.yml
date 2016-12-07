@@ -29,6 +29,8 @@ DurabolBundle\Entity\Product:
         discountPrice:
             type: float
             nullable: true
+        isTop:
+            type: boolean
     manyToOne:
         category:
             targetEntity: Category

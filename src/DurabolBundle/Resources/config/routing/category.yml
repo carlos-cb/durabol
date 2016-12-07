@@ -22,3 +22,7 @@ category_delete:
     path:     /{id}/delete
     defaults: { _controller: "DurabolBundle:Category:delete" }
     methods:  DELETE
+
+category_isTop:
+    path:     /{id}/isTop
+    defaults: { _controller: "DurabolBundle:Category:isTop" }

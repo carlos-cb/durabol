@@ -35,3 +35,8 @@ product_delete:
     path:     /{id}/delete
     defaults: { _controller: "DurabolBundle:Product:delete" }
     methods:  DELETE
+
+product_isTop:
+    path:     /{shop}/{category}/{product}/isTop
+    defaults: { _controller: "DurabolBundle:Product:isTop" }
+

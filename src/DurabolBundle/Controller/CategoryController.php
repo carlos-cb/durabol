@@ -151,4 +151,14 @@ class CategoryController extends Controller
             ->getForm()
         ;
     }
+
+    public function isTopAction(Category $category)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $category->setIsTop(!$category->getIsTop());
+        $em->persist($category);
+        $em->flush();
+
+        return $this->redirectToRoute('category_index', array('shop' => $category->getShop()->getId()));
+    }
 }

@@ -31,6 +31,7 @@
                 <th>ID</th>
                 <th>分类名</th>
                 <th>描述</th>
+                <th>是否置顶</th>
                 <th>分类图片</th>
                 <th>操作</th>
             </tr>
@@ -41,6 +42,13 @@
                 <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.description }}</td>
+                <td>
+                    {% if category.isTop %}
+                        是<br><a class="button button-tiny button-caution" href="{{ path('category_isTop', { 'id': category.id }) }}">取消置顶</a>
+                    {% else %}
+                        否<br><a class="button button-tiny button-action" href="{{ path('category_isTop', { 'id': category.id }) }}">置顶</a>
+                    {% endif %}
+                </td>
                 <td><img src="{{ asset('uploads/fotos/' ~ category.foto) }}" height="100px" width="100px"></td>
                 <td>
                     <ul>
