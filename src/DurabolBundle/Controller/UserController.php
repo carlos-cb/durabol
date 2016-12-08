@@ -55,6 +55,34 @@ class UserController extends Controller
     }
 
     /**
+     * Creates a new User entity.
+     *
+     */
+    public function newAdminAction(Request $request)
+    {
+        $user = new User();
+        $form = $this->createForm('DurabolBundle\Form\UserType', $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user->setEnabled(true);
+            $user->setDiscount(100);
+            $user->addRole('ROLE_ADMIN');
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render('user/newAdmin.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
+    }
+
+    /**
      * Finds and displays a user entity.
      *
      */

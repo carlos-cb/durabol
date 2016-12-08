@@ -12,6 +12,9 @@ DurabolBundle\Entity\User:
         discount:
             type: integer
             nullable: true
+        adminShop:
+            type: integer
+            nullable: true
     oneToOne:
         cart:
             targetEntity: Cart

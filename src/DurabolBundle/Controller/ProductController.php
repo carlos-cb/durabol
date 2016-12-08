@@ -18,11 +18,18 @@ class ProductController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $user = $this->getUser();
         $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
 
-        return $this->render('product/selectShop.html.twig', array(
-            'shops' => $shops,
-        ));
+        if($user->isSuperAdmin()){
+            return $this->render('product/selectShop.html.twig', array(
+                'shops' => $shops,
+            ));
+        }else{
+            return $this->redirectToRoute('product_selectCategory', array(
+                'shop' => $user->getAdminShop(),
+            ));
+        }
     }
 
     public function selectCategoryAction(Shop $shop)

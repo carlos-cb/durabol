@@ -13,6 +13,11 @@ user_new:
     defaults: { _controller: "DurabolBundle:User:new" }
     methods:  [GET, POST]
 
+user_newAdmin:
+    path:     /newAdmin
+    defaults: { _controller: "DurabolBundle:User:newAdmin" }
+    methods:  [GET, POST]
+
 user_edit:
     path:     /{id}/edit
     defaults: { _controller: "DurabolBundle:User:edit" }

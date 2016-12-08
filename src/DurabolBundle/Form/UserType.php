@@ -17,7 +17,9 @@ class UserType extends AbstractType
             ->add('username', null, array('label' => '用户名'))
             ->add('email', null, array('label' => '邮箱'))
             ->add('plainPassword', null, array('label' => '密码'))
-            ->add('discount', null, array('label' => '专享折扣'))
+            ->add('adminShop', null, array(
+                'label' => '可管理店铺ID',
+                'required' => false))
         ;
     }
     

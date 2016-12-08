@@ -22,6 +22,7 @@
     <ul>
         <li>
             <a href="{{ path('user_new') }}" class="button button-rounded button-inverse">创建新用户</a>
+            <a href="{{ path('user_newAdmin') }}" class="button button-rounded button-inverse">创建新管理员</a>
         </li>
     </ul>
     <br>
@@ -36,6 +37,7 @@
             <th>订单</th>
             <th>消费总额</th>
             <th>用户专享折扣</th>
+            <th>用户角色</th>
         </tr>
         </thead>
         <tbody>
@@ -55,6 +57,11 @@
                 <td><a class="btn btn-info" href="{{ path('orderinfo_indexUser', { 'user': user.id }) }}">查看</a></td>
                 <td>{{ user.OrderInfoSum|number_format(2, '.', ',') }} €</td>
                 <td>{{ user.discount }} % <a type="button" data-toggle="modal" data-target="#myModal{{ user.id }}" class="btn btn-primary">修改</a></td>
+                <td>
+                    <ul class="list">
+                        <li>{% if user.isSuperAdmin %}超级管理员{% elseif user.isAdmin %}普通管理员{% else %}普通用户{% endif %}</li>
+                    </ul>
+                </td>
             </tr>
             <!-- Modal -->
             <div class="modal fade" id="myModal{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

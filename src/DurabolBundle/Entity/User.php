@@ -44,7 +44,7 @@ class User extends BaseUser
         $sum = 0;
         foreach($orderInfos as $orderInfo)
         {
-            if(($orderInfo->getState() != "未付款") && ($orderInfo->getState() != "已取消") && $orderInfo->getParent())
+            if(($orderInfo->getState() == "已完成") && $orderInfo->getParent())
             {
                 $sum += $orderInfo->getTotalPrice();
             }
@@ -202,5 +202,33 @@ class User extends BaseUser
     public function getData()
     {
         return $this->data;
+    }
+    /**
+     * @var integer
+     */
+    private $adminShop;
+
+
+    /**
+     * Set adminShop
+     *
+     * @param integer $adminShop
+     * @return User
+     */
+    public function setAdminShop($adminShop)
+    {
+        $this->adminShop = $adminShop;
+
+        return $this;
+    }
+
+    /**
+     * Get adminShop
+     *
+     * @return integer 
+     */
+    public function getAdminShop()
+    {
+        return $this->adminShop;
     }
 }
