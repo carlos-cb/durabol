@@ -165,7 +165,7 @@ class OrderInfoController extends Controller
     public function successAction(OrderInfo $orderInfo)
     {
         $em = $this->getDoctrine()->getManager();
-        $orderInfo->setIsOver(1)->setState("已完成");
+        $orderInfo->setIsPayed(1)->setIsSended(1)->setIsOver(1)->setState("已完成");
         $em->persist($orderInfo);
         $em->flush();
 
@@ -175,7 +175,7 @@ class OrderInfoController extends Controller
     public function cancelledAction(OrderInfo $orderInfo)
     {
         $em = $this->getDoctrine()->getManager();
-        $orderInfo->setIsOver(1)->setState("已取消");
+        $orderInfo->setIsPayed(1)->setIsSended(1)->setIsOver(1)->setState("已取消");
         $em->persist($orderInfo);
         $em->flush();
 

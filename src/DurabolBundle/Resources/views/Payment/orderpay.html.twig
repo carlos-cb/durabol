@@ -32,11 +32,15 @@
             <div class="">
                 <h2>Método de Pago</h2>
                 {% if orderInfo.payType == '在线支付' %}
-                    <h6 style="font-weight: bold">请点击图标选择支付方式</h6>
+                    <h6 style="font-weight: bold; color: #ff0000">请点击图标选择支付方式</h6>
                     <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
-                {% else %}
-                    <h6 style="font-weight: bold">请将货款通过银行转账方式转到账户：ES07 8888 8888 8888.</h6>
+                {% elseif orderInfo.payType == '银行转账' %}
+                    <h6 style="font-weight: bold; color: #ff0000">请将货款通过银行转账方式转到账户：ES07 8888 8888 8888.</h6>
                     <img src="{{ asset('bundles/durabol/img/logotrans.jpg') }}">
+                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
+                {% else %}
+                    <h6 style="font-weight: bold; color: #ff0000">请耐心等待发货，可在"我的订单"中查看订单最新状态.</h6>
+                    <img src="{{ asset('bundles/durabol/img/express.jpg') }}">
                     <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
                 {% endif %}
             </div>

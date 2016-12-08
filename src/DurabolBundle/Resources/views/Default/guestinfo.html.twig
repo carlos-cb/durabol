@@ -31,16 +31,16 @@
                 <div class="radioGroup">
                     <h2>Método de pago</h2>
                     <div>
-                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1" checked>
-                        <label for="radio-1" class="radio-custom-label">银行卡在线付款</label>
+                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1">
+                        <label for="radio-1" class="radio-custom-label">银行卡在线付款 享95折优惠</label>
                     </div>
                     <div>
-                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2">
-                        <label for="radio-2" class="radio-custom-label">银行转账</label>
+                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2" checked>
+                        <label for="radio-2" class="radio-custom-label">银行转账 享95折优惠</label>
                     </div>
-                    <div style="display: none">
+                    <div>
                         <input id="radio-3" class="radio-custom" name="radio-group" type="radio" value="3">
-                        <label for="radio-3" class="radio-custom-label">Express: En 24-48 horas (días laborables). 5,95 EUR</label>
+                        <label for="radio-3" class="radio-custom-label">快递公司货到付款 没有优惠</label>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div style="position: relative; left: 50px;">
-                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" checked="{% if data.receivergerenshui is defined %}checked{% endif %}" value="1">
+                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" {% if data.receivergerenshui %}checked{% endif %}" value="1">
                         个体户客户请勾选此选项，将添加5.3%的税款。
                     </div>
                     <br><br>

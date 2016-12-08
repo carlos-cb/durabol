@@ -17,15 +17,21 @@ class OrderController extends Controller
         $cartShops = $this->getCartShops();
         $userDiscount = $this->getUser()->getDiscount() / 100;
         $priceIni = $priceAll / $userDiscount;
-        $payType = '在线支付';
+        $payType = '货到付款';
         $gerenshui = false;
         if($request->get('gerenshui') == '1'){
             $gerenshui = true;
             $priceAll = $priceAll * 1.052;
         }
+        if($request->get('radio-group') == '1')
+        {
+            $payType = '在线付款';
+            $priceAll = $priceAll * 0.95;
+        }
         if($request->get('radio-group') == '2')
         {
             $payType = '银行转账';
+            $priceAll = $priceAll * 0.95;
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceIni!=0) ){
