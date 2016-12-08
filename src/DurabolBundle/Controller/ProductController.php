@@ -88,7 +88,7 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $product->setDiscountPrice($product->getPrice())->setIsSale(0);
+            $product->setIsTop(0);
 
             $file = $product->getFoto();
             $fileName = $this->get('durabol.foto_uploader')->upload($file);

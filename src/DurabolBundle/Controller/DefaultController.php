@@ -43,7 +43,7 @@ class DefaultController extends Controller
             $cartShops = null;
         }
 
-        $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
+        $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isTop' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $sliders = $em->getRepository('DurabolBundle:Slider')->findAll();
 

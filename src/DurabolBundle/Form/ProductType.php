@@ -24,6 +24,8 @@ class ProductType extends AbstractType
                 'required' => false,
             ))
             ->add('isShow', null, array('label' => 'Mostrado'))
+            ->add('isSale', null, array('label' => 'Descuento'))
+            ->add('discountPrice', null, array('label' => 'Precio con Descuento'))
         ;
     }
     
