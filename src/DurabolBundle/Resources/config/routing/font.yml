@@ -5,7 +5,3 @@ font_categoryList:
 font_productList:
     path:     /productList/{category}
     defaults: { _controller: DurabolBundle:Default:productList }
-
-font_info:
-    path:     /info
-    defaults: { _controller: DurabolBundle:Default:info }

@@ -77,8 +77,6 @@ class OrderController extends Controller
             //清空购物车的所有商品并且状态改为已生成订单
             $this->clearCarrito();
 
-            $cart = $this->getUser()->getCart();
-            $cart->setState('over');
             $em->flush();
 
         }else{

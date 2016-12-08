@@ -18,37 +18,35 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $user = $this->getUser();
-        $cart = $this->getUser()->getCart();
-        if(!$cart) {
-            $cart = new Cart();
-            $cart->setState('buying')
-                ->setUpdateDate(new \DateTime('now'))
-                ->setUser($this->getUser());
-            $em->persist($cart);
-            $em->flush();
+        $isUserClient = $em->getRepository('DurabolBundle:User')->findOneBy(array('id' => $user));
+        if($isUserClient){
+            if(!$user->getCart()){
+                $cart = new Cart();
+                $cart->setUser($user);
+                $em->persist($cart);
+                $em->flush();
+                $cartItems = $cart->getCartItems();
+            }else{
+                $cart = $user->getCart();
+                $cartItems = $cart->getCartItems();
+            }
+            $cartShops = array();
+            $i = 0;
+            foreach($cartItems as $cartItem)
+            {
+                $cartShops[$i] = $cartItem->getProduct()->getCategory()->getShop();
+                $i ++;
+                $cartShops = array_unique($cartShops);
+            }
+        }else{
+            $cartItems = null;
+            $cartShops = null;
         }
-        else if($cart->getState() == 'over')
-        {
-            $cart->setState('buying')
-                ->setUpdateDate(new \DateTime('now'));
-            $em->persist($cart);
-            $em->flush();
-        }
-        $cartItems = $cart->getCartItems();
 
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isSale' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
         $sliders = $em->getRepository('DurabolBundle:Slider')->findAll();
-        
-        $cartShops = array();
-        $i = 0;
-        foreach($cartItems as $cartItem)
-        {
-            $cartShops[$i] = $cartItem->getProduct()->getCategory()->getShop();
-            $i ++;  
-            $cartShops = array_unique($cartShops);
-        }
-        
+
         return $this->render('DurabolBundle:Default:index.html.twig', array(
             'productSales' => $productSales,
             'shops' => $shops,

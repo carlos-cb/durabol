@@ -15,17 +15,6 @@ class Cart
     private $id;
 
     /**
-     * @var string
-     */
-    private $state;
-
-    /**
-     * @var \DateTime
-     */
-    private $updateDate;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -35,51 +24,6 @@ class Cart
         return $this->id;
     }
 
-    /**
-     * Set state
-     *
-     * @param string $state
-     * @return Cart
-     */
-    public function setState($state)
-    {
-        $this->state = $state;
-
-        return $this;
-    }
-
-    /**
-     * Get state
-     *
-     * @return string 
-     */
-    public function getState()
-    {
-        return $this->state;
-    }
-
-    /**
-     * Set updateDate
-     *
-     * @param \DateTime $updateDate
-     * @return Cart
-     */
-    public function setUpdateDate($updateDate)
-    {
-        $this->updateDate = $updateDate;
-
-        return $this;
-    }
-
-    /**
-     * Get updateDate
-     *
-     * @return \DateTime 
-     */
-    public function getUpdateDate()
-    {
-        return $this->updateDate;
-    }
     /**
      * @var \DurabolBundle\Entity\User
      */

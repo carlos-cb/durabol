@@ -183,6 +183,7 @@
 
 
         <div role="tabpanel" class="tab-pane" id="cart">
+        {% if user.username is defined %}
             <div class="container-fluid">
             <section id="main" class="content-main" role="main" style="margin-top: 80px;">
                 <section id="shop-cart-content">
@@ -262,12 +263,16 @@
                 </section>
             </section>
             </div>
+        {% else %}
+            {% include 'DurabolBundle:Public:prepareLogin.html.twig' %}
+        {% endif %}
         </div>
 
 
 
 
         <div role="tabpanel" class="tab-pane" id="person">
+        {% if user.username is defined %}
             <div class="container-fluid perfil" style="margin-top: 100px;">
                 <div class="touxiang">
                     <br>
@@ -321,6 +326,9 @@
                     <a href="{{ path('fos_user_security_logout') }}"><h3>&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;退出登录</h3></a>
                 </div>
             </div>
+        {% else %}
+            {% include 'DurabolBundle:Public:prepareLogin.html.twig' %}
+        {% endif %}
         </div>
     </div>
 

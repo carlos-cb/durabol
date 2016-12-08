@@ -5,6 +5,9 @@
     .container-fluid{
         width: 1170px;
     }
+    .prepare a{
+        left: 42%;
+    }
 }
 
 @media (min-width: 1201px){
@@ -102,6 +105,9 @@
 
 
 @media (max-width: 991px){
+    .prepare a{
+        left: 35%;
+    }
     #stores div.categoryinfo h3{
         margin-top:50px;
         margin-bottom:50px;
@@ -179,9 +185,6 @@
     #cart #shop-area.shop-cart-page .description a {
         color: #959595;
         display: block;
-    }
-    #cart a:visited {
-        color: black;
     }
     #cart a {
         color: inherit;
@@ -569,3 +572,12 @@
     right: 20px;
 }
 
+
+.prepare{
+    text-align: center;
+}
+.prepare a{
+    color: #fff!important;
+    position: absolute;
+    top: 46%;
+}

@@ -28,10 +28,10 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/$, role: ROLE_USER }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/product/, role: ROLE_USER }
         - { path: ^/order/, role: ROLE_USER }
         - { path: ^/cart/, role: ROLE_USER }
+        - { path: ^/data/, role: ROLE_USER }

@@ -49,3 +49,7 @@ durabol_homepage:
 durabol_homepage_admin:
     path:     /admin
     defaults: { _controller: DurabolBundle:Default:backEnd }
+
+font_info:
+    path:     /info
+    defaults: { _controller: DurabolBundle:Default:info }

@@ -8,12 +8,6 @@ DurabolBundle\Entity\Cart:
             id: true
             generator:
                 strategy: AUTO
-    fields:
-        state:
-            type: string
-            length: 255
-        updateDate:
-            type: datetime
     oneToOne:
         user:
             targetEntity: User
