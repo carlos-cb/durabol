@@ -24,6 +24,7 @@ class ShopType extends AbstractType
                 'required' => false,
                 'label' => '代表图片',
             ))
+            ->add('turn', null, array('label' => '排列顺序,数字越大排列越前'))
     ;
     }
     

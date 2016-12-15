@@ -33,7 +33,7 @@
                 <th>店铺简称</th>
                 <th>描述</th>
                 <th>最低消费</th>
-                <th>是否置顶</th>
+                <th>排列顺序</th>
                 <th>代表图片</th>
                 <th>操作</th>
             </tr>
@@ -46,13 +46,7 @@
                 <td>{{ shop.nameShort }}</td>
                 <td>{{ shop.description }}</td>
                 <td>{{ shop.minCoste }} €</td>
-                <td>
-                    {% if shop.isTop %}
-                        是<br><a class="button button-tiny button-caution" href="{{ path('shop_isTop', { 'id': shop.id }) }}">取消置顶</a>
-                    {% else %}
-                        否<br><a class="button button-tiny button-action" href="{{ path('shop_isTop', { 'id': shop.id }) }}">置顶</a>
-                    {% endif %}
-                </td>
+                <td>{{ shop.turn }}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" height="100px" width="100px"></td>
                 <td>
                     <ul>

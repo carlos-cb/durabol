@@ -273,4 +273,32 @@ class Shop
     {
         return $this->isTop;
     }
+    /**
+     * @var integer
+     */
+    private $turn;
+
+
+    /**
+     * Set turn
+     *
+     * @param integer $turn
+     * @return Shop
+     */
+    public function setTurn($turn)
+    {
+        $this->turn = $turn;
+
+        return $this;
+    }
+
+    /**
+     * Get turn
+     *
+     * @return integer 
+     */
+    public function getTurn()
+    {
+        return $this->turn;
+    }
 }

@@ -49,15 +49,15 @@ ul.nav-tabs li a{
         font-size: 20px;
     }
     .navbottom{
-        min-height: 50px;
+        min-height: 40px;
     }
     .navbuttom ul li{
-        min-height: 50px;
+        min-height: 40px;
         width: 25%;
         text-align: center;
         font-size: 14px;
     }
     .navbuttom ul li a{
-        min-height: 50px;
+        min-height: 40px;
     }
 }

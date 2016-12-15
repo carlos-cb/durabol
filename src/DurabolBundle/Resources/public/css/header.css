@@ -5,7 +5,19 @@
     a.navbar-brand{
         font-size: 32px;
     }
+    .navbar-inverse {
+        background-color: #f40;
+    }
+    .topxiayi{
+        margin-top: 15px;
+    }
 }
-.topxiayi{
-    margin-top: 15px;
+@media (min-width: 992px) {
+    .navbar-inverse {
+        max-height: 30px;
+        background-color: #f40;
+    }
+    .topxiayi{
+        margin-top: 5px;
+    }
 }

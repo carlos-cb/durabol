@@ -1,4 +1,15 @@
 @media (min-width: 992px){
+    .rightlogo{
+        line-height: 130px;
+        font-size: 26px;
+        font-weight: 600;
+    }
+    .categoryinfo h3{
+        font-size: 26px;
+    }
+    .categoryinfo h5{
+        font-size: 16px;
+    }
     .container-fluid{
         width: 970px;
     }
@@ -20,7 +31,6 @@
         height: 280px;
     }
 }
-
 
 #home #productimg img {
     max-width: 100%;
@@ -105,6 +115,11 @@
 
 
 @media (max-width: 991px){
+    .rightlogo{
+        line-height: 280px;
+        font-size: 26px;
+        font-weight: 600;
+    }
     .prepare a{
         left: 35%;
     }
