@@ -9,33 +9,37 @@
     <ul class="nav nav-sidebar">
         <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
         <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
-        <li class="active"><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
         <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
         <li><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
-        <li><a href="{{ path('pingtu_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;六格功能图片</a></li>
+        <li class="active"><a href="{{ path('pingtu_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;六格功能图片</a></li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <h1>Gestión de Productos</h1>
-    <h4 class="sub-header">Elegir entre las categorías</h4>
-    <br>
-    <div class="row">
-        <div class="col-xs-2" style="text-align: center">
-            <a href="{{ path('product_selectShop') }}">
-                <img src="{{ asset('bundles/durabol/img/back.jpg') }}" style="max-width: 100%; width: 100%">
-            </a>
-            <h4>Atrás</h4>
-        </div>
-        {% for category in categories %}
-            <div class="col-xs-2" style="text-align: center">
-                <a href="{{ path('product_index', {'shop': shop.id, 'category': category.id }) }}">
-                    <img src="{{ asset('uploads/fotos/' ~ category.foto) }}" style="max-width: 100%; width: 100%">
-                </a>
-                <h4>{{ category.name }}</h4>
-            </div>
+    <h1 class="sub-header">首页六格功能图片管理</h1>
+    <a href="{{ path('pingtu_new') }}" class="button button-rounded button-inverse">创建</a>
+    <br><br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID(顺序)</th>
+            <th>照片</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pingtu in pingtus %}
+            <tr>
+                <td>{{ pingtu.id }}</td>
+                <td><img src="{{ asset('uploads/fotos/' ~ pingtu.foto) }}" height="120px" width="240px"></td>
+                <td>
+                    <a href="{{ path('pingtu_edit', { 'id': pingtu.id }) }}" class="button button-small button-primary">修改</a>
+                </td>
+            </tr>
         {% endfor %}
-    </div>
+        </tbody>
+    </table>
 
 {% endblock %}

@@ -1,0 +1,24 @@
+pingtu_index:
+    path:     /
+    defaults: { _controller: "DurabolBundle:Pingtu:index" }
+    methods:  GET
+
+pingtu_show:
+    path:     /{id}/show
+    defaults: { _controller: "DurabolBundle:Pingtu:show" }
+    methods:  GET
+
+pingtu_new:
+    path:     /new
+    defaults: { _controller: "DurabolBundle:Pingtu:new" }
+    methods:  [GET, POST]
+
+pingtu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DurabolBundle:Pingtu:edit" }
+    methods:  [GET, POST]
+
+pingtu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DurabolBundle:Pingtu:delete" }
+    methods:  DELETE

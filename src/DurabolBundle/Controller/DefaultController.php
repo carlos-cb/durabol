@@ -46,6 +46,7 @@ class DefaultController extends Controller
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isTop' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('turn' => 'DESC'));
         $sliders = $em->getRepository('DurabolBundle:Slider')->findAll();
+        $pingtus = $em->getRepository('DurabolBundle:Pingtu')->findAll();
 
         return $this->render('DurabolBundle:Default:index.html.twig', array(
             'productSales' => $productSales,
@@ -54,6 +55,7 @@ class DefaultController extends Controller
             'cartItems' => $cartItems,
             'cartShops' => $cartShops,
             'sliders' => $sliders,
+            'pingtus' => $pingtus,
         ));
     }
 

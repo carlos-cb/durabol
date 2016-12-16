@@ -30,6 +30,10 @@ durabol_slider:
     resource: "@DurabolBundle/Resources/config/routing/slider.yml"
     prefix:   /admin/slider
 
+durabol_pingtu:
+    resource: "@DurabolBundle/Resources/config/routing/pingtu.yml"
+    prefix:   /admin/pingtu
+
 durabol_font:
     resource: "@DurabolBundle/Resources/config/routing/font.yml"
     prefix:   /product
