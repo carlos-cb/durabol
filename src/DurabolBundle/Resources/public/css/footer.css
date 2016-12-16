@@ -1,5 +1,8 @@
 .nav-tabs>li.active>a{
-    color: #000;
+    color: #f40;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: #ff1022;
 }
 ul.nav-tabs li a{
     color: #fff;

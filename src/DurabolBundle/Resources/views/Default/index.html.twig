@@ -12,7 +12,23 @@
             <div class="container-fluid">
                 <div class="row qianggou">
                     <div class="col-xs-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-top: 100px;">
+                        <div class="topnav navbar-fixed-top">
+                            <div class="container">
+                                <div class="zuobian">
+                                    <a>欢迎来到百团网</a>
+                                    <a href="{{ path('fos_user_security_login') }}">登录</a>
+                                    <a href="{{ path('fos_user_registration_register') }}">快速注册</a>
+                                </div>
+                                <div class="youbian">
+                                    <a href="{{ path('order_pedido') }}">订单查询</a>
+                                    <a href="{{ path('font_info') }}"><i class="fa fa-volume-control-phone" aria-hidden="true"></i> &nbsp;联系客服</a>
+                                    <a onClick="document.getElementById('persons').click();" style="cursor: pointer"><i class="fa fa-mobile" aria-hidden="true"></i> &nbsp;我的百团</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
                             <div class="carousel-inner" role="listbox">
                                 {% for slider in sliders %}
@@ -60,49 +76,42 @@
                     {% endfor %}
                 </div>
                 <div class="row gongneng">
-                    <div class="col-xs-3">
-                        <div class="tile">
-                            <a onClick="document.getElementById('store').click();">
-                                <img src="{{ asset('bundles/durabol/img/icons/svg/compas.svg') }}" alt="Compas" class="tile-image big-illustration">
+                        <div class="col-xs-6 col-lg-4 pingtu">
+                            <a onClick="document.getElementById('store').click();" style="cursor: pointer">
+                                <img src="{{ asset('uploads/fotos/pingtu1.jpg') }}">
                             </a>
-                            <h3 class="tile-title">搜索店铺</h3>
                         </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="tile">
+                        <div class="col-xs-6 col-lg-4 pingtu">
                             <a href="{{ path('order_pedido') }}">
-                                 <img src="{{ asset('bundles/durabol/img/icons/svg/loop.svg') }}" alt="Compas" class="tile-image big-illustration">
+                                <img src="{{ asset('uploads/fotos/pingtu2.jpg') }}">
                             </a>
-                            <h3 class="tile-title">我的订单</h3>
                         </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="tile">
-                            <a href="{{ path('font_info') }}#tiaokuan">
-                                 <img src="{{ asset('bundles/durabol/img/icons/svg/pencils.svg') }}" alt="Compas" class="tile-image big-illustration">
-                            </a>
-                            <h3 class="tile-title">团购须知</h3>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="tile">
+                        <div class="col-xs-6 col-lg-4 pingtu">
                             <a href="{{ path('font_info') }}">
-                                 <img src="{{ asset('bundles/durabol/img/icons/svg/clipboard.svg') }}" alt="Compas" class="tile-image big-illustration">
+                                <img src="{{ asset('uploads/fotos/pingtu3.jpg') }}">
                             </a>
-                            <h3 class="tile-title">分享网站</h3>
                         </div>
-                    </div>
+                        <div class="col-xs-6 col-lg-4 pingtu">
+                            <a href="{{ path('font_info') }}">
+                                <img src="{{ asset('uploads/fotos/pingtu4.jpg') }}">
+                            </a>
+                        </div>
+                        <div class="col-xs-6 col-lg-4 pingtu">
+                            <a onClick="document.getElementById('carts').click();" style="cursor: pointer">
+                                <img src="{{ asset('uploads/fotos/pingtu5.jpg') }}">
+                            </a>
+                        </div>
+                        <div class="col-xs-6 col-lg-4 pingtu">
+                            <a href="{{ path('font_categoryList', { 'shop': 1 }) }}">
+                                <img src="{{ asset('uploads/fotos/pingtu6.jpg') }}">
+                            </a>
+                        </div>
                 </div>
                 {% for shop in shops %}
                     <div class="row">
                         <div class="col-xs-2 jieshao">
-                            <h5>
-                                {% if shop.id == 1 %}
-                                    <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                                {% else %}
-                                    <i class="fa fa-industry" aria-hidden="true"></i>
-                                {% endif %}
-                                {{ shop.name|upper }}<br><br><span id="description">{{ shop.description }}</span></h5>
+                            <img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" width="30px">
+                            <h5>{{ shop.name|upper }}<br><br><span id="description">{{ shop.description }}</span></h5>
                             <span class="text-muted"><a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">>>进入店铺</a></span>
                         </div>
                         <div class="col-xs-10 jieshaoimg">
@@ -270,7 +279,7 @@
 
         <div role="tabpanel" class="tab-pane" id="person">
         {% if user.username is defined %}
-            <div class="container-fluid perfil" style="margin-top: 100px;">
+            <div class="container-fluid perfil" style="margin-top: 80px;">
                 <div class="touxiang">
                     <br>
                     <img src="{{ asset('uploads/fotos/user.jpg') }}">

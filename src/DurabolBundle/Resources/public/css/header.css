@@ -1,4 +1,8 @@
 @media (max-width: 991px){
+    .topnav{
+        height: 65px;
+        width: 100%;
+    }
     .navbar ul.nav li a{
         font-size: 26px;
     }
@@ -11,6 +15,23 @@
     .topxiayi{
         margin-top: 15px;
     }
+    .topnav{
+        position: fixed;
+        top: 71px;
+        height: 38px;
+        width: 100%;
+    }
+    .zuobian{
+        float: left;
+    }
+    .youbian {
+        float: right;
+    }
+    .topnav a{
+        margin-right: 20px;
+        color: #8c8c8c;
+        font-size: 18px;
+    }
 }
 @media (min-width: 992px) {
     .navbar-inverse {
@@ -20,4 +41,25 @@
     .topxiayi{
         margin-top: 5px;
     }
+    .topnav{
+        position: fixed;
+        top: 51px;
+        height: 38px;
+        width: 100%;
+    }
+    .zuobian{
+        float: left;
+    }
+    .youbian {
+        float: right;
+    }
+    .topnav a{
+        margin-right: 30px;
+        color: #8c8c8c;
+        font-size: 14px;
+    }
 }
+.topnav{
+    background-color: #f0f0f0;
+}
+
