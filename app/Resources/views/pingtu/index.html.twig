@@ -26,6 +26,7 @@
         <tr>
             <th>ID(顺序)</th>
             <th>照片</th>
+            <th>链接地点</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -34,6 +35,14 @@
             <tr>
                 <td>{{ pingtu.id }}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ pingtu.foto) }}" height="120px" width="240px"></td>
+                <th>
+                    {% if pingtu.routing == 'store' %}搜索店铺
+                    {% elseif pingtu.routing == 'carts' %}购物车
+                    {% elseif pingtu.routing == 'order_pedido' %}查看订单
+                    {% elseif pingtu.routing == 'font_info' %}用户须知、分享网站
+                    {% elseif pingtu.routing == 'shop' %}单个店铺, {% for shop in shops if shop.id == pingtu.shopId %}{{ shop.name }}{% endfor %}
+                    {% endif %}
+                </th>
                 <td>
                     <a href="{{ path('pingtu_edit', { 'id': pingtu.id }) }}" class="button button-small button-primary">修改</a>
                 </td>

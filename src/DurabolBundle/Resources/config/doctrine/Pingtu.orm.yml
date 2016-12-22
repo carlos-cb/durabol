@@ -12,4 +12,10 @@ DurabolBundle\Entity\Pingtu:
         foto:
             type: string
             length: 255
+        routing:
+            type: string
+            length: 255
+        shopId:
+            type: integer
+            nullable: true
     lifecycleCallbacks: {  }

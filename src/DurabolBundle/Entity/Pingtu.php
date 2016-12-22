@@ -54,4 +54,60 @@ class Pingtu
     {
         return $this->foto;
     }
+    /**
+     * @var string
+     */
+    private $routing;
+
+
+    /**
+     * Set routing
+     *
+     * @param string $routing
+     * @return Pingtu
+     */
+    public function setRouting($routing)
+    {
+        $this->routing = $routing;
+
+        return $this;
+    }
+
+    /**
+     * Get routing
+     *
+     * @return string 
+     */
+    public function getRouting()
+    {
+        return $this->routing;
+    }
+    /**
+     * @var integer
+     */
+    private $shopId;
+
+
+    /**
+     * Set shopId
+     *
+     * @param integer $shopId
+     * @return Pingtu
+     */
+    public function setShopId($shopId)
+    {
+        $this->shopId = $shopId;
+
+        return $this;
+    }
+
+    /**
+     * Get shopId
+     *
+     * @return integer 
+     */
+    public function getShopId()
+    {
+        return $this->shopId;
+    }
 }

@@ -21,9 +21,11 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('DurabolBundle:User')->findAll();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
 
         return $this->render('user/index.html.twig', array(
             'users' => $users,
+            'shops' => $shops,
         ));
     }
 
@@ -61,7 +63,7 @@ class UserController extends Controller
     public function newAdminAction(Request $request)
     {
         $user = new User();
-        $form = $this->createForm('DurabolBundle\Form\UserType', $user);
+        $form = $this->createForm('DurabolBundle\Form\UserAdminType', $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

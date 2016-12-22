@@ -8,6 +8,22 @@ $(function(){
 });
 
 $(document).ready(function() {
+    shopIdJump();
+    function shopIdJump(){
+        if($('select.routing option:selected').text() == '单个店铺')
+        {
+            $('label.shopId').show();
+            $('select.shopId').show();
+        }else{
+            $('label.shopId').hide();
+            $('select.shopId').hide();
+        }
+    }
+
+    $("select.routing").change(function(){
+        shopIdJump();
+    });
+
     $("button#todo").addClass("active");
 
     $("button#todo").click(function(){

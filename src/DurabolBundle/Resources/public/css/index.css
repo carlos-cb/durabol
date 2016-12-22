@@ -71,7 +71,10 @@
     max-width: 100%;
     height: auto;
 }
-#home .gongneng .col-xs-6, #home .gongneng .col-lg-12{
+#home .pingtu a{
+    cursor: pointer;
+}
+#home .gongneng .col-xs-4, #home .gongneng .col-lg-12{
     padding-right: 0!important;
     padding-left: 0!important;
 }
@@ -97,6 +100,7 @@
 #home .jieshao h5{
     color: #000000;
     margin-top: 35px;
+    font-size: 20px;
 }
 #home .jieshao span{
     color: #808080;

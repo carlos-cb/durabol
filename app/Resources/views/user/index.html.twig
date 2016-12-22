@@ -60,7 +60,7 @@
                 <td>{{ user.discount }} % <a type="button" data-toggle="modal" data-target="#myModal{{ user.id }}" class="btn btn-primary">修改</a></td>
                 <td>
                     <ul class="list">
-                        <li>{% if user.isSuperAdmin %}超级管理员{% elseif user.isAdmin %}普通管理员{% else %}普通用户{% endif %}</li>
+                        <li>{% if user.isSuperAdmin %}超级管理员{% elseif user.isAdmin %}普通管理员<br>{% for shop in shops if shop.id == user.adminShop %}{{ shop.name }}{% endfor %}{% else %}普通用户{% endif %}</li>
                     </ul>
                 </td>
             </tr>

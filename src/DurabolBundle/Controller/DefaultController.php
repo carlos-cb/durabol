@@ -95,6 +95,13 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
+        if(!$user->getCart())
+        {
+            $cart = new Cart();
+            $cart->setUser($user);
+            $em->persist($cart);
+            $em->flush();
+        }
         $products = $em->getRepository('DurabolBundle:Product')->findBy(
             array('category' => $category, 'isShow' => true),
             array('isTop' => 'DESC')

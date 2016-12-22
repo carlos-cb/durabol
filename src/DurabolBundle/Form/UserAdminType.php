@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class UserType extends AbstractType
+class UserAdminType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -18,6 +18,12 @@ class UserType extends AbstractType
             ->add('username', null, array('label' => '用户名'))
             ->add('email', null, array('label' => '邮箱'))
             ->add('plainPassword', null, array('label' => '密码'))
+            ->add('adminShop', EntityType::class, array(
+                'label' => '可管理店铺',
+                'required' => true,
+                'class' => 'DurabolBundle:Shop',
+                'property' => 'name',
+            ))
         ;
     }
     

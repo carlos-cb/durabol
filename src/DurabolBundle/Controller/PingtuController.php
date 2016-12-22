@@ -21,9 +21,11 @@ class PingtuController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $pingtus = $em->getRepository('DurabolBundle:Pingtu')->findAll();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findAll();
 
         return $this->render('pingtu/index.html.twig', array(
             'pingtus' => $pingtus,
+            'shops' => $shops,
         ));
     }
 
