@@ -92,7 +92,7 @@ class ProductController extends Controller
 
             $file = $product->getFoto();
             $fileName = $this->get('durabol.foto_uploader')->upload($file);
-            $product->setFoto($fileName);
+            $product->setFoto($fileName)->setIsTop(0);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);

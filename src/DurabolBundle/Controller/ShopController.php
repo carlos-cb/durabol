@@ -40,7 +40,7 @@ class ShopController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $shop->getFoto();
             $fileName = $this->get('durabol.foto_uploader')->upload($file);
-            $shop->setFoto($fileName);
+            $shop->setFoto($fileName)->setIsTop(0);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($shop);

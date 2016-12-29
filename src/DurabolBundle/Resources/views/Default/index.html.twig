@@ -95,8 +95,7 @@
                 {% for shop in shops %}
                     <div class="row">
                         <div class="col-xs-2 jieshao">
-
-                            <h5><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" width="50px">{{ shop.name|upper }}<br><br><span id="description">{{ shop.description }}</span></h5>
+                            <h5><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}"><br><span id="description">{{ shop.description }}</span></h5>
                             <span class="text-muted"><a href="{{ path('font_categoryList', { 'shop': shop.id }) }}">>>进入店铺</a></span>
                         </div>
                         <div class="col-xs-10 jieshaoimg">

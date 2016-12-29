@@ -42,7 +42,7 @@ class CategoryController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $category->getFoto();
             $fileName = $this->get('durabol.foto_uploader')->upload($file);
-            $category->setFoto($fileName);
+            $category->setFoto($fileName)->setIsTop(0);
 
             $category->setShop($shop);
 

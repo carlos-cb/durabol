@@ -26,12 +26,10 @@ class OrderController extends Controller
         if($request->get('radio-group') == '1')
         {
             $payType = '在线付款';
-            $priceAll = $priceAll * 0.95;
         }
         if($request->get('radio-group') == '2')
         {
             $payType = '银行转账';
-            $priceAll = $priceAll * 0.95;
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceIni!=0) ){
