@@ -48,7 +48,7 @@ class CategoryController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
-            $em->flush($category);
+            $em->flush();
 
             return $this->redirectToRoute('category_index', array('shop' => $shop->getId()));
         }

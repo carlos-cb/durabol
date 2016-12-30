@@ -40,3 +40,14 @@ product_isTop:
     path:     /{shop}/{category}/{product}/isTop
     defaults: { _controller: "DurabolBundle:Product:isTop" }
 
+product_importFile:
+    path:     /importFile
+    defaults: { _controller: "DurabolBundle:Product:importFile" }
+
+product_importTest:
+    path:     /importTest
+    defaults: { _controller: "DurabolBundle:Product:importTest" }
+
+product_importExcel:
+    path:     /importExcel
+    defaults: { _controller: "DurabolBundle:Product:importExcel" }

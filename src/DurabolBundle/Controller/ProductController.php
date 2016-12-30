@@ -6,7 +6,9 @@ use DurabolBundle\Entity\Product;
 use DurabolBundle\Entity\Category;
 use DurabolBundle\Entity\Shop;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Product controller.
@@ -173,11 +175,6 @@ class ProductController extends Controller
         $shop = $category->getShop();
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $product->getFoto();
-            if($file){
-                $isRemoved = $this->get('durabol.foto_uploader')->remove($file);
-            }
-
             $em = $this->getDoctrine()->getManager();
             $em->remove($product);
             $em->flush($product);
@@ -210,5 +207,81 @@ class ProductController extends Controller
         $em->flush();
 
         return $this->redirectToRoute('product_index', array('shop' => $shop->getId(), 'category' => $category->getId()));
+    }
+
+    public function importFileAction()
+    {
+        return $this->render('product/importFile.html.twig');
+    }
+
+    public function importTestAction(Request $request)
+    {
+        if($request->getMethod() == 'POST')
+        {
+            $excelFile = $request->files->get('file_stu');
+            $datas = $this->import($excelFile);
+            $session = new Session();
+            $session->set('excel', $datas);
+
+            return $this->render('product/importTest.html.twig', array(
+                'datas' => $datas,
+            ));
+        }
+        else{
+            $errorMsg = '上传失败';
+            
+            return $this->render('product/importFile.html.twig', array(
+                'errorMsg' => $errorMsg,
+            ));
+        }
+    }
+
+    public function importExcelAction()
+    {
+        $session = new Session();
+        $datas = $session->get('excel');
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($datas as $data)
+        {
+            $product = new Product();
+            $category = $em->getRepository('DurabolBundle:Category')->find((int)$data[4]);
+            $product->setName($data[0])
+                    ->setPrice($data[1])
+                    ->setCode($data[2])
+                    ->setFoto($data[3])
+                    ->setCategory($category)
+                    ->setUnit($data[5])
+                    ->setIsSale($data[6])
+                    ->setDiscountPrice($data[7])
+                    ->setIsShow(1)
+                    ->setIsTop(0)
+            ;
+            $em->persist($product);
+            $em->flush();
+        }
+        $session->remove('excel');
+
+        return $this->redirectToRoute('product_indexAll');
+    }
+
+    private function import($excelFile)
+    {
+        $phpExcelObject = $this->get('phpexcel')->createPHPExcelObject($excelFile);
+
+        $objWorksheet = $phpExcelObject->getActiveSheet();
+        $highestRow = $objWorksheet->getHighestRow();
+        $highestColumnIndex = 8;
+        $headtitle = array();
+        for ($row = 2;$row <= $highestRow;$row++)
+        {
+            $strs = array();
+            for ($col = 0;$col < $highestColumnIndex;$col++)
+            {
+                $strs[$col] = $objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
+            }
+            $headtitle[$row-2] = $strs;
+        }
+        return $headtitle;
     }
 }

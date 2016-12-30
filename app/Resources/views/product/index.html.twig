@@ -29,6 +29,7 @@
                 <a href="{{ path('product_new', { 'shop': shop.id, 'category': category.id }) }}" class="button button-rounded button-inverse">Crear Nuevo</a>
                 <a href="{{ path('product_selectCategory', { 'shop': shop.id }) }}" class="button button-rounded button-inverse">Volver</a>
             {% endif %}
+            <a href="{{ path('product_importFile') }}" class="button button-rounded button-inverse">批量上传</a>
         </li>
     </ul>
     <br>

@@ -1,0 +1,58 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li class="active"><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+        <li><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
+        <li><a href="{{ path('pingtu_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;六格功能图片</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1>产品批量导入预览</h1>
+    <br>
+    <ul>
+        <li>
+            <a href="{{ path('product_importExcel') }}" class="button button-rounded button-inverse">确认上传</a>
+            <a href="{{ path('product_importFile') }}" class="button button-rounded button-inverse">返回</a>
+        </li>
+    </ul>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>价格</th>
+            <th>编号</th>
+            <th>图片名</th>
+            <th>所属分类</th>
+            <th>单位</th>
+            <th>是否打折</th>
+            <th>折后价格</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+            <tr>
+                <td>{{ data.0 }}</td>
+                <td>{{ data.1 }}</td>
+                <td>{{ data.2 }}</td>
+                <td>{{ data.3 }}</td>
+                <td>{{ data.4 }}</td>
+                <td>{{ data.5 }}</td>
+                <td>{{ data.6 }}</td>
+                <td>{{ data.7 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
