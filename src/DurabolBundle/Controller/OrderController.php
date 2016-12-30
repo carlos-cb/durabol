@@ -53,7 +53,7 @@ class OrderController extends Controller
                     ->setReceiverprovince($request->get('province'))
                     ->setReceiverpostcode($request->get('postcode'))
                     ->setReceivershuihao($request->get('shuihao'))
-                    ->setReceivergerenshui($request->get('gerenshui'));
+                    ->setReceivergerenshui($gerenshui);
                 $em->persist($existeData);
             }else{
                 $data = new Data();
@@ -65,7 +65,7 @@ class OrderController extends Controller
                     ->setReceiverprovince($request->get('province'))
                     ->setReceiverpostcode($request->get('postcode'))
                     ->setReceivershuihao($request->get('shuihao'))
-                    ->setReceivergerenshui($request->get('gerenshui'));
+                    ->setReceivergerenshui($gerenshui);
                 $em->persist($data);
             }
 

@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div style="position: relative; left: 50px;">
-                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" {% if data.receivergerenshui %}checked{% endif %}" value="1">
+                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" {% if data.receivergerenshui is defined and data.receivergerenshui %}checked{% endif %}" value="1">
                         个体户客户请勾选此选项，将添加5.2%的税款。
                     </div>
                     <br><br>
