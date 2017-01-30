@@ -156,6 +156,20 @@ class DefaultController extends Controller
         return $this->redirectToRoute('durabol_homepage');
     }
 
+    public function cartdeleteAjaxAction(Request $request)
+    {
+        
+        $em = $this->getDoctrine()->getManager();
+        $cartItemId = $request->get('val2');
+        $repository = $this->getDoctrine()->getRepository('DurabolBundle:CartItem');
+        $cartItem = $repository->find($cartItemId);
+        $cart = $this->getUser()->getCart();
+        $cart->removeCartItem($cartItem);
+        $em->remove($cartItem);
+        $em->flush();
+        return new Response();
+    }
+
     public function addtocartAjaxAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();

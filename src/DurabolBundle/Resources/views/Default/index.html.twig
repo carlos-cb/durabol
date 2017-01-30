@@ -203,16 +203,16 @@
                                             <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
                                             <span id="priceunit" style="display: none">{{ cartItem.price }}</span>
                                             <span id="unit" style="display: none">{{ cartItem.product.unit }}</span>
-                                    <span style="margin-left: 30px;">
-                                        <button name="{{ path('cart_update') }}" class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
-                                        <br>
-                                        <button name="{{ path('cart_update') }}" class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
-                                    </span>
+                                            <span style="margin-left: 30px;">
+                                                <button name="{{ path('cart_update') }}" class="minnum button button-inverse button-box button-3d"><i class="fa fa-minus"></i></button>
+                                                <br>
+                                                <button name="{{ path('cart_update') }}" class="addnum button button-inverse button-box button-3d"><i class="fa fa-plus"></i></button>
+                                            </span>
                                         </td>
                                         <td><span>{{ cartItem.product.unit }} uds</span></td>
                                         <td class="price"><span id="heji"></span> EUR</td>
                                         <td>
-                                            <a class="button button-plain button-border button-box button-inverse" href="{{ path('cart_cartitem_delete', { 'id': cartItem.id }) }}" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
+                                            <a class="button button-plain button-border button-box button-inverse remove"  name="{{ path('cart_cartitem_deleteAjax') }}" style="margin-left:30px;"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 {% endfor %}

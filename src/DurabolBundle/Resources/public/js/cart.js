@@ -41,6 +41,23 @@ $(function(){
         setShop();
         setTotal();
     });
+    $("a.remove").click(function(){
+        $(this).parent().parent().remove();
+        var cartItemId = parseInt($(this).parent().parent().find('#cartItemId').text());
+        var path = $(this).attr("name");
+        $.ajax({
+            type: 'POST',
+            url: path,
+            data: {val2: cartItemId},
+            error: function(XMLHttpRequest, textStatus, errorThrown)
+            {
+                alert('Error: ' +  errorThrown);
+            }
+        });
+        setHeji();
+        setShop();
+        setTotal();
+    });
     function setHeji(){
         var ff = $('table.order-table').find('tr#order-item');
         for(var j=0; j<ff.length; j++){
