@@ -32,7 +32,7 @@
             <div class="">
                 <h2>Método de Pago</h2>
                 <br>
-                {% if orderInfo.payType == '在线支付' %}
+                {% if orderInfo.payType == '在线付款' %}
                     <h6 style="font-weight: bold; color: #ff0000">请点击图标选择支付方式</h6>
                     <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
                 {% elseif orderInfo.payType == '银行转账' %}
