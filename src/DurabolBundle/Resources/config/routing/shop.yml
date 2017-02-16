@@ -26,3 +26,11 @@ shop_delete:
 shop_isTop:
     path:     /{id}/isTop
     defaults: { _controller: "DurabolBundle:Shop:isTop" }
+
+shop_allMinCoste:
+    path:     /allMinCoste
+    defaults: { _controller: "DurabolBundle:Shop:allMinCoste" }
+
+shop_allMinCosteEdit:
+    path:     /allMinCosteEdit
+    defaults: { _controller: "DurabolBundle:Shop:allMinCosteEdit" }

@@ -70,7 +70,7 @@
                 {% for order in orders %}
                     <tr>
                         <td>{{ order.id }}</td>
-                        <td>{{ order.user.username }}</td>
+                        <td>{{ order.receiverName }}</td>
                         <td>{{ order.totalPrice|number_format(2, '.', ',') }} €</td>
                         <td>{{ order.receiverCity }}</td>
                         <td>{% if order.orderDate %}{{ order.orderDate|date('Y-m-d H:i') }}{% endif %}</td>

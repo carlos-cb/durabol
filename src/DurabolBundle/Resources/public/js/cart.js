@@ -93,6 +93,7 @@ $(function(){
 
     }
     function setTotal(){
+        var allMinCoste = parseFloat($('span#allMinCoste').text());
         var totalprice = 0;
         var tt = $('table.order-table').find('span#totalshop');
         for(var i=0; i<tt.length; i++){
@@ -103,6 +104,13 @@ $(function(){
         $("#totalprice").html((totalprice*100/discount).toFixed(2));
         $("#discount").html((totalprice*100/discount-total).toFixed(2));
         $("#total").html(total.toFixed(2));
+        if(totalprice >= allMinCoste ){
+            $('button.yes').show();
+            $('button.no').hide();
+        }else{
+            $('button.yes').hide();
+            $('button.no').show();
+        }
     }
     setHeji();
     setShop();

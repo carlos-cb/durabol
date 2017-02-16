@@ -42,7 +42,7 @@ class DefaultController extends Controller
             $cartItems = null;
             $cartShops = null;
         }
-
+        $allMinCoste = $em->getRepository('DurabolBundle:Globals')->findOneBy(array('name' => 'allMinCoste'))->getValue();
         $productSales = $em->getRepository('DurabolBundle:Product')->findBy(array('isTop' => '1'));
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('turn' => 'DESC'));
         $sliders = $em->getRepository('DurabolBundle:Slider')->findAll();
@@ -56,6 +56,7 @@ class DefaultController extends Controller
             'cartShops' => $cartShops,
             'sliders' => $sliders,
             'pingtus' => $pingtus,
+            'allMinCoste' => $allMinCoste,
         ));
     }
 
@@ -205,9 +206,16 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $cartItems = $user->getCart()->getCartItems();
         $delivery = true;
+        $payOnline = true;
         foreach ($cartItems as $cartItem){
             if(!$cartItem->getProduct()->getCategory()->getShop()->getIsTop()){
                 $delivery = false;
+                break;
+            }
+        }
+        foreach ($cartItems as $cartItem){
+            if(!$cartItem->getProduct()->getCategory()->getShop()->getIsPayOnline()){
+                $payOnline = false;
                 break;
             }
         }
@@ -218,6 +226,7 @@ class DefaultController extends Controller
             'data' => $data,
             'shops' => $shops,
             'delivery' => $delivery,
+            'payOnline' => $payOnline,
         ));
     }
 

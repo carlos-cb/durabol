@@ -26,6 +26,7 @@ class ShopType extends AbstractType
             ))
             ->add('turn', null, array('label' => '排列顺序,数字越大排列越前'))
             ->add('isTop', null, array('label' => '是否支持货到付款'))
+            ->add('isPayOnline', null, array('label' => '是否支持在线付款'))
     ;
     }
     

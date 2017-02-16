@@ -301,4 +301,32 @@ class Shop
     {
         return $this->turn;
     }
+    /**
+     * @var boolean
+     */
+    private $isPayOnline;
+
+
+    /**
+     * Set isPayOnline
+     *
+     * @param boolean $isPayOnline
+     * @return Shop
+     */
+    public function setIsPayOnline($isPayOnline)
+    {
+        $this->isPayOnline = $isPayOnline;
+
+        return $this;
+    }
+
+    /**
+     * Get isPayOnline
+     *
+     * @return boolean 
+     */
+    public function getIsPayOnline()
+    {
+        return $this->isPayOnline;
+    }
 }

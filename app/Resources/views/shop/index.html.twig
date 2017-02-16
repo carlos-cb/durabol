@@ -23,6 +23,7 @@
     <ul>
         <li>
             <a href="{{ path('shop_new') }}" class="button button-rounded button-inverse">创建新店铺</a>
+            <a href="{{ path('shop_allMinCoste') }}" class="button button-rounded button-inverse">最低总消费</a>
         </li>
     </ul>
     <br>
@@ -37,6 +38,7 @@
                 <th>排列顺序</th>
                 <th>代表图片</th>
                 <th>货到付款</th>
+                <th>在线付款</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -51,6 +53,7 @@
                 <td>{{ shop.turn }}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" height="100px" width="100px"></td>
                 <td>{% if shop.isTop %}支持{% else %}不支持{% endif %}</td>
+                <td>{% if shop.isPayOnline %}支持{% else %}不支持{% endif %}</td>
                 <td>
                     <ul>
                         <li>

@@ -68,7 +68,11 @@
                     {% if shop is defined %}
                         {{ product.category.name }}
                     {% else %}
-                        <a class="btn btn-primary" href="{{ path('product_index', { 'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
+                        {% if product.category.shop %}
+                            <a class="btn btn-primary" href="{{ path('product_index', { 'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
+                        {% else %}
+                            <a class="btn btn-primary">店铺已关闭</a>
+                        {% endif %}
                     {% endif %}
                 </td>
                 {% if shop is defined %}
@@ -86,7 +90,11 @@
                             {% if shop is defined %}
                                 <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-primary">Modificar</a>
                             {% else %}
-                                <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.name }}</a>
+                                {% if product.category.shop %}
+                                    <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.name }}</a>
+                                {% else %}
+                                    <a class="btn btn-info">店铺已关闭</a>
+                                {% endif %}
                             {% endif %}
                         </li>
                     </ul>

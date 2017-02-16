@@ -39,4 +39,5 @@ DurabolBundle\Entity\Data:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+                onDelete:  "CASCADE"
     lifecycleCallbacks: {  }

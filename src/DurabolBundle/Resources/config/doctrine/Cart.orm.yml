@@ -15,6 +15,7 @@ DurabolBundle\Entity\Cart:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+                onDelete:  "SET NULL"
     oneToMany:
         cartItems:
             targetEntity: CartItem

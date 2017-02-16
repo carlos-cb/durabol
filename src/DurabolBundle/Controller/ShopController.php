@@ -153,4 +153,29 @@ class ShopController extends Controller
 
         return $this->redirectToRoute('shop_index');
     }
+
+    public function allMinCosteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $allMinCoste = $em->getRepository('DurabolBundle:Globals')->findOneBy(array('name' => 'allMinCoste'))->getValue();
+
+        return $this->render('shop/allMinCoste.html.twig', array(
+            'allMinCoste' => $allMinCoste,
+        ));
+    }
+
+    public function allMinCosteEditAction(Request $request)
+    {
+        $man = $request->request->get('codigo');
+
+        $em = $this->getDoctrine()->getManager();
+        $allMinCoste = $em->getRepository('DurabolBundle:Globals')->findOneBy(array('name' => 'allMinCoste'));
+
+        $allMinCoste->setValue($man);
+        $em->persist($allMinCoste);
+        $em->flush();
+
+        return $this->redirectToRoute('shop_allMinCoste');
+    }
 }

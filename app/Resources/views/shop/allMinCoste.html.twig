@@ -7,8 +7,8 @@
         <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-        <li class="active"><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
-        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li class="active"><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
         <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
         <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
@@ -18,20 +18,29 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">用户修改</h1>
+    <h1 class="sub-header">最低全场消费(可不受店铺最低消费影响)</h1>
+    <a href="{{ path('shop_index') }}" class="button button-rounded button-inverse">返回</a>
+    <br><br><br>
+    <form class="form-inline" action="{{ path('shop_allMinCosteEdit') }}" method="post">
+        <div class="form-group">
+            <label for="codigo">修改为</label>
+            <input type="number" step="0.01" class="form-control" id="codigo" name="codigo" required="required">
+        </div>
+        <button type="submit" class="btn btn-inverse">修改</button>
+    </form>
     <br>
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-    <br>
-    <input type="submit" class="button button-inverse" value="修改" />
-    <a href="{{ path('user_index') }}" class="button button-inverse">返回列表</a>
-    {{ form_end(edit_form) }}
-    <br>
-    <ul>
-        <li>
-            {{ form_start(delete_form) }}
-                <input class="button button-glow button-border button-rounded button-caution" onclick="return confirm('确定删除?')" type="submit" value="删除">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="col-xs-4">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+            <tr>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ allMinCoste }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

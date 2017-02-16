@@ -1,0 +1,18 @@
+DurabolBundle\Entity\Globals:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\GlobalsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        value:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

@@ -70,6 +70,7 @@ DurabolBundle\Entity\OrderInfo:
             joinColumn:
                 name: user_id
                 referencedColumnName: id
+                onDelete:  "SET NULL"
         parent:
           targetEntity: OrderInfo
           inversedBy: children

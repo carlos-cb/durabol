@@ -23,6 +23,11 @@ user_edit:
     defaults: { _controller: "DurabolBundle:User:edit" }
     methods:  [GET, POST]
 
+user_editAdmin:
+    path:     /{id}/editAdmin
+    defaults: { _controller: "DurabolBundle:User:editAdmin" }
+    methods:  [GET, POST]
+
 user_delete:
     path:     /{id}/delete
     defaults: { _controller: "DurabolBundle:User:delete" }
