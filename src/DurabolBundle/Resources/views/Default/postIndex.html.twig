@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/post.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container" style="margin-top: 80px;word-break: break-all;">
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-10">
+                {% for post in posts %}
+                <div class="c-article">
+                    <div class="text--30 text--bold black margin--halfb lh32">
+                        <a class="black" href="{{ path('font_post_show', { 'id': post.id }) }}">{{ post.title }}</a>
+                    </div>
+                    <p class="text--mini app-grey">
+                        By <a href="">{{ post.author }}</a> on {{ post.time|date('Y-m-d H:i') }}
+                    </p>
+                    <p class="margin--t">{{ post.content[0:100]| raw }} ......</p>
+                    <a class="app-blue text--bold text--upper" href="{{ path('font_post_show', { 'id': post.id }) }}">Read more</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

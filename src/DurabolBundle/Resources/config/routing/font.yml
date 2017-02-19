@@ -5,3 +5,11 @@ font_categoryList:
 font_productList:
     path:     /productList/{category}
     defaults: { _controller: DurabolBundle:Default:productList }
+
+font_post_index:
+    path:     /postIndex
+    defaults: { _controller: "DurabolBundle:Post:fontIndex" }
+
+font_post_show:
+    path:     /post/{id}
+    defaults: { _controller: "DurabolBundle:Post:fontShow" }

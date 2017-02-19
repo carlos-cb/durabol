@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:Public:header.html.twig' %}
+
+    <div class="container" style="margin-top: 80px;word-break: break-all;">
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-10">
+                <h3 class="sub-header">{{ post.title }}</h3>
+                <p>By {{ post.author }} on {{ post.time|date('Y-m-d H:i') }}</p>
+                {{ post.content| raw }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -83,6 +83,8 @@
                                     onClick="document.getElementById('carts').click();"
                                {% elseif pingtu.routing == 'shop' %}
                                     href="{{ path('font_categoryList', { 'shop': pingtu.shopId }) }}"
+                                {% elseif pingtu.routing == 'post' %}
+                                    href="{{ path('font_post_show', { 'id': pingtu.shopId }) }}"
                                {% else %}
                                     href="{{ path(pingtu.routing) }}"
                                {% endif %}

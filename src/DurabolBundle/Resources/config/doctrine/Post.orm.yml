@@ -1,0 +1,26 @@
+DurabolBundle\Entity\Post:
+    type: entity
+    table: null
+    repositoryClass: DurabolBundle\Repository\PostRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        author:
+            type: string
+            length: 255
+        content:
+            type: text
+        title:
+            type: string
+            length: 255
+        time:
+            type: datetime
+        readNum:
+            type: integer
+        isEs:
+            type: boolean
+    lifecycleCallbacks: {  }

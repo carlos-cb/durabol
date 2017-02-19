@@ -10,13 +10,14 @@ $(function(){
 $(document).ready(function() {
     shopIdJump();
     function shopIdJump(){
-        if($('select.routing option:selected').text() == '单个店铺')
+        var label = $('select.routing option:selected').text();
+        if( label == '单个店铺' || label == '文章')
         {
             $('label.shopId').show();
-            $('select.shopId').show();
+            $('input.shopId').show();
         }else{
             $('label.shopId').hide();
-            $('select.shopId').hide();
+            $('input.shopId').hide();
         }
     }
 

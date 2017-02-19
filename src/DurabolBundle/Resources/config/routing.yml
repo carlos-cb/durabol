@@ -34,6 +34,10 @@ durabol_pingtu:
     resource: "@DurabolBundle/Resources/config/routing/pingtu.yml"
     prefix:   /admin/pingtu
 
+durabol_post:
+    resource: "@DurabolBundle/Resources/config/routing/post.yml"
+    prefix:   /admin/post
+
 durabol_font:
     resource: "@DurabolBundle/Resources/config/routing/font.yml"
     prefix:   /product

@@ -30,15 +30,14 @@ class PingtuType extends AbstractType
                     'order_pedido' => '查看订单',
                     'font_info' => '用户须知、分享网站',
                     'shop' => '单个店铺',
+                    'post' => '文章',
                 ),
                 'required' => true,
                 'attr' => array('class' => 'routing'),
             ))
-            ->add('shopId', EntityType::class, array(
+            ->add('shopId', null, array(
                 'required' => false,
-                'label' => '链接店铺ID',
-                'class' => 'DurabolBundle:Shop',
-                'property' => 'name',
+                'label' => '链接ID',
                 'label_attr' => array('class' => 'shopId'),
                 'attr' => array('class' => 'shopId'),
             ))

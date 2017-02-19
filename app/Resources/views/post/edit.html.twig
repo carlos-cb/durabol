@@ -1,0 +1,63 @@
+{% extends 'DurabolBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('durabol_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;信息</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; 分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('shop_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;店铺分类管理</a></li>
+        <li><a href="{{ path('product_selectShop') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li><a href="{{ path('select_sale') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;打折选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+        <li><a href="{{ path('slider_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;首页轮播图片</a></li>
+        <li class="active"><a href="{{ path('pingtu_index') }}"><i class="fa fa-picture-o" aria-hidden="true"></i> &nbsp;&nbsp;六格功能图片</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">分类修改</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+    <br>
+    <input type="submit" class="button button-inverse" value="修改" />
+    <a href="{{ path('post_index') }}" class="button button-inverse">返回列表</a>
+    {{ form_end(edit_form) }}
+    <br>
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="button button-glow button-border button-rounded button-caution" onclick="return confirm('确定删除文章?')" type="submit" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+        {% block javascripts %}
+            <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+            <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+            <script> tinymce.init({
+                    selector: 'textarea',
+                    height: 500,
+                    theme: 'modern',
+                    plugins: [
+                        'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                        'searchreplace wordcount visualblocks visualchars code fullscreen',
+                        'insertdatetime media nonbreaking save table contextmenu directionality',
+                        'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc'
+                    ],
+                    toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                    toolbar2: 'print preview media | forecolor backcolor emoticons | codesample',
+                    image_advtab: true,
+                    templates: [
+                        { title: 'Test template 1', content: 'Test 1' },
+                        { title: 'Test template 2', content: 'Test 2' }
+                    ],
+                    content_css: [
+                        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+                        '//www.tinymce.com/css/codepen.min.css'
+                    ]
+                });</script>
+        {% endblock %}
