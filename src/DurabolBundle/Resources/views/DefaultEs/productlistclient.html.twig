@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupon100{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:DefaultEs:header.html.twig' %}
+
+    <div class="container-fluid" style="margin-top: 100px;">
+    <section id="main" class="content-main" role="main">
+        <h2>{{ orderInfo.shopName }} Lista de Productos</h2>
+        <h4>Importe: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} EUR{% if orderInfo.gerenshui %}(Recargo de equivalencia 5.2% incluido){% endif %}</h4>
+        <br>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead">
+                        <th>Foto</th>
+                        <th class="description">Nombre</th>
+                        <th class="description">Código</th>
+                        <th class="quantity">Unidad</th>
+                        <th class="quantity">Cantidad</th>
+                        <th class="quantity">Precio</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderItem in orderItems %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail">
+                                <img src="{{ asset('uploads/fotos/' ~ orderItem.product.foto) }}" width="135px;">
+                            </td>
+                            <td class="description _detail">
+                                <span>{{ orderItem.product.nameEs }}</span>
+                            </td>
+                            <td class="description _detail">
+                                <span>{{ orderItem.product.code }}</span>
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.product.unit }} uds</span>
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.quantity }} </span>
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.price|number_format(2, '.', ',') }} </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="anniu">
+                    <button class="button-secondary button-big FL _continue-shopping-btn"  style="width: 200px;" onclick="window.location.href='{{ path('order_pedido_es') }}'" type="button"><span>Volver</span></button>
+                    <button class="button-secondary button-big FL _continue-shopping-btn button-primary" onclick="window.print();"><i class="fa fa-print"></i> Imprimir</button>
+                </div>
+            </form>
+        </section>
+    </section>
+    </div>
+{% endblock %}

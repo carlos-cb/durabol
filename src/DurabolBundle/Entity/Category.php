@@ -215,4 +215,60 @@ class Category
     {
         return $this->isTop;
     }
+    /**
+     * @var string
+     */
+    private $nameEs;
+
+    /**
+     * @var string
+     */
+    private $descriptionEs;
+
+
+    /**
+     * Set nameEs
+     *
+     * @param string $nameEs
+     * @return Category
+     */
+    public function setNameEs($nameEs)
+    {
+        $this->nameEs = $nameEs;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEs
+     *
+     * @return string 
+     */
+    public function getNameEs()
+    {
+        return $this->nameEs;
+    }
+
+    /**
+     * Set descriptionEs
+     *
+     * @param string $descriptionEs
+     * @return Category
+     */
+    public function setDescriptionEs($descriptionEs)
+    {
+        $this->descriptionEs = $descriptionEs;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionEs
+     *
+     * @return string 
+     */
+    public function getDescriptionEs()
+    {
+        return $this->descriptionEs;
+    }
 }

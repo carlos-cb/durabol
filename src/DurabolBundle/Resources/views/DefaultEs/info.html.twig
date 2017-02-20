@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupon100{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/info.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:DefaultEs:header.html.twig' %}
+
+    <div class="container-fluid info" style="margin-top: 100px;">
+        <div id="erweima">
+            <h3>Escanear la imagen entra esta página directamente.</h3>
+            <h4>Puede guardar la imagen y enviar a amigos</h4>
+            <img src="{{ asset('bundles/durabol/img/erweima.jpg') }}">
+        </div>
+        <hr class="featurette-divider"><br>
+        <div id="lianxi">
+            <h2>Servicio al cliente</h2><br><br>
+            <h4>Teléfono： +34 688 099 098</h4>
+            <h4>Wechat： durabol</h4>
+            <h4>E-mail： 365331320@qq.com</h4>
+            <h4>Plataforma Wechat： durabol-es</h4>
+        </div>
+        <hr class="featurette-divider"><br><br>
+        <div id="tiaokuan">
+            <h2>Condiciones de Compra</h2><br>
+            <img src="{{ asset('bundles/durabol/img/num1.png') }}">
+            <h3>Garantía de Devolución</h3>
+            <br><br>
+            <h4>Las siguientes razones pueden ser la política de retorno incondicional del 100%: <br>
+                ·Problemas de mercancías de la calidad<br>
+                ·Los daños causados por el transporte<br>
+            </h4><br>
+            <img src="{{ asset('bundles/durabol/img/num2.png') }}">
+            <h3>Servicio uno a uno </h3>
+            <br><br>
+            <h4>En el uso de este software llamados mercancías tienen alguna pregunta sobre el producto o la tecnología puede llamar por teléfono a la consulta: 688 099 098.
+                Despúes de confirmar pedido, vamos a confirmar su pedido y su teléfono para ayudarle a manejar todas las órdenes y asuntos relacionados.
+            </h4><br>
+            <img src="{{ asset('bundles/durabol/img/num3.png') }}">
+            <h3>Envío libre distribución grande y eficiente</h3>
+            <br><br>
+            <h4>Las mercancías se entregan normalmente dentro de 5 días laborables (2-3 días), ya que es un producto dañado durante el transporte, puede ser la política de retorno incondicional.</h4><br>
+            <img src="{{ asset('bundles/durabol/img/num4.png') }}">
+            <h3>Factura formal, el precio incluyendo impuestos</h3>
+            <br><br>
+            <h4>En esta convocatoria todos los precios en la plataforma de mercancías ya incluye 21% de IVA. Cien tiendas tienen que pagar su propia cuenta propia 5.2% de sobretasa por cuenta propia.
+            </h4>
+        </div>
+        <br><br><br>
+    </div>
+{% endblock %}

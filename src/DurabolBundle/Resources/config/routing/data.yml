@@ -13,9 +13,19 @@ data_new:
     defaults: { _controller: "DurabolBundle:Data:new" }
     methods:  [GET, POST]
 
+data_new_es:
+    path:     /es/new
+    defaults: { _controller: "DurabolBundle:Data:newEs" }
+    methods:  [GET, POST]
+
 data_edit:
     path:     /{id}/edit
     defaults: { _controller: "DurabolBundle:Data:edit" }
+    methods:  [GET, POST]
+
+data_edit_es:
+    path:     /es/{id}/edit
+    defaults: { _controller: "DurabolBundle:Data:editEs" }
     methods:  [GET, POST]
 
 data_delete:

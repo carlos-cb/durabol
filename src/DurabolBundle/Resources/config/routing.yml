@@ -54,6 +54,10 @@ durabol_homepage:
     path:     /
     defaults: { _controller: DurabolBundle:Default:index }
 
+durabol_homepage_es:
+    path:     /es
+    defaults: { _controller: DurabolBundle:DefaultEs:index }
+
 durabol_homepage_admin:
     path:     /admin
     defaults: { _controller: DurabolBundle:Default:backEnd }
@@ -61,3 +65,7 @@ durabol_homepage_admin:
 font_info:
     path:     /info
     defaults: { _controller: DurabolBundle:Default:info }
+
+font_info_es:
+    path:     /es/info
+    defaults: { _controller: DurabolBundle:DefaultEs:info }

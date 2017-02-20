@@ -54,4 +54,32 @@ class Slider
     {
         return $this->foto;
     }
+    /**
+     * @var boolean
+     */
+    private $isEs;
+
+
+    /**
+     * Set isEs
+     *
+     * @param boolean $isEs
+     * @return Slider
+     */
+    public function setIsEs($isEs)
+    {
+        $this->isEs = $isEs;
+
+        return $this;
+    }
+
+    /**
+     * Get isEs
+     *
+     * @return boolean 
+     */
+    public function getIsEs()
+    {
+        return $this->isEs;
+    }
 }

@@ -20,6 +20,7 @@ class SliderType extends AbstractType
                 'required' => false,
                 'label' => '首页图片',
             ))
+            ->add('isEs', null, array('label' => '西语版图片'))
         ;
     }
     

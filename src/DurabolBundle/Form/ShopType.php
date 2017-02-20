@@ -16,8 +16,10 @@ class ShopType extends AbstractType
     {
         $builder
             ->add('name', null, array('label' => '店铺名'))
+            ->add('nameEs', null, array('label' => '店铺名西语'))
             ->add('nameShort', null, array('label' => '店铺简称'))
             ->add('description', null, array('label' => '描述'))
+            ->add('descriptionEs', null, array('label' => '描述西语'))
             ->add('minCoste', null, array('label' => '最低消费'))
             ->add('foto', FileType::class, array(
                 'data_class' => null,

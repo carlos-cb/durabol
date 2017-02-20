@@ -16,6 +16,7 @@
             <div class="unit size1of1">
                 <h2>Tramita pedido</h2>
                 <p>若您在购物过程中遇到困难或问题 请联系客服电话:  688 099 098</p>
+                <p>Si quiere ayuda, póngase en contacto con atención al cliente:  688 099 098</p>
             </div>
         </div>
         <div class="line mod">
@@ -33,16 +34,16 @@
                 <h2>Método de Pago</h2>
                 <br>
                 {% if orderInfo.payType == '在线付款' %}
-                    <h6 style="font-weight: bold; color: #ff0000">请点击图标选择支付方式</h6>
+                    <h6 style="font-weight: bold; color: #ff0000">请点击图标选择支付方式<br>Haga clic en el icono para seleccionar el método de pago</h6>
                     <a href="{{ path('payment_prepareStripe', { 'orderInfo': orderInfo.id }) }}"><img src="{{ asset('bundles/durabol/img/logostripe.png') }}"></a>
                 {% elseif orderInfo.payType == '银行转账' %}
-                    <h6 style="font-weight: bold; color: #ff0000">请将货款通过银行转账方式转到账户：<br><br>ES89 2100 4302 3222 0009 1798. (La Caixa, New Toro S.L.)</h6>
+                    <h6 style="font-weight: bold; color: #ff0000">请将货款通过银行转账方式转到账户：<br>Haga la transferencia bancaria a la cuenta: <br><br>ES89 2100 4302 3222 0009 1798. (La Caixa, New Toro S.L.)</h6>
                     <img src="{{ asset('bundles/durabol/img/logotrans.jpg') }}">
-                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
+                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">Mis Pedidos</a>
                 {% else %}
-                    <h6 style="font-weight: bold; color: #ff0000">请耐心等待发货，可在"我的订单"中查看订单最新状态.</h6>
+                    <h6 style="font-weight: bold; color: #ff0000">请耐心等待发货，可在"我的订单"中查看订单最新状态.<br>Espere a que la entrega, se puede ver el último estado del pedido en "Mis pedidos".</h6>
                     <img src="{{ asset('bundles/durabol/img/express.jpg') }}">
-                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
+                    <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">Mis Pedidos</a>
                 {% endif %}
             </div>
         </form>

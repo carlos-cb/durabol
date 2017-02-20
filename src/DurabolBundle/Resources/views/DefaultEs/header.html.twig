@@ -1,0 +1,27 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/header.css') }}">
+{% endblock %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container navbottom" style="min-height: 80px;">
+                    <div class="navbar-header topxiayi">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                        <a class="navbar-brand" href="{{ path('durabol_homepage_es') }}">Groupon100</a>
+                    </div>
+                    <div class="navbar-collapse collapse topxiayi">
+                        <ul class="nav navbar-nav navbar-right">
+                            {% for shop in shops %}
+                                <li><a href="{{ path('font_categoryList_es', { 'shop': shop.id }) }}">{{ shop.nameShort|capitalize }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

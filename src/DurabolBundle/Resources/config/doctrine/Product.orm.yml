@@ -12,6 +12,9 @@ DurabolBundle\Entity\Product:
         name:
             type: string
             length: 255
+        nameEs:
+            type: string
+            length: 255
         price:
             type: float
         unit:

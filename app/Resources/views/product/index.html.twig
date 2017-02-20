@@ -20,7 +20,7 @@
 {% block content %}
     <h1>Gestión de Productos</h1>
     {% if shop is defined %}
-        <h4 class="sub-header">{{ shop.name }} -> {{ category.name }}</h4>
+        <h4 class="sub-header">{{ shop.nameEs }} -> {{ category.nameEs }}</h4>
     {% endif %}
     <br>
     <ul>
@@ -58,7 +58,7 @@
         {% for product in products %}
             <tr>
                 <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
+                <td>{{ product.name }}<br>{{ product.nameEs }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.unit }}</td>
                 <td>{{ product.code }}</td>
@@ -66,12 +66,12 @@
                 <td>{% if product.isShow %}Yes{% else %}No{% endif %}</td>
                 <td>
                     {% if shop is defined %}
-                        {{ product.category.name }}
+                        {{ product.category.nameEs }}
                     {% else %}
                         {% if product.category.shop %}
-                            <a class="btn btn-primary" href="{{ path('product_index', { 'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.name }}</a>
+                            <a class="btn btn-primary" href="{{ path('product_index', { 'shop': product.category.shop.id, 'category': product.category.id }) }}">{{ product.category.nameEs }}</a>
                         {% else %}
-                            <a class="btn btn-primary">店铺已关闭</a>
+                            <a class="btn btn-primary">Tienda Cerrado</a>
                         {% endif %}
                     {% endif %}
                 </td>
@@ -91,9 +91,9 @@
                                 <a href="{{ path('product_edit', { 'id': product.id, 'shop': shop.id, 'category': category.id }) }}" class="button button-tiny button-primary">Modificar</a>
                             {% else %}
                                 {% if product.category.shop %}
-                                    <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.name }}</a>
+                                    <a class="btn btn-info" href="{{ path('product_selectCategory', {'shop': product.category.shop.id }) }}">{{ product.category.shop.nameEs }}</a>
                                 {% else %}
-                                    <a class="btn btn-info">店铺已关闭</a>
+                                    <a class="btn btn-info">Tienda Cerrado</a>
                                 {% endif %}
                             {% endif %}
                         </li>

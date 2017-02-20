@@ -16,6 +16,7 @@ class ProductType extends AbstractType
     {
         $builder
             ->add('name', null, array('label' => 'Nombre'))
+            ->add('nameEs', null, array('label' => 'Nombre'))
             ->add('price', null, array('label' => 'Precio'))
             ->add('unit', null, array('label' => 'Unidad'))
             ->add('code', null, array('label' => 'Código'))

@@ -41,9 +41,9 @@
         <tbody>
         {% for category in categories %}
             <tr>
-                <td><a href="{{ path('category_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.description }}</td>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}<br>{{ category.nameEs }}</td>
+                <td>{{ category.description }}<br>{{ category.descriptionEs }}</td>
                 <td>
                     {% if category.isTop %}
                         是<br><a class="button button-tiny button-caution" href="{{ path('category_isTop', { 'id': category.id }) }}">取消置顶</a>

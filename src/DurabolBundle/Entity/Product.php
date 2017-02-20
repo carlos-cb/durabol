@@ -310,4 +310,32 @@ class Product
     {
         return $this->isTop;
     }
+    /**
+     * @var string
+     */
+    private $nameEs;
+
+
+    /**
+     * Set nameEs
+     *
+     * @param string $nameEs
+     * @return Product
+     */
+    public function setNameEs($nameEs)
+    {
+        $this->nameEs = $nameEs;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEs
+     *
+     * @return string 
+     */
+    public function getNameEs()
+    {
+        return $this->nameEs;
+    }
 }

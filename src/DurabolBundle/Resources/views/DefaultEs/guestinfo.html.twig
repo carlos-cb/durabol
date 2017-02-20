@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupon100{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/orderinfo.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:DefaultEs:header.html.twig' %}
+
+    <div class="container" style="margin-top: 100px;">
+        <div class="line mod">
+            <div class="unit size1of1">
+                <h1>Tramita pedido</h1>
+            </div>
+        </div>
+        <div class="line mod">
+            <div class="unit size1of1">
+                <div class="steps">
+                    <ul class="listH">
+                        <li class="act">1. ENVÍO</li>
+                        <li>2. PAGO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('order_cartToOrderinfo') }}" name="orderinfo">
+            <div class="line mod">
+                <div class="radioGroup">
+                    <h2>Método de pago</h2>
+                    {% if payOnline %}
+                    <div>
+                        <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1">
+                        <label for="radio-1" class="radio-custom-label">Pago On-line con tarjeta de crédito o débito</label>
+                    </div>
+                    {% endif %}
+                    <div>
+                        <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2" checked>
+                        <label for="radio-2" class="radio-custom-label">Transferencias bancarias</label>
+                    </div>
+                    {% if delivery %}
+                    <div>
+                        <input id="radio-3" class="radio-custom" name="radio-group" type="radio" value="3">
+                        <label for="radio-3" class="radio-custom-label">Pago contra reembolso</label>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="line mod">
+                <div class="radioGroup">
+                    <h2>DATOS DE CONTACTO</h2>
+                    <div class="form-group">
+                        <label for="inputtel" class="col-sm-2 control-label">Teléfono</label>
+                        <div class="col-sm-8">
+                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required" {% if data.receiverphone is defined %}value="{{ data.receiverphone }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputname" class="col-sm-2 control-label">Nombre de Empresa</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" class="form-control" id="inputname" required="required"  {% if data.receivername is defined %}value="{{ data.receivername }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputshuihao" class="col-sm-2 control-label">CIF</label>
+                        <div class="col-sm-8">
+                            <input name="shuihao" type="text" class="form-control" id="inputshuihao" required="required" {% if data.receivershuihao is defined %}value="{{ data.receivershuihao }}"{% endif %}>
+                        </div>
+                    </div>
+                    <h2>DATOS DE ENVÍO</h2>
+                    <div class="form-group">
+                        <label for="inputaddress" class="col-sm-2 control-label">Dirección</label>
+                        <div class="col-sm-8">
+                            <input name="address" type="text" class="form-control" id="inputaddress" required="required" {% if data.receiveradress is defined %}value="{{ data.receiveradress }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputpost" class="col-sm-2 control-label">Código Postal</label>
+                        <div class="col-sm-8">
+                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required" {% if data.receiverpostcode is defined %}value="{{ data.receiverpostcode }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputlocal" class="col-sm-2 control-label">Ciudad</label>
+                        <div class="col-sm-8">
+                            <input name="city" type="text" class="form-control" id="inputlocal" required="required" {% if data.receivercity is defined %}value="{{ data.receivercity }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputprovince" class="col-sm-2 control-label">Provincia</label>
+                        <div class="col-sm-8">
+                            <input name="province" type="text" class="form-control" id="inputprovince" required="required" {% if data.receiverprovince is defined %}value="{{ data.receiverprovince }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">País</label>
+                        <div class="col-sm-8">
+                            <p style="margin-top:12px;margin-left:20px;font-weight: bold;">España</p>
+                        </div>
+                    </div>
+                    <div style="position: relative; left: 50px;">
+                        <input type="checkbox" id="gerenshui" name="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px;width: 30px;" {% if data.receivergerenshui is defined and data.receivergerenshui %}checked{% endif %}" value="1">
+                        Si usted es autónomo, hay que pagar un recargo de equivalencia (5.2%).
+                    </div>
+                    <br><br>
+                    <div class="">
+                        <div class="unit size1of1">
+                            <div class="actions fLeft">
+                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent"
+                                        onclick="window.location.href='{{ path('durabol_homepage_es') }}'">
+                                    <span style="bottom: 0;"><i class="fa fa-arrow-left" aria-hidden="true"></i> SEGUIR COMPRANDO</span>
+                                </button>
+                            </div>
+                            <div class="actions fRight">
+                                <button id="checkoutPaymentBt" type="submit" value="FINALIZAR PEDIDO"
+                                        class="button butBlack authPayment gaTrack gaViewEvent">
+                                    <span style="bottom: 0">CONTINUAR</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

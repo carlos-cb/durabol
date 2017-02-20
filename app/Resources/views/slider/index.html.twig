@@ -32,7 +32,7 @@
         <tbody>
         {% for slider in sliders %}
             <tr>
-                <td>{{ slider.id }}</td>
+                <td>{{ slider.id }}{% if slider.isEs %} 西语版{% else %} 中文版{% endif %}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ slider.foto) }}" height="100px" width="349px"></td>
                 <td>
                     <a href="{{ path('slider_edit', { 'id': slider.id }) }}" class="button button-tiny button-primary">修改</a>

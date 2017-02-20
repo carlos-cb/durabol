@@ -16,16 +16,15 @@
             <img src="{{ asset('bundles/durabol/img/success.png') }}">
         </div>
         <div class="box col-xs-12 col-lg-6" style="display: inline-block;">
-            <h3 class="box"><b>您已成功下单, 可在查看订单中校对订单信息.</b></h3>
-            <h4>非常感谢您的使用！</h4>
+            <h3 class="box"><b>Su pago ha sido procesado con éxito.</b></h3>
+            <h4>Muchas gracias！</h4>
             <br><br>
-            <h4>客户名/公司名: {{ orderInfo.receiverName }}</h4>
-            <h4>总订单: {{ orderInfo.id }}</h4>
-            <h4>子订单: {% for childOrderInfo in childOrderInfos %}{{ childOrderInfo.id }} {% endfor %}</h4>
-            <h4>订单总额: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
-            <h4>下单时间: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
+            <h4>Nombre de Cliente: {{ orderInfo.receiverName }}</h4>
+            <h4>Número de Pedido: {% for childOrderInfo in childOrderInfos %}{{ childOrderInfo.id }} {% endfor %}</h4>
+            <h4>Importe Total: {{ orderInfo.totalPrice|number_format(2, '.', ',') }} €</h4>
+            <h4>Tiempo de Generación: {% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</h4>
             <br>
-            <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">查看我的订单</a>
+            <a href="{{ path('order_pedido') }}" class="button button-rounded button-inverse">Ver mis pedidos</a>
         </div>
 
     </div>

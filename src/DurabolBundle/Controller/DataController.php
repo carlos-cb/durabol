@@ -54,6 +54,29 @@ class DataController extends Controller
         ));
     }
 
+    public function newEsAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
+        $datum = new Data();
+        $form = $this->createForm('DurabolBundle\Form\DataEsType', $datum);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($datum);
+            $em->flush($datum);
+
+            return $this->redirectToRoute('durabol_homepage_es');
+        }
+
+        return $this->render('data/new.html.twig', array(
+            'shops' => $shops,
+            'datum' => $datum,
+            'form' => $form->createView(),
+        ));
+    }
+
     /**
      * Finds and displays a datum entity.
      *
@@ -94,6 +117,28 @@ class DataController extends Controller
         ));
     }
 
+    public function editEsAction(Request $request, Data $datum)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('isTop' => 'DESC'));
+        $deleteForm = $this->createDeleteForm($datum);
+        $editForm = $this->createForm('DurabolBundle\Form\DataEsType', $datum);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('data_edit_es', array('id' => $datum->getId()));
+        }
+
+        return $this->render('data/editEs.html.twig', array(
+            'shops' => $shops,
+            'datum' => $datum,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    
     /**
      * Deletes a datum entity.
      *

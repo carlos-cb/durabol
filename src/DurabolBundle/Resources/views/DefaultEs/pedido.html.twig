@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Groupon100{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/cart.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:DefaultEs:header.html.twig' %}
+
+    <div class="container-fluid" style="margin-top: 100px;">
+    <section id="main" class="content-main" role="main" style="font-size: 28px!important;">
+        <h2>Mis Pedidos</h2>
+        <br>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead"><th>Número</th>
+                        <th class="description">Tiempo</th>
+                        <th>Estado</th>
+                        <th>Importe</th>
+                        <th>Envío</th>
+                        <th>Operaciones</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderInfo in orderInfos if orderInfo.parent %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail" style="height: 50px">{{ orderInfo.id }}</td>
+                            <td class="description _detail">{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d') }}{% endif %}</td>
+                            <td class="color">
+                                {% if orderInfo.state == '未付款' %}
+                                    Sin Pagar &nbsp;<a href="{{ path('order_orderpay', { 'orderInfo': orderInfo.parent.id }) }}" class="button button-tiny button-inverse button-rounded">Pagar</a>
+                                {% elseif orderInfo.state == '已付款' %}
+                                    Pagado
+                                {% elseif orderInfo.state == '已发货' %}
+                                    Enviado
+                                {% elseif orderInfo.state == '已取消' %}
+                                    Cancelado
+                                {% elseif orderInfo.state == '已完成' %}
+                                    Terminado
+                                {% endif %}
+                            </td>
+                            <td>{{ orderInfo.totalPrice|number_format(2, '.', ',') }} EUR</td>
+                            <td>{% if orderInfo.envio %}{{ orderInfo.envio }}{% endif %}</td>
+                            <td>
+                                <a class="button button-highlight button-tiny" href="{{ path('order_productlistclient_es', { 'orderInfo': orderInfo.id }) }}">Ver</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+            <div class="anniu">
+                <button class="button-secondary button-big FL _continue-shopping-btn"  style="width: 200px;" onclick="window.location.href='{{ path('durabol_homepage_es') }}'" type="button"><span>Volver</span></button>
+            </div>
+        </section>
+    </section>
+    </div>
+{% endblock %}

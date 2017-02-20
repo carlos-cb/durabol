@@ -12,7 +12,13 @@ DurabolBundle\Entity\Category:
         name:
             type: string
             length: 255
+        nameEs:
+            type: string
+            length: 255
         description:
+            type: string
+            length: 255
+        descriptionEs:
             type: string
             length: 255
         foto:

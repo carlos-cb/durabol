@@ -230,7 +230,20 @@ class Shop
         }
         return $categoryNames;
     }
-
+    
+    public function getCategoryEsNames()
+    {
+        $categories = $this->getCategorys();
+        $i = 0;
+        $categoryEsNames = Array();
+        foreach ($categories as $category)
+        {
+            $categoryEsNames[$i] = $category->getNameEs();
+            $i++;
+        }
+        return $categoryEsNames;
+    }
+    
     public function getProductNum()
     {
         $categories = $this->getCategorys();
@@ -328,5 +341,61 @@ class Shop
     public function getIsPayOnline()
     {
         return $this->isPayOnline;
+    }
+    /**
+     * @var string
+     */
+    private $nameEs;
+
+    /**
+     * @var string
+     */
+    private $descriptionEs;
+
+
+    /**
+     * Set nameEs
+     *
+     * @param string $nameEs
+     * @return Shop
+     */
+    public function setNameEs($nameEs)
+    {
+        $this->nameEs = $nameEs;
+
+        return $this;
+    }
+
+    /**
+     * Get nameEs
+     *
+     * @return string 
+     */
+    public function getNameEs()
+    {
+        return $this->nameEs;
+    }
+
+    /**
+     * Set descriptionEs
+     *
+     * @param string $descriptionEs
+     * @return Shop
+     */
+    public function setDescriptionEs($descriptionEs)
+    {
+        $this->descriptionEs = $descriptionEs;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionEs
+     *
+     * @return string 
+     */
+    public function getDescriptionEs()
+    {
+        return $this->descriptionEs;
     }
 }

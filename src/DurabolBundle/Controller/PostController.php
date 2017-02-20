@@ -128,9 +128,22 @@ class PostController extends Controller
         $em = $this->getDoctrine()->getManager();
         $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('turn' => 'DESC'));
 
-        $posts = $em->getRepository('DurabolBundle:Post')->findAll();
+        $posts = $em->getRepository('DurabolBundle:Post')->findByIsEs(false);
 
         return $this->render('DurabolBundle:Default:postIndex.html.twig', array(
+            'shops' => $shops,
+            'posts' => $posts,
+        ));
+    }
+
+    public function fontIndexEsAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('turn' => 'DESC'));
+
+        $posts = $em->getRepository('DurabolBundle:Post')->findByIsEs(true);
+
+        return $this->render('DurabolBundle:DefaultEs:postIndex.html.twig', array(
             'shops' => $shops,
             'posts' => $posts,
         ));
@@ -148,6 +161,22 @@ class PostController extends Controller
         return $this->render('DurabolBundle:Default:post.html.twig', array(
             'shops' => $shops,
             'post' => $post,
+        ));
+    }
+
+    public function fontShowEsAction(Post $post)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $shops = $em->getRepository('DurabolBundle:Shop')->findBy(array(), array('turn' => 'DESC'));
+
+        $post->setReadNum($post->getReadNum()+1);
+        $em->persist($post);
+        $em->flush();
+
+        return $this->render('DurabolBundle:Default:post.html.twig', array(
+            'shops' => $shops,
+            'post' => $post,
+            'isEs' => 1,
         ));
     }
 }

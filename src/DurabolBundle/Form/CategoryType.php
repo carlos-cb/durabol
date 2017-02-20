@@ -16,7 +16,9 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', null, array('label' => '分类名'))
+            ->add('nameEs', null, array('label' => '分类名西语'))
             ->add('description', null, array('label' => '分类描述'))
+            ->add('descriptionEs', null, array('label' => '分类描述西语'))
             ->add('foto', FileType::class, array(
                 'data_class' => null,
                 'required' => false,

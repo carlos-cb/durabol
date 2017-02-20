@@ -17,3 +17,7 @@ cart_addtocartAjax:
 cart_guestinfo:
     path:     /guestinfo
     defaults: { _controller: DurabolBundle:Default:guestinfo }
+
+cart_guestinfo_es:
+    path:     /es/guestinfo
+    defaults: { _controller: DurabolBundle:DefaultEs:guestinfo }

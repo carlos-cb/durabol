@@ -34,7 +34,7 @@
         <tbody>
         {% for pingtu in pingtus %}
             <tr>
-                <td>{{ pingtu.id }}</td>
+                <td>{{ pingtu.id }}{% if pingtu.id <= 6 %} 中文版{% else %} 西语版{% endif %}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ pingtu.foto) }}" height="120px" width="240px"></td>
                 <th>
                     {% if pingtu.routing == 'store' %}搜索店铺

@@ -12,4 +12,6 @@ DurabolBundle\Entity\Slider:
         foto:
             type: string
             length: 255
+        isEs:
+            type: boolean
     lifecycleCallbacks: {  }
