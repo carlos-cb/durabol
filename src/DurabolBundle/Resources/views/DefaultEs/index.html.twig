@@ -73,7 +73,7 @@
                 {% for shop in shops %}
                     <div class="row">
                         <div class="col-xs-2 jieshao">
-                            <h5><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}"><br><span id="description">{{ shop.descriptionEs }}</span></h5>
+                            <h5><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}"><br><span id="description">{{ shop.descriptionEs[:24] }}...</span></h5>
                             <span class="text-muted"><a href="{{ path('font_categoryList_es', { 'shop': shop.id }) }}">>>Entrar</a></span>
                         </div>
                         <div class="col-xs-10 jieshaoimg">

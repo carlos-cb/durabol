@@ -129,6 +129,7 @@ class DefaultController extends Controller
         return $this->render('DurabolBundle:Default:category.html.twig', array(
             'categories' => $categories,
             'shops' => $shops,
+            'thisShop' => $shop,
         ));
     }    
     

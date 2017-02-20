@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/durabol/css/footer.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    {% include 'DurabolBundle:DefaultEs:header.html.twig' %}
+    <div class="container-fluid" id="address" style="margin-top: 100px;">
+        <h2>Editar dirección de envío</h2>
+
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <br>
+            <input type="submit" class="button button-inverse" value="Confirmar" />
+            <button class="button button-inverse"  style="width: 200px;" onclick="window.location.href='{{ path('durabol_homepage_es') }}'" type="button"><span>Volver</span></button>
+        {{ form_end(form) }}
+    </div>
+    <br><br><br><br>
+{% endblock %}

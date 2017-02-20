@@ -70,7 +70,7 @@ class DataController extends Controller
             return $this->redirectToRoute('durabol_homepage_es');
         }
 
-        return $this->render('data/new.html.twig', array(
+        return $this->render('data/newEs.html.twig', array(
             'shops' => $shops,
             'datum' => $datum,
             'form' => $form->createView(),
