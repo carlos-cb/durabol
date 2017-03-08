@@ -89,5 +89,5 @@ payum:
     gateways:
         stripe_js:
             factory: stripe_js
-            publishable_key: 'pk_test_w1VMpdGteSYouR03G3tsS6ql'
-            secret_key:      'sk_test_ua1QeSEGJwCfbGhWTgLupFQk'
+            publishable_key: 'pk_live_fqaHEAycJhqIXAUv0vIXPl5q'
+            secret_key:      'sk_live_roIU2dluNjYUjBwuQIn4UszO'

@@ -254,6 +254,7 @@ class ProductController extends Controller
                     ->setUnit($data[5])
                     ->setIsSale($data[6])
                     ->setDiscountPrice($data[7])
+                    ->setNameEs($data[8])
                     ->setIsShow(1)
                     ->setIsTop(0)
             ;
@@ -271,7 +272,7 @@ class ProductController extends Controller
 
         $objWorksheet = $phpExcelObject->getActiveSheet();
         $highestRow = $objWorksheet->getHighestRow();
-        $highestColumnIndex = 8;
+        $highestColumnIndex = 9;
         $headtitle = array();
         for ($row = 2;$row <= $highestRow;$row++)
         {

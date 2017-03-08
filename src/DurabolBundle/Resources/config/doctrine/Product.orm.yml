@@ -41,4 +41,5 @@ DurabolBundle\Entity\Product:
             joinColumn:
                 name: category_id
                 referencedColumnName: id
+                onDelete:  "SET NULL"
     lifecycleCallbacks: {  }

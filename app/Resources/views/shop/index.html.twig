@@ -48,7 +48,7 @@
                 <td>{{ shop.id }}</td>
                 <td>{{ shop.name }}<br>{{ shop.nameEs }}</td>
                 <td>{{ shop.nameShort }}</td>
-                <td>{{ shop.description }}<br>{{ shop.descriptionEs }}</td>
+                <td>{{ shop.description[:8] }}<br>{{ shop.descriptionEs[:12] }}</td>
                 <td>{{ shop.minCoste }} €</td>
                 <td>{{ shop.turn }}</td>
                 <td><img src="{{ asset('uploads/fotos/' ~ shop.foto) }}" height="100px" width="100px"></td>
